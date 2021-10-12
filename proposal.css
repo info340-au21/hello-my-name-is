@@ -13,3 +13,8 @@ body {
 mark {
     color: plum;
 }
+
+.author {
+    font-style: italic;
+    font-size: 18px;
+}
