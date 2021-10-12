@@ -1,3 +1,5 @@
-# INFO 340 Project
+# hello-my-name-is
 
-This repository contains code for an interactive information web app, created for the _Client-Side Web Development_ course at the UW iSchool.
+Names are among the most integral parts of people’s identities. Yet, for various reasons, people change them once or several times throughout their lives. For some, a new name accompanies a transition in identity. For others, it’s a means of adapting to a new culture or country. For others still, it’s a necessary step to ensure safety and privacy. Regardless of the reason, people should feel at home in their names.
+
+That is why we are building **Hello My Name Is**, a name search and organization website, specifically designed for people changing their names.
