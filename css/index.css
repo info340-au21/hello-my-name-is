@@ -1,0 +1,38 @@
+/* GENERAL */
+* {
+    box-sizing: border-box;
+}
+
+/* MAIN */
+.section {
+}
+
+/* Name cards (mini) */
+.container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 100%;
+}
+
+.card {
+    background-color: lightgrey;
+    color: white;
+    margin: 1em;
+    width: 42%;
+    text-align: center;
+    border-radius: 1em;
+}
+
+.fem {
+    background-color: gold;
+}
+
+.neut {
+    background-color: lightgreen;
+}
+
+.masc {
+    background-color: plum;
+}
