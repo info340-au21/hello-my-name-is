@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Hello My Name Is - Enter Name</title>
+        
+        <!-- Normalization -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+        <!-- Outside fonts -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        
+        <!-- Link to stylesheet -->
+        <link rel="stylesheet" href="css/index.css"/>
+    </head>
+    <body>
+        <!--Nav Bar-->
+        <div class="row">
+            <nav>
+                <ul>
+                    <!-- Home -->
+                    <li><span class="material-icons" aria-label="Home">home</span></li>
+    
+                    <!-- Bookmarks -->
+                    <li><span class="material-icons" aria-label="bookmarks">bookmarks</span></li>
+    
+                    <!-- Enter name -->
+                    <li><span class="material-icons" aria-label="Enter a name">add</span></li>
+    
+                    <!-- Search bar -->
+                    <li><input type="text" placeholder="Search for a name" class="search"></li>
+    
+                </ul>
+            </nav>
+        </div>
+
+        <!--Page Head-->
+        <header>
+            <h1><strong>Hello My Name Is...</strong></h1>
+            <p>not in this database!</p>
+        </header>
+
+        <!--Enter Name to Database-->
+        <main>
+            <form>
+                <div class="update">
+                    <div class="form-attribute">
+                        <label>What name would you like to submit to the data base? </label>
+                        <input type = "text" placeholder="Enter a name" class="search">
+                    </div>
+
+                    <div class="form-attribute">
+                        <label>What is the origin of this name? </label>
+                        <input type = "text" placeholder="eg. Greek, Somolian" class="search">
+                    </div>
+
+                    <div class="form-attribute">
+                        <label>Is it a gendered name? </label>
+                        <label><input type = "radio"> Feminine </label>
+                        <label><input type = "radio"> Masculine </label>
+                        <label><input type = "radio"> Neither </label>
+                    </div>
+
+                    <div class="form-attribute">
+                        <label>What is the meaning of this name? </label>
+                        <input type = "text" placeholder="max 180 characters">
+                    </div>
+
+                    <div>
+                        <input type="button" value="Submit Name!" class="button">
+                    </div>
+                </div>
+            </form>
+        </main>
+
+        <!--Footer-->
+        <footer>
+            <p><a href="mailto:hello_my_name_is@gmail.com"><span class="material-icons">email</span> hello_my_name_is@gmail.com</a></p>
+            <p><a href="tel:206-512-9261"><span class="material-icons">phone</span> 555-123-4567</a></p>
+        </footer>
+    </body>
+</html>
