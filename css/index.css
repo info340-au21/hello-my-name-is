@@ -4,9 +4,6 @@
 }
 
 /* MAIN */
-.section {
-}
-
 /* Name cards (mini) */
 .container {
     display: flex;
@@ -20,7 +17,7 @@
     background-color: lightgrey;
     color: white;
     margin: 1em;
-    width: 42%;
+    width: 40%;
     text-align: center;
     border-radius: 1em;
 }
