@@ -11,25 +11,31 @@
 
     <!-- Outside fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
     <!-- Link to stylesheet -->
     <link rel="stylesheet" href="css/index.css"/>
 </head>
 <body>
     <!-- Nav bar -->
-    <nav>
-        <ul>
-            <!-- Home -->
-            <li><a href="#Home">Home</a></li>
+    <div class="row">
+        <nav>
+            <ul>
+                <!-- Home -->
+                <li><span class="material-icons" aria-label="Home">home</span></li>
 
-            <!-- Bookmarks -->
-            <li><a href="#bookmarks">Bookmarks</a></li>
+                <!-- Bookmarks -->
+                <li><span class="material-icons" aria-label="bookmarks">bookmarks</span></li>
 
-            <!-- Enter name -->
+                <!-- Enter name -->
+                <li><span class="material-icons" aria-label="Enter a name">add</span></li>
 
-            <!-- Search bar -->
-        </ul>
-    </nav>
+                <!-- Search bar -->
+                <li><input type="text" placeholder="Search for a name" class="search"></li>
+
+            </ul>
+        </nav>
+    </div>
 
     <!-- Head -->
         <!-- Title -->
@@ -124,17 +130,37 @@
          </div>
 
          <!-- Data View 2 -->
-        <div>
-            <div id="card">
-                <h6>Name</h6>
-                <ul>
-                    <li>Pronunciation</li>
-                    <li>Gender</li>
-                    <li>Meaning</li>
-                    <li>Origin</li>
-                    <li>Length</li>
-                    <li>First Letters</li>
-                </ul>
+        <div class="section">
+            <div class="container">
+                <div class="card neut">
+                    <h3>Nalu</h3>
+                    <div class="container">
+                            <div class="card attribute">
+                                <h6>Pronunciation</h6>
+                                <p>"Nah-loo"</p>
+                            </div>
+                            <div class="card attribute">
+                                <h6>Gender</h6>
+                                <p><i class="fa fa-genderless" aria-label="neutral"></i></p>
+                            </div>
+                            <div class="card attribute">
+                                <h6>Meaning</h6>
+                                <p>Surging surf, wave</p>
+                            </div>
+                            <div class="card attribute">
+                                <h6>Origin</h6>
+                                <p>Hawaiian</p>
+                            </div>
+                            <div class="card attribute">
+                                <h6>Length</h6>
+                                <p>4</p>
+                            </div>
+                            <div class="card attribute">
+                                <h6>First Letter</h6>
+                                <p>N</p>
+                            </div>
+                    </div>
+                </div>
             </div>
         </div>
 
