@@ -4,8 +4,77 @@
 }
 
 /* MAIN */
-/* Name cards (mini) */
+.section {
+    margin-top: .5em;
+    margin-bottom: 1em;
+}
+
+.center {
+    text-align: center;
+}
+
+.in-line {
+    display: inline-block;
+}
+
 .container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.item {
+    margin-bottom: 1em;
+}
+
+.item button {
+    display: flex;
+    margin: auto;
+    font-size: 1.25em;
+}
+
+/* Filter */
+.fa {
+    font-weight: 400;
+    font-size: 2em;
+}
+
+.text-neut {
+    color: lightgreen;
+}
+
+.text-fem {
+    color: gold;
+}
+
+.text-masc {
+    color:plum;
+}
+
+input {
+    margin: .5em;
+}
+
+.small-text {
+    font-size: .75em;
+    color: darkgray
+}
+
+input[type='number'] {
+    width: 2em;
+}
+
+.btn-light {
+    color: white;
+    background-color: #9370db;
+}
+
+.filter-container {
+    flex-direction: column;
+}
+
+/* Name cards (mini) */
+.card-container {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-evenly;
@@ -20,6 +89,11 @@
     width: 40%;
     text-align: center;
     border-radius: 1em;
+}
+
+.card .fa {
+    color: white;
+    font-size: 1em;
 }
 
 .fem {

@@ -49,12 +49,137 @@
         <!-- Search bar -->
 
         <!-- Filters -->
+        <div class="section">
+            <h2>Names like <span class="text-neut">NALU</span> that are...</h2>
+
+            <div class="container filter-container">
+                <!-- Gender -->
+                <div class="item center">
+                    <div class="in-line text-neut">
+                        <input type="checkbox" id="check-neut" name="check-neut"/>
+
+                        <label for="check-neut">
+                            Neutral
+                            <i class="fa fa-genderless" aria-label="neutral"></i>
+                        </label>
+                    </div>
+
+                    <div class="in-line text-fem">
+                        <input type="checkbox" id="check-fem" name="check-fem"/>
+
+                        <label for="check-fem">
+                            Feminine
+                            <i class="fa fa-venus" aria-label="feminine"></i>
+                        </label>
+                    </div>
+
+                    <div class="in-line text-masc">
+                        <input type="checkbox" id="check-masc" name="check-masc"/>
+
+                        <label for="check-masc">
+                            Masculine
+                            <i class="fa fa-mars" aria-label="masculine"></i>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Filter for similar... -->
+                <div class="item">
+                    <h3>With similar...</h3>
+
+                    <!-- Meaning -->
+                    <div>
+                        <input type="checkbox" id="check-meaning" name="check-meaning" checked/>
+
+                        <label for="check-meaning">
+                            Meaning
+                        </label>
+
+                        <div class="center">
+                            <label for=slide-meaning class="small-text">Loose match</label>
+
+                            <input type="range" id="slide-meaning" name="slide-meaning" min="1" max="3" list="similarity"/>
+
+                            <datalist id="similarity">
+                                <option value="1" label="Loose match"></option>
+                                <option value="2"></option>
+                                <option value="3" label="Close match"></option>
+                            </datalist>
+
+                            <label for=slide-meaning class="small-text">Close match</label>
+                        </div>
+                    </div>
+
+                    <!-- Pronunciation -->
+                    <div>
+                        <input type="checkbox" id="check-pronun" name="check-pronun"/>
+
+                        <label for="check-pronun">
+                            Pronunciation
+                        </label>
+        
+                    </div>
+
+                </div>
+
+                <!-- Filter for matching... -->
+                <div class="item">
+                    <h3>And matching...</h3>
+                    
+                    <!-- Origin -->
+                    <div>
+                        <input type="checkbox" id="check-origin" name="check-origin"/>
+
+                        <label for="check-origin">
+                            Origin 
+                            <span class="small-text">(Hawaiian)</span>
+                        </label>
+                    </div>
+
+                    <!-- Syllables -->
+                    <div>
+                        <input type="checkbox" id="check-syl" name="check-syl"/>
+
+                        <label for="check-syl">
+                            Number of syllables 
+                            <span class="small-text">(2)</span>
+                        </label>
+                    </div>
+
+                    <!-- Length -->
+                    <div>
+                        <input type="checkbox" id="check-ln" name="check-ln"/>
+
+                        <label for="check-ln">
+                            Length 
+                            <span class="small-text">(4 letters)</span>
+                        </label>
+                    </div>
+
+                    <!-- First letters -->
+                    <div>
+                        <input type="checkbox" id="check-first" name="check-first"/>
+
+                        <label for="check-first">
+                            First
+                            <input type="number" placeholder="0"/>
+                            letters
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Match button -->
+                <div class="item">
+                    <button type="button" class="btn btn-light">Get names</button>
+                </div>
+            </div>
+        </div>
 
         <!-- Name cards mini (data view 1) -->
         <div class="section">
-            <h2>Your 50 matches...</h2>
+            <h2>Your 50 matches:</h2>
 
-            <div class="container">
+            <div class="container card-container">
                 <div class="card neut">
                     <p class="name">
                         Nalu
@@ -131,10 +256,10 @@
 
          <!-- Data View 2 -->
         <div class="section">
-            <div class="container">
+            <div class="container card-container">
                 <div class="card neut">
                     <h3>Nalu</h3>
-                    <div class="container">
+                    <div class="container card-container">
                             <div class="card attribute">
                                 <h6>Pronunciation</h6>
                                 <p>"Nah-loo"</p>
