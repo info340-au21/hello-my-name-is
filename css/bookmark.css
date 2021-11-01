@@ -10,7 +10,6 @@ tbody tr:hover {
 h1 {
     font-weight: 300;
     font-family: "Roboto", sans-serif;
-    text-align: left;
 }
 
 header {
@@ -20,6 +19,7 @@ header {
     background-size: contain;
     background-position: center;
     background-color: #9370db;
+    text-align: center;
 }
 
 .container {
@@ -36,6 +36,7 @@ nav {
     background-color: #e6e6fa;
     padding-bottom: 1rem;
     padding-top: 1rem;
+    text-align: right;
 }
 
 nav li {
@@ -50,6 +51,7 @@ footer {
     padding-top: .5rem;
     padding-bottom: .5rem;
 }
+
 
 table {
     width: 50%;

@@ -193,3 +193,29 @@ footer {
     background-color: #9370db;
     color: white;
 }
+
+/* bookmark page table */
+table {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 1rem;
+}
+
+.tabletop {
+    background-position: center;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+
+.tabletop p {
+    display: inline;
+}
+
+.book-container {
+    margin-left: 2rem;
+}

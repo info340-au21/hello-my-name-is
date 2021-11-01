@@ -8,19 +8,27 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="css/bookmark.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>    
     <nav>
         <ul>
-            <li><a href="#menu">Main page</a></li>
-            <li><input type="text" placeholder="Find in bookmarks" class="search"></li>
+            <!-- Home -->
+            <li><span class="material-icons" aria-label="Home">home</span></li>
+
+            <!-- Bookmarks -->
             <li><span class="material-icons" aria-label="bookmarks">bookmarks</span></li>
+
+            <!-- Enter name -->
+            <li><span class="material-icons" aria-label="Enter a name">add</span></li>
+
+            <!-- Search bar -->
+            <li><input type="text" placeholder="Search for a name" class="search"></li>
         </ul>
     </nav>
 
     <header>
-        <div class="container">
+        <div class="book-container">
             <h1>Bookmarked names</h1>
             <p class="fav name">Here is the list of your favorite names</p>
         </div>
