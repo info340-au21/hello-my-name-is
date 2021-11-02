@@ -139,8 +139,6 @@ header p {
 }
 
 nav {
-    position: relative;
-    color: white;
     background-color: #e6e6fa;
     padding-bottom: 1rem;
     padding-top: 1rem;
@@ -149,7 +147,6 @@ nav {
 
 nav li {
     display: inline;
-    margin-left: 30px;
 }
 
 footer {
@@ -199,6 +196,7 @@ table {
     width: 50%;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 50px;
     border-collapse: collapse;
 }
 
@@ -206,16 +204,21 @@ td {
     padding: 1rem;
 }
 
-.tabletop {
-    background-position: center;
-    padding-bottom: 1rem;
-    padding-top: 1rem;
-}
-
-.tabletop p {
-    display: inline;
+th {
+    text-align: center;
 }
 
 .book-container {
     margin-left: 2rem;
+}
+
+.nav-b{
+    display: flex;
+}
+
+.nav-b div {
+    padding: .5em;
+    margin-left: 30px;
+    color: #9370db;
+    background-color: #e6e6fa;
 }
