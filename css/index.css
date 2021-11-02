@@ -150,12 +150,22 @@ nav li {
 }
 
 footer {
-    position: relative;
     color: white;
     background-color: #e6e6fa;
     padding-top: .5rem;
     padding-bottom: .5rem;
+    bottom:0;
 }
+
+.footer-flexbox {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.footer-flexbox div {
+    flex-basis: 100%;
+}
+
 
 /*Data View 2 - Enlarged Card*/
 .attribute {
