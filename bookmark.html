@@ -11,21 +11,28 @@
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>    
-    <nav>
-        <ul>
-            <!-- Home -->
-            <li><span class="material-icons" aria-label="Home">home</span></li>
-
-            <!-- Bookmarks -->
-            <li><span class="material-icons" aria-label="bookmarks">bookmarks</span></li>
-
-            <!-- Enter name -->
-            <li><span class="material-icons" aria-label="Enter a name">add</span></li>
-
-            <!-- Search bar -->
-            <li><input type="text" placeholder="Search for a name" class="search"></li>
-        </ul>
-    </nav>
+    <div class="row">
+        <nav>
+            <ul class="nav-b">
+                <!-- Home -->
+                <div>
+                    <a href="index.html"><li><span class="material-icons" aria-label="Home">home</span></li></a>
+                </div>
+                <!-- Bookmarks -->
+                <div>
+                    <a href="bookmark.html"><li><span class="material-icons" aria-label="bookmarks">bookmarks</span></li></a>
+                </div>
+                <!-- Enter name -->
+                <div>
+                    <li><span class="material-icons" aria-label="Enter a name">add</span></li>
+                </div>
+                <!-- Search bar -->
+                <div>
+                    <li><input type="text" placeholder="Search for a name" class="search"></li>
+                </div>
+            </ul>
+        </nav>
+    </div>
 
     <header>
         <div class="book-container">
@@ -33,12 +40,6 @@
             <p class="fav name">Here is the list of your favorite names</p>
         </div>
     </header>
-
-    <div class="tabletop">
-        <p>List of bookmarked names<p>
-        <p><span class="material-icons" aria-label="sorting">sort</span></p>
-    </div>
-
 
     <table>
         <thead>
@@ -85,8 +86,14 @@
     </table>
 
     <footer>
-        <p><a href="mailto:hello_my_name_is@gmail.com"><span class="material-icons">email</span> hello_my_name_is@gmail.com</a></p>
-        <p><a href="tel:206-512-9261"><span class="material-icons">phone</span> 555-123-4567</a></p>
+        <section class="footer-flexbox">
+            <div>
+                <p><a href="mailto:hello_my_name_is@gmail.com"><span class="material-icons">email</span> hello_my_name_is@gmail.com</a></p>
+            </div>
+            <div>
+                <p><a href="tel:206-512-9261"><span class="material-icons">phone</span> 555-123-4567</a></p>
+            </div>
+        </section>
     </footer>
 </body>
 </html>

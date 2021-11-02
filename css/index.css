@@ -148,8 +148,6 @@ header p {
 }
 
 nav {
-    position: relative;
-    color: white;
     background-color: #e6e6fa;
     padding-bottom: 1rem;
     padding-top: 1rem;
@@ -158,18 +156,39 @@ nav {
 
 nav li {
     display: inline;
+}
+
+.nav-b{
+    display: flex;
+}
+
+.nav-b div {
+    padding: .5em;
     margin-left: 30px;
+    color: #9370db;
+    background-color: #e6e6fa;
 }
 
 footer {
-    position: relative;
     color: white;
     background-color: #e6e6fa;
     padding-top: .5rem;
     padding-bottom: .5rem;
+    bottom:0;
 }
 
 /*Data View 2 - Bigger Card*/
+.footer-flexbox {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.footer-flexbox div {
+    flex-basis: 100%;
+}
+
+
+/*Data View 2 - Enlarged Card*/
 .attribute {
    background-color: white;
    color: black;
@@ -220,6 +239,7 @@ table {
     width: 50%;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 50px;
     border-collapse: collapse;
 }
 
@@ -227,17 +247,31 @@ td {
     padding: 1rem;
 }
 
-.tabletop {
-    background-position: center;
-    padding-bottom: 1rem;
-    padding-top: 1rem;
-}
-
-.tabletop p {
-    display: inline;
+th {
+    font-size: 25px;
+    color: #9370db;
+    text-align: center;
 }
 
 .book-container {
     margin-left: 2rem;
 }
 
+@media (max-width: 598px) {
+    tbody img {
+        display: none;
+    }
+
+    th {
+        font-size: 15px;
+        color: black;
+    }
+
+    footer {
+        display: none;
+    }
+
+    nav {
+        display: none;
+    }
+}
