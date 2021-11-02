@@ -149,6 +149,17 @@ nav li {
     display: inline;
 }
 
+.nav-b{
+    display: flex;
+}
+
+.nav-b div {
+    padding: .5em;
+    margin-left: 30px;
+    color: #9370db;
+    background-color: #e6e6fa;
+}
+
 footer {
     color: white;
     background-color: #e6e6fa;
@@ -215,6 +226,8 @@ td {
 }
 
 th {
+    font-size: 25px;
+    color: #9370db;
     text-align: center;
 }
 
@@ -222,13 +235,21 @@ th {
     margin-left: 2rem;
 }
 
-.nav-b{
-    display: flex;
-}
+@media (max-width: 598px) {
+    tbody img {
+        display: none;
+    }
 
-.nav-b div {
-    padding: .5em;
-    margin-left: 30px;
-    color: #9370db;
-    background-color: #e6e6fa;
+    th {
+        font-size: 15px;
+        color: black;
+    }
+
+    footer {
+        display: none;
+    }
+
+    nav {
+        display: none;
+    }
 }
