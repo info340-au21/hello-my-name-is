@@ -33,6 +33,10 @@
     font-size: 1.25em;
 }
 
+h3 {
+    font-size: 1.3em;
+}
+
 /* Filter */
 .fa {
     font-weight: 400;
@@ -76,6 +80,7 @@ input[type='number'] {
 @media (min-width: 1000px) {
     .item {
         flex: 1;
+        text-align: left;
     }
 
     .item.long {
@@ -100,6 +105,7 @@ input[type='number'] {
     width: 40%;
     text-align: center;
     border-radius: 1em;
+    padding: 1em;
 }
 
 .card2 {
@@ -114,6 +120,7 @@ input[type='number'] {
 .card .fa {
     color: white;
     font-size: 1em;
+    font-weight: bold;
 }
 
 .fem {
