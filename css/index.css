@@ -73,6 +73,16 @@ input[type='number'] {
     flex-direction: column;
 }
 
+@media (min-width: 1000px) {
+    .item {
+        flex: 1;
+    }
+
+    .item.long {
+        flex: 2;
+    }
+}
+
 /* Name cards (mini) */
 .card-container {
     display: flex;
