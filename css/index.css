@@ -285,11 +285,7 @@ th {
         color: black;
     }
 
-    footer {
-        display: none;
-    }
-
-    nav {
+    .search {
         display: none;
     }
 }
