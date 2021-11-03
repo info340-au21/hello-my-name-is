@@ -155,7 +155,6 @@ header {
     color: white;
     padding-top: 2rem;
     padding-bottom: 2rem;
-    background-size: contain;
     background-position: center;
     background-color: #9370db;
     text-align: center;
@@ -167,8 +166,6 @@ header p {
 
 nav {
     background-color: #e6e6fa;
-    padding-bottom: 1rem;
-    padding-top: 1rem;
     text-align: right;
 }
 
@@ -189,11 +186,15 @@ nav li {
 }
 
 footer {
-    color: white;
+    color: black;
     background-color: #e6e6fa;
     padding-top: .5rem;
     padding-bottom: .5rem;
     bottom:0;
+}
+
+footer a {
+    color: black;
 }
 
 .footer-flexbox {
@@ -298,7 +299,7 @@ th {
     }
 
     footer {
-        display: none;
+        display: block;
     }
 
     nav {
