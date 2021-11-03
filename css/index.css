@@ -92,13 +92,31 @@ input[type='number'] {
 }
 
 .card {
-    background-color: lightgrey;
-    color: white;
     margin: 1em;
+    border-radius: .9em;
+    padding: .6em;
+}
+
+.outer.card {
     width: 40%;
+    color: white;
     text-align: center;
-    border-radius: 1em;
-    padding: 1em;
+}
+
+.inner.card {
+    background-color: white;
+    color: black;
+    text-align: left;
+    display: none;
+    margin: .7em;
+}
+
+.card h3 {
+    margin: 0;
+}
+
+.meaning {
+    font-style: italic;
 }
 
 .large-card {
@@ -129,6 +147,10 @@ input[type='number'] {
     background-color: plum;
 }
 
+.load {
+    background-color: lightgrey;
+}
+
 img {
     height: 100px;
     width: 100px;
@@ -136,6 +158,12 @@ img {
 
 tbody tr:hover {
     background-color: #e6e6fa;
+}
+
+@media (min-width: 1000px) {
+    .inner.card {
+        display: block;
+    }
 }
 
 /*Nav and Footer*/
