@@ -9,6 +9,10 @@
     margin-bottom: 1em;
 }
 
+.section h2 {
+    margin-left: 5rem;
+}
+
 .center {
     text-align: center;
 }
@@ -77,17 +81,6 @@ input[type='number'] {
     flex-direction: column;
 }
 
-@media (min-width: 900px) {
-    .item {
-        flex: 1;
-        text-align: left;
-    }
-
-    .item.long {
-        flex: 2;
-    }
-}
-
 /* Name cards (mini) */
 .card-container {
     display: flex;
@@ -108,11 +101,11 @@ input[type='number'] {
     padding: 1em;
 }
 
-.card2 {
+.large-card {
     background-color: white;
     color: white;
     margin: 1em;
-    width: 100%;
+    padding-bottom: 1em;
     text-align: center;
     border-radius: 1em;
     border-color: white;
@@ -155,9 +148,9 @@ header {
     color: white;
     padding-top: 2rem;
     padding-bottom: 2rem;
-    background-position: center;
     background-color: #9370db;
     text-align: center;
+    width: 100%;
 }
 
 header p {
@@ -167,11 +160,13 @@ header p {
 nav {
     background-color: #e6e6fa;
     text-align: right;
+    height: 3rem;
 }
 
 nav li {
+    padding: .5rem;
+    position: inherit;
     display: inline;
-    padding: 2em;
 }
 
 .nav-b{
@@ -257,6 +252,7 @@ footer a {
     padding: 1rem;
     background-color: lavender;
     border-radius: 1rem;
+    justify-content: center;
 }
 
 .button {
@@ -278,24 +274,33 @@ td {
     padding: 1rem;
 }
 
-th {
-    font-size: 25px;
-    color: #9370db;
-    text-align: center;
-}
 
 .book-container {
     margin-left: 2rem;
 }
 
-@media (max-width: 598px) {
-    tbody img {
-        display: none;
+tbody img {
+    display: none;
+}
+
+th {
+    font-size: 15px;
+    color: black;
+}
+
+footer {
+    display: none;
+}
+
+@media (min-width: 589px) {
+    th {
+        font-size: 25px;
+        color: #9370db;
+        text-align: center;
     }
 
-    th {
-        font-size: 15px;
-        color: black;
+    tbody img {
+        display: block;
     }
 
     footer {
@@ -303,6 +308,16 @@ th {
     }
 
     .search {
-        display: none;
+        display: inline;
     }
+
+    .item {
+        flex: 1;
+        text-align: left;
+    }
+
+    .item.long {
+        flex: 2;
+    }
+
 }
