@@ -200,15 +200,19 @@ header p {
 nav {
     background-color: #e6e6fa;
     text-align: right;
-    height: 3rem;
+    padding-top: 1rem;
+    padding-bottom: .5rem;
+}
+
+.material-icons {
+    color: black;
+    padding-top: 0.5rem;
 }
 
 nav li {
-    padding-top: .5rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    position: inherit;
     display: inline;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem
 }
 
 .nav-b{
@@ -224,6 +228,7 @@ footer {
     color: black;
     background-color: #e6e6fa;
     bottom:0;
+    margin-top: auto;
 }
 
 footer a {
