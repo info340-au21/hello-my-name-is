@@ -167,14 +167,13 @@ header p {
 
 nav {
     background-color: #e6e6fa;
-    padding-bottom: 1rem;
-    padding-top: 1rem;
-    text-align: right;
+    padding-top: .5rem;
 }
 
 nav li {
     display: inline;
-    padding: 2em;
+    padding: 1.5em;
+    padding-bottom: 0;
 }
 
 .nav-b{
@@ -182,8 +181,6 @@ nav li {
 }
 
 .nav-b div {
-    padding: .5em;
-    margin-left: 30px;
     color: #9370db;
     background-color: #e6e6fa;
 }
@@ -191,8 +188,6 @@ nav li {
 footer {
     color: white;
     background-color: #e6e6fa;
-    padding-top: .5rem;
-    padding-bottom: .5rem;
     bottom:0;
 }
 
