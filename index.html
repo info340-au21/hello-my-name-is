@@ -21,8 +21,7 @@
     <link rel="stylesheet" href="css/index.css"/>
 </head>
 <body>
-    <div class="row">
-        <nav>
+    <nav>
             <ul class="nav-b">
                 <!-- Home -->
                     <li><a href="index.html"><span class="material-icons" aria-label="Home">home</span></a></li>
@@ -33,8 +32,7 @@
                 <!-- Search bar -->
                     <li><input type="text" placeholder="Search for a name" class="search"></li>
             </ul>
-        </nav>
-    </div>
+    </nav>
 
     <!-- Head -->
         <!-- Title -->
@@ -45,20 +43,25 @@
 
     <!-- Main -->
     <main>
-        <!-- Search bar -->
-
-        <!-- Filters -->
+        <!-- Search -->
         <div class="section container column">
+            <!-- Search -->
             <div class="row">
-                <h2 class="item">Names like <span class="text-neut">NALU</span> that are...</h2>
-
-                <!-- Gender -->
-                <div class="item center">
+                <h2 class="item center">
+                    Names like 
+                    <input type="text" placeholder="NALU" class="search">
+                    :
+                </h2>
+            </div>
+            
+            <!-- Gender -->
+            <div class="row">
+                <div class="item center medium-text">
                     <div class="in-line text-neut">
                         <input type="checkbox" id="check-neut" name="check-neut"/>
 
                         <label for="check-neut">
-                            Neutral
+                            N<span class="gender-text">eutral</span>
                             <i class="fa fa-genderless" aria-label="neutral"></i>
                         </label>
                     </div>
@@ -67,7 +70,7 @@
                         <input type="checkbox" id="check-fem" name="check-fem"/>
 
                         <label for="check-fem">
-                            Feminine
+                            F<span class="gender-text">eminine</span>
                             <i class="fa fa-venus" aria-label="feminine"></i>
                         </label>
                     </div>
@@ -76,20 +79,32 @@
                         <input type="checkbox" id="check-masc" name="check-masc"/>
 
                         <label for="check-masc">
-                            Masculine
+                            M<span class="gender-text">asculine</span>
                             <i class="fa fa-mars" aria-label="masculine"></i>
                         </label>
                     </div>
                 </div>
             </div>
 
+            <!-- Filter for similar... -->
             <div class="row">
-                <!-- Filter for similar... -->
                 <div class="item">
                     <h3>With similar...</h3>
 
-                    <!-- Meaning -->
+                    <!-- Pronunciation -->
                     <div class="row">
+                        <div class="item">
+                            <input type="checkbox" id="check-pronun" name="check-pronun"/>
+
+                            <label for="check-pronun">
+                                Pronunciation
+                            </label>
+                        </div>
+    
+                    </div>
+
+                    <!-- Meaning -->
+                    <div class="row column">
                         <div class="item">
                             <input type="checkbox" id="check-meaning" name="check-meaning" checked/>
 
@@ -98,7 +113,7 @@
                             </label>
                         </div>
 
-                        <div class="item long">
+                        <div class="item">
                             <div class="center">
                                 <label for=slide-meaning class="small-text">Loose match</label>
 
@@ -114,69 +129,59 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Pronunciation -->
-                    <div>
-                        <input type="checkbox" id="check-pronun" name="check-pronun"/>
-
-                        <label for="check-pronun">
-                            Pronunciation
-                        </label>
-        
-                    </div>
-
                 </div>
 
-                <!-- Filter for matching... -->
-                <div class="item">
-                    <h3>And matching...</h3>
-                    
-                    <!-- Origin -->
-                    <div>
-                        <input type="checkbox" id="check-origin" name="check-origin"/>
+            <!-- Filter for matching... -->
+            <div class="item column">
+                <h3>And matching...</h3>
+                
+                <!-- Origin -->
+                <div class="item long">
+                    <input type="checkbox" id="check-origin" name="check-origin"/>
 
-                        <label for="check-origin">
-                            Origin 
-                            <span class="small-text">(Hawaiian)</span>
-                        </label>
-                    </div>
+                    <label for="check-origin">
+                        Origin 
+                        <span class="small-text">(Hawaiian)</span>
+                    </label>
+                </div>
 
-                    <!-- Syllables -->
-                    <div>
-                        <input type="checkbox" id="check-syl" name="check-syl"/>
+                <!-- Syllables -->
+                <div class="item long">
+                    <input type="checkbox" id="check-syl" name="check-syl"/>
 
-                        <label for="check-syl">
-                            Number of syllables 
-                            <span class="small-text">(2)</span>
-                        </label>
-                    </div>
+                    <label for="check-syl">
+                        Number of syllables 
+                        <span class="small-text">(2)</span>
+                    </label>
+                </div>
 
-                    <!-- Length -->
-                    <div>
-                        <input type="checkbox" id="check-ln" name="check-ln"/>
+                <!-- Length -->
+                <div class="item long">
+                    <input type="checkbox" id="check-ln" name="check-ln"/>
 
-                        <label for="check-ln">
-                            Length 
-                            <span class="small-text">(4 letters)</span>
-                        </label>
-                    </div>
+                    <label for="check-ln">
+                        Length 
+                        <span class="small-text">(4 letters)</span>
+                    </label>
+                </div>
 
-                    <!-- First letters -->
-                    <div>
-                        <input type="checkbox" id="check-first" name="check-first"/>
+                <!-- First letters -->
+                <div class="item long">
+                    <input type="checkbox" id="check-first" name="check-first"/>
 
-                        <label for="check-first">
-                            First
-                            <input type="number" placeholder="3"/>
-                            letters
-                            <span class="small-text">("NAL")</span>
-                        </label>
-                    </div>
+                    <label for="check-first">
+                        First
+                        <input type="number" placeholder="3"/>
+                        letters
+                        <span class="small-text">("NAL")</span>
+                    </label>
                 </div>
             </div>
 
+            </div>
+
+            <!-- Match button -->
             <div class="row"></div>
-                <!-- Match button -->
                 <div class="item">
                     <button type="button" class="btn btn-light">Get names</button>
                 </div>
