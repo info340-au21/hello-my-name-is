@@ -3,14 +3,8 @@
     box-sizing: border-box;
 }
 
-/* MAIN */
-.section {
-    margin-top: .5em;
-    margin-bottom: 1em;
-}
-
-.section h2 {
-    margin-left: 5rem;
+main {
+    padding: 1em;
 }
 
 .center {
@@ -21,14 +15,37 @@
     display: inline-block;
 }
 
+h2 {
+    margin: 0;
+}
+
+h3 {
+    font-size: 1.3em;
+}
+
+.small-text {
+    font-size: .75em;
+    color: darkgray
+}
+
+.medium-text {
+    font-size: 1.25em;
+}
+
+.large-text {
+    font-size: 1.5em;
+}
+
+/* Flexbox */
 .container {
     display: flex;
     height: 100%;
     width: 100%;
+    padding-bottom: 1em;
 }
 
 .item {
-    margin-bottom: 1em;
+    padding: .5em .75em;
 }
 
 .item button {
@@ -37,11 +54,30 @@
     font-size: 1.25em;
 }
 
-h3 {
-    font-size: 1.3em;
+.item .search {
+    width: 7em;
+    margin: 0;
 }
 
-/* Filter */
+.column {
+    flex-direction: column;
+}
+
+/* FILTER */
+input {
+    margin: .5em;
+}
+
+input[type='number'] {
+    width: 2em;
+}
+
+.btn-light {
+    color: white;
+    background-color: #9370db;
+}
+
+/* Gender */
 .fa {
     font-weight: 400;
     font-size: 2em;
@@ -59,26 +95,8 @@ h3 {
     color:plum;
 }
 
-input {
-    margin: .5em;
-}
-
-.small-text {
-    font-size: .75em;
-    color: darkgray
-}
-
-input[type='number'] {
-    width: 2em;
-}
-
-.btn-light {
-    color: white;
-    background-color: #9370db;
-}
-
-.filter-container {
-    flex-direction: column;
+.gender-text {
+    display: none;
 }
 
 /* Name cards (mini) */
@@ -92,13 +110,31 @@ input[type='number'] {
 }
 
 .card {
-    background-color: lightgrey;
-    color: white;
     margin: 1em;
+    border-radius: .9em;
+    padding: .6em;
+}
+
+.outer.card {
     width: 40%;
+    color: white;
     text-align: center;
-    border-radius: 1em;
-    padding: 1em;
+}
+
+.inner.card {
+    background-color: white;
+    color: black;
+    text-align: left;
+    display: none;
+    margin: .7em;
+}
+
+.card h3 {
+    margin: 0;
+}
+
+.meaning {
+    font-style: italic;
 }
 
 .large-card {
@@ -127,6 +163,10 @@ input[type='number'] {
 
 .masc {
     background-color: plum;
+}
+
+.load {
+    background-color: lightgrey;
 }
 
 img {
@@ -290,7 +330,8 @@ footer {
     display: none;
 }
 
-@media (min-width: 589px) {
+/* RESPONSIVE */
+@media (min-width: 585px) {
     th {
         font-size: 25px;
         color: #9370db;
@@ -309,13 +350,25 @@ footer {
         display: inline;
     }
 
+    /* Filter */
+    .gender-text {
+        display: inline;
+    }
+}
+
+@media (min-width: 785px) {
     .item {
         flex: 1;
-        text-align: left;
     }
 
     .item.long {
         flex: 2;
     }
 
+}
+
+@media (min-width: 1000px) {
+    .inner.card {
+        display: block;
+    }
 }

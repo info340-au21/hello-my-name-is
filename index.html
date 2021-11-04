@@ -44,205 +44,223 @@
 
     <!-- Main -->
     <main>
-        <!-- Search bar -->
+        <!-- Search -->
+        <div class="section container column">
+            <!-- Search -->
+            <div class="row">
+                <h2 class="item center">
+                    Names like 
+                    <input type="text" placeholder="NALU" class="search">
+                    :
+                </h2>
+            </div>
+            
+            <!-- Gender -->
+            <div class="row">
+                <div class="item center medium-text">
+                    <div class="in-line text-neut">
+                        <input type="checkbox" id="check-neut" name="check-neut"/>
 
-        <!-- Filters -->
-        <div class="section">
-            <div class="container filter-container">
-                <div class="row">
-                    <h2 class="item">Names like <span class="text-neut">NALU</span> that are...</h2>
+                        <label for="check-neut">
+                            N<span class="gender-text">eutral</span>
+                            <i class="fa fa-genderless" aria-label="neutral"></i>
+                        </label>
+                    </div>
 
-                    <!-- Gender -->
-                    <div class="item center">
-                        <div class="in-line text-neut">
-                            <input type="checkbox" id="check-neut" name="check-neut"/>
+                    <div class="in-line text-fem">
+                        <input type="checkbox" id="check-fem" name="check-fem"/>
 
-                            <label for="check-neut">
-                                Neutral
-                                <i class="fa fa-genderless" aria-label="neutral"></i>
-                            </label>
-                        </div>
+                        <label for="check-fem">
+                            F<span class="gender-text">eminine</span>
+                            <i class="fa fa-venus" aria-label="feminine"></i>
+                        </label>
+                    </div>
 
-                        <div class="in-line text-fem">
-                            <input type="checkbox" id="check-fem" name="check-fem"/>
+                    <div class="in-line text-masc">
+                        <input type="checkbox" id="check-masc" name="check-masc"/>
 
-                            <label for="check-fem">
-                                Feminine
-                                <i class="fa fa-venus" aria-label="feminine"></i>
-                            </label>
-                        </div>
-
-                        <div class="in-line text-masc">
-                            <input type="checkbox" id="check-masc" name="check-masc"/>
-
-                            <label for="check-masc">
-                                Masculine
-                                <i class="fa fa-mars" aria-label="masculine"></i>
-                            </label>
-                        </div>
+                        <label for="check-masc">
+                            M<span class="gender-text">asculine</span>
+                            <i class="fa fa-mars" aria-label="masculine"></i>
+                        </label>
                     </div>
                 </div>
+            </div>
 
-                <div class="row">
-                    <!-- Filter for similar... -->
-                    <div class="item">
-                        <h3>With similar...</h3>
+            <!-- Filter for similar... -->
+            <div class="row">
+                <div class="item">
+                    <h3>With similar...</h3>
 
-                        <!-- Meaning -->
-                        <div class="row">
-                            <div class="item">
-                                <input type="checkbox" id="check-meaning" name="check-meaning" checked/>
-
-                                <label for="check-meaning" >
-                                    Meaning
-                                </label>
-                            </div>
-
-                            <div class="item long">
-                                <div class="center">
-                                    <label for=slide-meaning class="small-text">Loose match</label>
-
-                                    <input type="range" id="slide-meaning" name="slide-meaning" min="1" max="3" list="similarity"/>
-
-                                    <datalist id="similarity">
-                                        <option value="1" label="Loose match"></option>
-                                        <option value="2"></option>
-                                        <option value="3" label="Close match"></option>
-                                    </datalist>
-
-                                    <label for=slide-meaning class="small-text">Close match</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Pronunciation -->
-                        <div>
+                    <!-- Pronunciation -->
+                    <div class="row">
+                        <div class="item">
                             <input type="checkbox" id="check-pronun" name="check-pronun"/>
 
                             <label for="check-pronun">
                                 Pronunciation
                             </label>
-            
                         </div>
-
+    
                     </div>
 
-                    <!-- Filter for matching... -->
-                    <div class="item">
-                        <h3>And matching...</h3>
-                        
-                        <!-- Origin -->
-                        <div>
-                            <input type="checkbox" id="check-origin" name="check-origin"/>
+                    <!-- Meaning -->
+                    <div class="row column">
+                        <div class="item">
+                            <input type="checkbox" id="check-meaning" name="check-meaning" checked/>
 
-                            <label for="check-origin">
-                                Origin 
-                                <span class="small-text">(Hawaiian)</span>
+                            <label for="check-meaning" >
+                                Meaning
                             </label>
                         </div>
 
-                        <!-- Syllables -->
-                        <div>
-                            <input type="checkbox" id="check-syl" name="check-syl"/>
+                        <div class="item">
+                            <div class="center">
+                                <label for=slide-meaning class="small-text">Loose match</label>
 
-                            <label for="check-syl">
-                                Number of syllables 
-                                <span class="small-text">(2)</span>
-                            </label>
-                        </div>
+                                <input type="range" id="slide-meaning" name="slide-meaning" min="1" max="3" list="similarity"/>
 
-                        <!-- Length -->
-                        <div>
-                            <input type="checkbox" id="check-ln" name="check-ln"/>
+                                <datalist id="similarity">
+                                    <option value="1" label="Loose match"></option>
+                                    <option value="2"></option>
+                                    <option value="3" label="Close match"></option>
+                                </datalist>
 
-                            <label for="check-ln">
-                                Length 
-                                <span class="small-text">(4 letters)</span>
-                            </label>
-                        </div>
-
-                        <!-- First letters -->
-                        <div>
-                            <input type="checkbox" id="check-first" name="check-first"/>
-
-                            <label for="check-first">
-                                First
-                                <input type="number" placeholder="3"/>
-                                letters
-                                <span class="small-text">("NAL")</span>
-                            </label>
+                                <label for=slide-meaning class="small-text">Close match</label>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="row"></div>
-                    <!-- Match button -->
-                    <div class="item">
-                        <button type="button" class="btn btn-light">Get names</button>
-                    </div>
+            <!-- Filter for matching... -->
+            <div class="item column">
+                <h3>And matching...</h3>
+                
+                <!-- Origin -->
+                <div class="item long">
+                    <input type="checkbox" id="check-origin" name="check-origin"/>
+
+                    <label for="check-origin">
+                        Origin 
+                        <span class="small-text">(Hawaiian)</span>
+                    </label>
+                </div>
+
+                <!-- Syllables -->
+                <div class="item long">
+                    <input type="checkbox" id="check-syl" name="check-syl"/>
+
+                    <label for="check-syl">
+                        Number of syllables 
+                        <span class="small-text">(2)</span>
+                    </label>
+                </div>
+
+                <!-- Length -->
+                <div class="item long">
+                    <input type="checkbox" id="check-ln" name="check-ln"/>
+
+                    <label for="check-ln">
+                        Length 
+                        <span class="small-text">(4 letters)</span>
+                    </label>
+                </div>
+
+                <!-- First letters -->
+                <div class="item long">
+                    <input type="checkbox" id="check-first" name="check-first"/>
+
+                    <label for="check-first">
+                        First
+                        <input type="number" placeholder="3"/>
+                        letters
+                        <span class="small-text">("NAL")</span>
+                    </label>
+                </div>
+            </div>
+
+            </div>
+
+            <!-- Match button -->
+            <div class="row"></div>
+                <div class="item">
+                    <button type="button" class="btn btn-light">Get names</button>
                 </div>
             </div>
         </div>
 
         <!-- Name cards mini (data view 1) -->
-        <div class="section">
-            <h2>Your 50 matches:</h2>
+        <div class="section container column">
+            <h2 class="row">Your 50 matches:</h2>
 
-            <div class="container card-container">
-                <div class="card neut">
+            <div class="container card-container row">
+                <div class="card outer neut">
                     <h3 class="name">
                         Nalu
                         <i class="fa fa-genderless" aria-label="neutral"></i>
                     </h3>
 
+                    <div class="inner card">
+                        <p class="meaning">Surging Surf, Wave</p>
+                    </div>
                 </div>
 
-                <div class="card masc">
+                <div class="outer card masc">
                     <h3 class="name">
                         Jacob
                         <i class="fa fa-mars" aria-label="masculine"></i>
-
                     </h3>
 
+                    <div class="inner card">
+                        <p class="meaning">Surging Surf, Wave</p>
+                    </div>
                 </div>
 
-                <div class="card fem">
+                <div class="outer card fem">
                     <h3 class="name">
                         Carolina
                         <i class="fa fa-venus" aria-label="feminine"></i>
-
                     </h3>
 
+                    <div class="inner card">
+                        <p class="meaning">Surging Surf, Wave</p>
+                    </div>
                 </div>
 
-                <div class="card masc">
+                <div class="outer card masc">
                     <h3 class="name">
                         Maynard
                         <i class="fa fa-mars" aria-label="masculine"></i>
-
                     </h3>
                 
+                    <div class="inner card">
+                        <p class="meaning">Surging Surf, Wave</p>
+                    </div>
                 </div>
 
-                <div class="card masc">
+                <div class="outer card masc">
                     <h3 class="name">
                         Kevin
                         <i class="fa fa-mars" aria-label="masculine"></i>
-
                     </h3>
                 
+                    <div class="inner card">
+                        <p class="meaning">Surging Surf, Wave</p>
+                    </div>
                 </div>
 
-                <div class="card masc">
+                <div class="outer card masc">
                     <h3 class="name">
                         Andy
                         <i class="fa fa-mars" aria-label="masculine"></i>
-
                     </h3>
                 
+                    <div class="inner card">
+                        <p class="meaning">Surging Surf, Wave</p>
+                    </div>
                 </div>
 
-                <div class="card">
+                <div class="outer card load">
                     <h3 class="name">
                         Loading...
 
@@ -250,7 +268,7 @@
                 
                 </div>
 
-                <div class="card">
+                <div class="outer card load">
                     <h3 class="name">
                         Loading...
 
@@ -258,8 +276,7 @@
                 
                 </div>
 
-            </div>
-        
+            </div>        
          </div>
     </main>
 
