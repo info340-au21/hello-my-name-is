@@ -199,8 +199,12 @@ header p {
 
 nav {
     background-color: #e6e6fa;
+<<<<<<< HEAD
+    padding-top: .5rem;
+=======
     text-align: right;
     height: 3rem;
+>>>>>>> 5f55a7922641b95175d17372574fa5b714125193
 }
 
 nav li {
@@ -209,6 +213,11 @@ nav li {
     padding-right: 1rem;
     position: inherit;
     display: inline;
+<<<<<<< HEAD
+    padding: 1.5em;
+    padding-bottom: 0;
+=======
+>>>>>>> 5f55a7922641b95175d17372574fa5b714125193
 }
 
 .nav-b{
@@ -216,8 +225,6 @@ nav li {
 }
 
 .nav-b div {
-    padding: .5em;
-    margin-left: 30px;
     color: #9370db;
     background-color: #e6e6fa;
 }
@@ -225,8 +232,6 @@ nav li {
 footer {
     color: black;
     background-color: #e6e6fa;
-    padding-top: .5rem;
-    padding-bottom: .5rem;
     bottom:0;
 }
 
