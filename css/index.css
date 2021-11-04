@@ -77,6 +77,10 @@ input[type='number'] {
     background-color: #9370db;
 }
 
+.btn-heart {
+    padding: 0;
+}
+
 /* Gender */
 .fa {
     font-weight: 400;
@@ -182,6 +186,10 @@ tbody tr:hover {
 h1 {
     font-weight: 300;
     font-family: "Roboto", sans-serif;
+}
+
+.name span {
+    color: white;
 }
 
 header {
