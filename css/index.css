@@ -159,25 +159,16 @@ header p {
 
 nav {
     background-color: #e6e6fa;
-<<<<<<< HEAD
-    padding-top: .5rem;
-=======
     text-align: right;
     height: 3rem;
->>>>>>> 5f55a7922641b95175d17372574fa5b714125193
 }
 
 nav li {
     padding-top: .5rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
     position: inherit;
     display: inline;
-<<<<<<< HEAD
-    padding: 1.5em;
-    padding-bottom: 0;
-=======
->>>>>>> 5f55a7922641b95175d17372574fa5b714125193
 }
 
 .nav-b{
