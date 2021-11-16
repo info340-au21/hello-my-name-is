@@ -19,71 +19,66 @@
         <!-- Link to stylesheet -->
         <link rel="stylesheet" href="css/index.css"/>
     </head>
-    <body>
-        <!-- Nav bar -->
-        <nav>
-            <ul class="nav-b">
-                <!-- Home -->
-                    <li><a href="index.html"><span class="material-icons" aria-label="Home">home</span></a></li>
-                <!-- Bookmarks -->
-                    <li><a href="bookmark.html"><span class="material-icons" aria-label="bookmarks">bookmarks</span></a></li>
-                <!-- Enter name -->
-                    <li><a href="enter-name.html"><span class="material-icons" aria-label="Enter a name">add</span></a></li>
-                <!-- Search bar -->
-                    <li><input type="text" placeholder="Search for a name" class="search"></li>
-            </ul>
-        </nav>
+    <body class="page-container">
+        <!-- Everything other than the footer -->
+        <div class="content-wrap">
+            <!-- Nav bar -->
+            <nav>
+                <ul class="nav-b">
+                    <!-- Home -->
+                        <li><a href="index.html"><span class="material-icons" aria-label="Home">home</span></a></li>
+                    <!-- Bookmarks -->
+                        <li><a href="bookmark.html"><span class="material-icons" aria-label="bookmarks">bookmarks</span></a></li>
+                    <!-- Enter name -->
+                        <li><a href="enter-name.html"><span class="material-icons" aria-label="Enter a name">add</span></a></li>
+                    <!-- Search bar -->
+                        <li><input type="text" placeholder="Search for a name" class="search"></li>
+                </ul>
+            </nav>
 
-        <!--Page Head-->
-        <header>
-            <h1><strong>Hello My Name Is...</strong></h1>
-            <p>not in this database!</p>
-        </header>
+            <!--Page Head-->
+            <header>
+                <h1><strong>Hello My Name Is...</strong></h1>
+                <p>not in this database!</p>
+            </header>
 
-        <!--Enter Name to Database-->
-        <main>
-            <form>
-                <div class="form-attribute">
-                    <label>What name would you like to submit to the data base? </label>
-                    <input type = "text" placeholder="Enter a name" class="search">
-                </div>
+            <!--Enter Name to Database-->
+            <main>
+                <form>
+                    <div class="form-attribute">
+                        <label>What name would you like to submit to the data base? </label>
+                        <input type = "text" placeholder="Enter a name" class="search">
+                    </div>
 
-                <div class="form-attribute">
-                    <label>What is the origin of this name? </label>
-                    <input type = "text" placeholder="eg. Greek, Somolian" class="search">
-                </div>
+                    <div class="form-attribute">
+                        <label>What is the origin of this name? </label>
+                        <input type = "text" placeholder="eg. Greek, Somolian" class="search">
+                    </div>
 
-                <div class="form-attribute">
-                    <label>Is it a gendered name? </label>
-                    <label><input type = "radio"> Feminine </label>
-                    <label><input type = "radio"> Masculine </label>
-                    <label><input type = "radio"> Neutral </label>
-                </div>
+                    <div class="form-attribute">
+                        <label>Is it a gendered name? </label>
+                        <label><input type = "radio"> Feminine </label>
+                        <label><input type = "radio"> Masculine </label>
+                        <label><input type = "radio"> Neutral </label>
+                    </div>
 
-                <div class="form-attribute">
-                    <label>What is the meaning of this name? </label>
-                    <input type = "text" placeholder="max 180 characters">
-                </div>
+                    <div class="form-attribute">
+                        <label>What is the meaning of this name? </label>
+                        <input type = "text" placeholder="max 180 characters">
+                    </div>
 
-                <div class="item">
-                    <button type="button" class="btn btn-light">Submit Name!</button>
-                </div>
-            </form>
-        </main>
+                    <div class="item">
+                        <button type="button" class="btn btn-light">Submit Name!</button>
+                    </div>
+                </form>
+            </main>
+        </div>
 
-        <!--Footer-->
-        <footer class="fixed-bottom">
-            <section class="footer-flexbox">
-                <div>
-                    <p><a href="mailto:hello_my_name_is@gmail.com"><span class="material-icons">email</span> hello_my_name_is@gmail.com</a></p>
-                </div>
-                <div>
-                    <p><a href="tel:206-512-9261"><span class="material-icons">phone</span> 555-123-4567</a></p>
-                </div>
-                <div>
-                    <p>&copy; Hello My Name Is</p>
-                </div>
-            </section>
-        </footer>
+    <!--Footer-->
+    <footer class="footer-flexbox">
+        <p><a href="mailto:hello_my_name_is@gmail.com"><span class="material-icons">email</span> hello_my_name_is@gmail.com</a></p>
+        <p><a href="tel:206-512-9261"><span class="material-icons">phone</span> 555-123-4567</a></p>
+        <p>&copy; Hello My Name Is</p>
+    </footer>
     </body>
 </html>

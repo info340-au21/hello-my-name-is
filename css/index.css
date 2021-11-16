@@ -7,6 +7,8 @@ main {
     padding: 1em;
 }
 
+
+
 .center {
     text-align: center;
 }
@@ -34,6 +36,16 @@ h3 {
 
 .large-text {
     font-size: 1.5em;
+}
+
+/* Sticking footer to bottom of page (credit to https://www.freecodecamp.org/news/how-to-keep-your-footer-where-it-belongs-59c6aa05c59c/) */
+.page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+.content-wrap {
+    padding-bottom: 12em;
 }
 
 /* Flexbox */
@@ -215,6 +227,8 @@ nav {
 .material-icons {
     color: black;
     padding-top: 0.5rem;
+    position: relative;
+    top: 5px;
 }
 
 nav li {
@@ -236,22 +250,30 @@ footer {
     color: black;
     background-color: #e6e6fa;
     bottom:0;
-    margin-top: auto;
+    padding: 1em;
+    position: absolute;
+    width: 100%;
+}
+
+.footer-flexbox {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1em 0em;
+}
+
+.footer-flexbox p {
+    flex-basis: 100%;
+    padding-left: 2em;
 }
 
 footer a {
     color: black;
 }
 
-.footer-flexbox {
-    display: flex;
-    flex-wrap: wrap;
+footer p:last-of-type {
+    line-height: 1.25;
+    padding-top: 8px;
 }
-
-.footer-flexbox div {
-    flex-basis: 100%;
-}
-
 
 /*Data View 2 - Bigger Card*/
 .attribute {
@@ -337,10 +359,6 @@ tbody img {
 th {
     font-size: 15px;
     color: black;
-}
-
-footer {
-    display: none;
 }
 
 /* RESPONSIVE */
