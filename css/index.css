@@ -135,6 +135,7 @@ input[type='number'] {
     width: 40%;
     color: white;
     text-align: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
 }
 
 .inner.card {
@@ -217,11 +218,32 @@ header p {
     display: inline;
 }
 
+#links {
+    display: none;
+}
+
+
 nav {
     background-color: #e6e6fa;
-    text-align: right;
+    text-align: left;
     padding-top: 1rem;
     padding-bottom: .5rem;
+}
+
+.search {
+    align-items: right;
+    display: inline;
+}
+
+nav a {
+    color: black;
+    font-size: 1.5rem;
+    margin-right: .5em;
+    margin-left: .5em;
+}
+
+#hamburger-menu {
+    display: inline;
 }
 
 .material-icons {
@@ -239,6 +261,7 @@ nav li {
 
 .nav-b{
     display: flex;
+    text-align: right;
 }
 
 .nav-b div {
@@ -326,6 +349,7 @@ footer p:last-of-type {
     background-color: lavender;
     border-radius: 1rem;
     justify-content: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
 }
 
 .button {
@@ -384,6 +408,14 @@ th {
     /* Filter */
     .gender-text {
         display: inline;
+    }
+
+    #links {
+        display: inline;
+    }
+
+    #hamburger-menu {
+        display: none;
     }
 }
 
