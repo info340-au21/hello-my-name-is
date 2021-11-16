@@ -20,314 +20,309 @@
     <!-- Link to stylesheet -->
     <link rel="stylesheet" href="css/index.css"/>
 </head>
-<body>
-    <!-- Nav bar -->
-    <nav>
-        <ul class="nav-b">
-            <!-- Home -->
-                <li><a href="index.html"><span class="material-icons" aria-label="Home">home</span></a></li>
-            <!-- Bookmarks -->
-                <li><a href="bookmark.html"><span class="material-icons" aria-label="bookmarks">bookmarks</span></a></li>
-            <!-- Enter name -->
-                <li><a href="enter-name.html"><span class="material-icons" aria-label="Enter a name">add</span></a></li>
-            <!-- Search bar -->
-                <li><input type="text" placeholder="Search for a name" class="search"></li>
-        </ul>
-    </nav>
+<body class="page-container">
+    <!-- Everything other than the footer -->
+    <div class="content-wrap">
+        <!-- Nav bar -->
+        <nav>
+            <ul class="nav-b">
+                <!-- Home -->
+                    <li><a href="index.html"><span class="material-icons" aria-label="Home">home</span></a></li>
+                <!-- Bookmarks -->
+                    <li><a href="bookmark.html"><span class="material-icons" aria-label="bookmarks">bookmarks</span></a></li>
+                <!-- Enter name -->
+                    <li><a href="enter-name.html"><span class="material-icons" aria-label="Enter a name">add</span></a></li>
+                <!-- Search bar -->
+                    <li><input type="text" placeholder="Search for a name" class="search"></li>
+            </ul>
+        </nav>
 
-    <!-- Head -->
-    <header>
-        <h1><strong>Hello My Name Is</strong></h1>
-        <p>The perfect place to find your perfect name!</p>
-    </header>
+        <!-- Head -->
+        <header>
+            <h1><strong>Hello My Name Is</strong></h1>
+            <p>The perfect place to find your perfect name!</p>
+        </header>
 
-    <!-- Main -->
-    <main>
-        <!-- Search -->
-        <div class="section container column">
+        <!-- Main -->
+        <main>
             <!-- Search -->
-            <div class="row">
-                <h2 class="item center">
-                    Names like 
-                    <input type="text" placeholder="NALU" class="search">
-                    :
-                </h2>
-            </div>
-            
-            <!-- Gender -->
-            <div class="row">
-                <div class="item center medium-text">
-                    <div class="in-line text-neut">
-                        <input type="checkbox" id="check-neut" name="check-neut"/>
-
-                        <label for="check-neut">
-                            N<span class="gender-text">eutral</span>
-                            <i class="fa fa-genderless" aria-label="neutral"></i>
-                        </label>
-                    </div>
-
-                    <div class="in-line text-fem">
-                        <input type="checkbox" id="check-fem" name="check-fem"/>
-
-                        <label for="check-fem">
-                            F<span class="gender-text">eminine</span>
-                            <i class="fa fa-venus" aria-label="feminine"></i>
-                        </label>
-                    </div>
-
-                    <div class="in-line text-masc">
-                        <input type="checkbox" id="check-masc" name="check-masc"/>
-
-                        <label for="check-masc">
-                            M<span class="gender-text">asculine</span>
-                            <i class="fa fa-mars" aria-label="masculine"></i>
-                        </label>
-                    </div>
+            <div class="section container column">
+                <!-- Search -->
+                <div class="row">
+                    <h2 class="item center">
+                        Names like 
+                        <input type="text" placeholder="NALU" class="search">
+                        :
+                    </h2>
                 </div>
-            </div>
-
-            <!-- Filter for similar... -->
-            <div class="row">
-                <div class="item">
-                    <h3>With similar...</h3>
-
-                    <!-- Pronunciation -->
-                    <div class="row">
-                        <div class="item">
-                            <input type="checkbox" id="check-pronun" name="check-pronun"/>
-
-                            <label for="check-pronun">
-                                Pronunciation
-                            </label>
-                        </div>
-    
-                    </div>
-
-                    <!-- Meaning -->
-                    <div class="row column">
-                        <div class="item">
-                            <input type="checkbox" id="check-meaning" name="check-meaning" checked/>
-
-                            <label for="check-meaning" >
-                                Meaning
-                            </label>
-                        </div>
-
-                        <div class="item">
-                            <div class="center">
-                                <label for=slide-meaning class="small-text">Loose match</label>
-
-                                <input type="range" id="slide-meaning" name="slide-meaning" min="1" max="3" list="similarity"/>
-
-                                <datalist id="similarity">
-                                    <option value="1" label="Loose match"></option>
-                                    <option value="2"></option>
-                                    <option value="3" label="Close match"></option>
-                                </datalist>
-
-                                <label for=slide-meaning class="small-text">Close match</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            <!-- Filter for matching... -->
-            <div class="item column">
-                <h3>And matching...</h3>
                 
-                <!-- Origin -->
-                <div class="item long">
-                    <input type="checkbox" id="check-origin" name="check-origin"/>
+                <!-- Gender -->
+                <div class="row">
+                    <div class="item center medium-text">
+                        <div class="in-line text-neut">
+                            <input type="checkbox" id="check-neut" name="check-neut"/>
 
-                    <label for="check-origin">
-                        Origin 
-                        <span class="small-text">(Hawaiian)</span>
-                    </label>
-                </div>
-
-                <!-- Syllables -->
-                <div class="item long">
-                    <input type="checkbox" id="check-syl" name="check-syl"/>
-
-                    <label for="check-syl">
-                        Number of syllables 
-                        <span class="small-text">(2)</span>
-                    </label>
-                </div>
-
-                <!-- Length -->
-                <div class="item long">
-                    <input type="checkbox" id="check-ln" name="check-ln"/>
-
-                    <label for="check-ln">
-                        Length 
-                        <span class="small-text">(4 letters)</span>
-                    </label>
-                </div>
-
-                <!-- First letters -->
-                <div class="item long">
-                    <input type="checkbox" id="check-first" name="check-first"/>
-
-                    <label for="check-first">
-                        First
-                        <input type="number" placeholder="3"/>
-                        letters
-                        <span class="small-text">("NAL")</span>
-                    </label>
-                </div>
-            </div>
-
-            </div>
-
-            <!-- Match button -->
-            <div class="row">
-                <div class="item">
-                    <button type="button" class="btn btn-light">Get names</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Name cards mini (data view 1) -->
-        <div class="section container column">
-            <h2 class="row">Your 50 matches:</h2>
-
-            <div class="container card-container row">
-                <div class="card outer neut">
-                    <h3 class="name">
-                        <div class="card-container">
-                            <div></div>
-                            <div>
-                                Nalu
+                            <label for="check-neut">
+                                N<span class="gender-text">eutral</span>
                                 <i class="fa fa-genderless" aria-label="neutral"></i>
-                            </div>
-                            <button type="button" class="btn btn-heart"><span class="material-icons" aria-label="sorting">favorite_border</span></button>
+                            </label>
                         </div>
-                    </h3>
 
-                    <div class="inner card">
-                        <p class="meaning">Surging Surf, Wave</p>
-                    </div>
-                </div>
+                        <div class="in-line text-fem">
+                            <input type="checkbox" id="check-fem" name="check-fem"/>
 
-                <div class="outer card masc">
-                    <h3 class="name">
-                        <div class="card-container">
-                            <div></div>
-                            <div>
-                                Jacob
-                                <i class="fa fa-mars" aria-label="masculine"></i>
-                            </div>
-                            <button type="button" class="btn btn-heart"><span class="material-icons" aria-label="sorting">favorite_border</span></button>
-                        </div>
-                    </h3>
-
-                    <div class="inner card">
-                        <p class="meaning">Supplanter, usurper</p>
-                    </div>
-                </div>
-
-                <div class="outer card fem">
-                    <h3 class="name">
-                        <div class="card-container">
-                            <div></div>
-                            <div>
-                                Carolina
+                            <label for="check-fem">
+                                F<span class="gender-text">eminine</span>
                                 <i class="fa fa-venus" aria-label="feminine"></i>
-                            </div>
-                            <button type="button" class="btn btn-heart"><span class="material-icons" aria-label="sorting">favorite_border</span></button>
+                            </label>
                         </div>
-                    </h3>
 
-                    <div class="inner card">
-                        <p class="meaning">Song of happiness or joy</p>
-                    </div>
-                </div>
+                        <div class="in-line text-masc">
+                            <input type="checkbox" id="check-masc" name="check-masc"/>
 
-                <div class="outer card masc">
-                    <h3 class="name">
-                        <div class="card-container">
-                            <div></div>
-                            <div>
-                                Maynard
+                            <label for="check-masc">
+                                M<span class="gender-text">asculine</span>
                                 <i class="fa fa-mars" aria-label="masculine"></i>
-                            </div>
-                            <button type="button" class="btn btn-heart"><span class="material-icons" aria-label="sorting">favorite_border</span></button>
+                            </label>
                         </div>
-                    </h3>
-                
-                    <div class="inner card">
-                        <p class="meaning">Strength, brave, strong</p>
                     </div>
                 </div>
 
-                <div class="outer card masc">
-                    <h3 class="name">
-                        <div class="card-container">
-                            <div></div>
-                            <div>
-                                Kevin
-                                <i class="fa fa-mars" aria-label="masculine"></i>
+                <!-- Filter for similar... -->
+                <div class="row">
+                    <div class="item">
+                        <h3>With similar...</h3>
+
+                        <!-- Pronunciation -->
+                        <div class="row">
+                            <div class="item">
+                                <input type="checkbox" id="check-pronun" name="check-pronun"/>
+
+                                <label for="check-pronun">
+                                    Pronunciation
+                                </label>
                             </div>
-                            <button type="button" class="btn btn-heart"><span class="material-icons" aria-label="sorting">favorite_border</span></button>
+        
                         </div>
-                    </h3>
-                
-                    <div class="inner card">
-                        <p class="meaning">Handsome</p>
+
+                        <!-- Meaning -->
+                        <div class="row column">
+                            <div class="item">
+                                <input type="checkbox" id="check-meaning" name="check-meaning" checked/>
+
+                                <label for="check-meaning" >
+                                    Meaning
+                                </label>
+                            </div>
+
+                            <div class="item">
+                                <div class="center">
+                                    <label for=slide-meaning class="small-text">Loose match</label>
+
+                                    <input type="range" id="slide-meaning" name="slide-meaning" min="1" max="3" list="similarity"/>
+
+                                    <datalist id="similarity">
+                                        <option value="1" label="Loose match"></option>
+                                        <option value="2"></option>
+                                        <option value="3" label="Close match"></option>
+                                    </datalist>
+
+                                    <label for=slide-meaning class="small-text">Close match</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <!-- Filter for matching... -->
+                <div class="item column">
+                    <h3>And matching...</h3>
+                    
+                    <!-- Origin -->
+                    <div class="item long">
+                        <input type="checkbox" id="check-origin" name="check-origin"/>
+
+                        <label for="check-origin">
+                            Origin 
+                            <span class="small-text">(Hawaiian)</span>
+                        </label>
+                    </div>
+
+                    <!-- Syllables -->
+                    <div class="item long">
+                        <input type="checkbox" id="check-syl" name="check-syl"/>
+
+                        <label for="check-syl">
+                            Number of syllables 
+                            <span class="small-text">(2)</span>
+                        </label>
+                    </div>
+
+                    <!-- Length -->
+                    <div class="item long">
+                        <input type="checkbox" id="check-ln" name="check-ln"/>
+
+                        <label for="check-ln">
+                            Length 
+                            <span class="small-text">(4 letters)</span>
+                        </label>
+                    </div>
+
+                    <!-- First letters -->
+                    <div class="item long">
+                        <input type="checkbox" id="check-first" name="check-first"/>
+
+                        <label for="check-first">
+                            First
+                            <input type="number" placeholder="3"/>
+                            letters
+                            <span class="small-text">("NAL")</span>
+                        </label>
                     </div>
                 </div>
 
-                <div class="outer card masc">
-                    <h3 class="name">
-                        <div class="card-container">
-                            <div></div>
-                            <div>
-                                Andy
-                                <i class="fa fa-mars" aria-label="masculine"></i>
-                            </div>
-                            <button type="button" class="btn btn-heart"><span class="material-icons" aria-label="sorting">favorite_border</span></button>
-                        </div>
-                    </h3>
-                
-                    <div class="inner card">
-                        <p class="meaning">Brave</p>
+                </div>
+
+                <!-- Match button -->
+                <div class="row">
+                    <div class="item">
+                        <button type="button" class="btn btn-light">Get names</button>
                     </div>
                 </div>
-
-                <div class="outer card load">
-                    <h3 class="name">
-                        Loading...
-
-                    </h3>
-                
-                </div>
-
-                <div class="outer card load">
-                    <h3 class="name">
-                        Loading...
-
-                    </h3>
-                
-                </div>
-
-            </div>        
-         </div>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <section class="footer-flexbox">
-            <div>
-                <p><a href="mailto:hello_my_name_is@gmail.com"><span class="material-icons">email</span> hello_my_name_is@gmail.com</a></p>
             </div>
-            <div>
-                <p><a href="tel:206-512-9261"><span class="material-icons">phone</span> 555-123-4567</a></p>
+
+            <!-- Name cards mini (data view 1) -->
+            <div class="section container column">
+                <h2 class="row">Your 50 matches:</h2>
+
+                <div class="container card-container row">
+                    <div class="card outer neut">
+                        <h3 class="name">
+                            <div class="card-container">
+                                <div></div>
+                                <div>
+                                    Nalu
+                                    <i class="fa fa-genderless" aria-label="neutral"></i>
+                                </div>
+                                <button type="button" class="btn btn-heart"><span class="material-icons" aria-label="sorting">favorite_border</span></button>
+                            </div>
+                        </h3>
+
+                        <div class="inner card">
+                            <p class="meaning">Surging Surf, Wave</p>
+                        </div>
+                    </div>
+
+                    <div class="outer card masc">
+                        <h3 class="name">
+                            <div class="card-container">
+                                <div></div>
+                                <div>
+                                    Jacob
+                                    <i class="fa fa-mars" aria-label="masculine"></i>
+                                </div>
+                                <button type="button" class="btn btn-heart"><span class="material-icons" aria-label="sorting">favorite_border</span></button>
+                            </div>
+                        </h3>
+
+                        <div class="inner card">
+                            <p class="meaning">Supplanter, usurper</p>
+                        </div>
+                    </div>
+
+                    <div class="outer card fem">
+                        <h3 class="name">
+                            <div class="card-container">
+                                <div></div>
+                                <div>
+                                    Carolina
+                                    <i class="fa fa-venus" aria-label="feminine"></i>
+                                </div>
+                                <button type="button" class="btn btn-heart"><span class="material-icons" aria-label="sorting">favorite_border</span></button>
+                            </div>
+                        </h3>
+
+                        <div class="inner card">
+                            <p class="meaning">Song of happiness or joy</p>
+                        </div>
+                    </div>
+
+                    <div class="outer card masc">
+                        <h3 class="name">
+                            <div class="card-container">
+                                <div></div>
+                                <div>
+                                    Maynard
+                                    <i class="fa fa-mars" aria-label="masculine"></i>
+                                </div>
+                                <button type="button" class="btn btn-heart"><span class="material-icons" aria-label="sorting">favorite_border</span></button>
+                            </div>
+                        </h3>
+                    
+                        <div class="inner card">
+                            <p class="meaning">Strength, brave, strong</p>
+                        </div>
+                    </div>
+
+                    <div class="outer card masc">
+                        <h3 class="name">
+                            <div class="card-container">
+                                <div></div>
+                                <div>
+                                    Kevin
+                                    <i class="fa fa-mars" aria-label="masculine"></i>
+                                </div>
+                                <button type="button" class="btn btn-heart"><span class="material-icons" aria-label="sorting">favorite_border</span></button>
+                            </div>
+                        </h3>
+                    
+                        <div class="inner card">
+                            <p class="meaning">Handsome</p>
+                        </div>
+                    </div>
+
+                    <div class="outer card masc">
+                        <h3 class="name">
+                            <div class="card-container">
+                                <div></div>
+                                <div>
+                                    Andy
+                                    <i class="fa fa-mars" aria-label="masculine"></i>
+                                </div>
+                                <button type="button" class="btn btn-heart"><span class="material-icons" aria-label="sorting">favorite_border</span></button>
+                            </div>
+                        </h3>
+                    
+                        <div class="inner card">
+                            <p class="meaning">Brave</p>
+                        </div>
+                    </div>
+
+                    <div class="outer card load">
+                        <h3 class="name">
+                            Loading...
+
+                        </h3>
+                    
+                    </div>
+
+                    <div class="outer card load">
+                        <h3 class="name">
+                            Loading...
+
+                        </h3>
+                    
+                    </div>
+
+                </div>        
             </div>
-            <div>
-                <p>&copy; Hello My Name Is</p>
-            </div>
-        </section>
+        </main>
+    </div>
+
+    <!--Footer-->
+    <footer class="footer-flexbox">
+        <p><a href="mailto:hello_my_name_is@gmail.com"><span class="material-icons">email</span> hello_my_name_is@gmail.com</a></p>
+        <p><a href="tel:206-512-9261"><span class="material-icons">phone</span> 555-123-4567</a></p>
+        <p>&copy; Hello My Name Is</p>
     </footer>
 </body>
 </html>
