@@ -232,18 +232,18 @@ nav {
 
 .search {
     align-items: right;
-    display: inline;
+    display: none;
 }
 
 nav a {
     color: black;
-    font-size: 1.5rem;
     margin-right: .5em;
     margin-left: .5em;
 }
 
 #hamburger-menu {
     display: inline;
+
 }
 
 .material-icons {
@@ -251,22 +251,6 @@ nav a {
     padding-top: 0.5rem;
     position: relative;
     top: 5px;
-}
-
-nav li {
-    display: inline;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem
-}
-
-.nav-b{
-    display: flex;
-    text-align: right;
-}
-
-.nav-b div {
-    color: #9370db;
-    background-color: #e6e6fa;
 }
 
 footer {
