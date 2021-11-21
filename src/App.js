@@ -6,7 +6,9 @@ import { NameSearchResults } from './components/NameSearchResults.js'
 function App(props) {
     return (
         <main>
-            <NameSearchFilter/>
+            {/* Pass user input object */}
+            <NameSearchFilter/> 
+            {/* Pass names object */}
             <NameSearchResults/>
         </main>
     );

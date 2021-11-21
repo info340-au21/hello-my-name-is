@@ -1,8 +1,21 @@
 // Gender (break down further by gender)
 export function GenderFilter() {
+    let genderStrArr = ["Neutral", "Feminine", "Masculine"]; // hard-coded gender array
+
+    let genderElemArr = genderStrArr.map((genderStr) => {
+        return (
+            <Gender gender={genderStr}/>
+        )
+    })
+
     return (
         <div className="item center medium-text">
-            <div className="in-line text-neut">
+            {/* Test Gender() */}
+            {/* <Gender gender="Neutral"/> */}
+            {/* Test genderElemArr */}
+            {genderElemArr}
+
+            {/* <div className="in-line text-neut">
                 <input type="checkbox" name="check-neut"/>
 
                 <label for="check-neut">
@@ -27,7 +40,28 @@ export function GenderFilter() {
                     M<span className="gender-text">asculine</span>
                     <i className="fa fa-mars" aria-label="masculine"></i>
                 </label>
-            </div>
+            </div> */}
+        </div>
+    )
+}
+
+function Gender(props) {
+    let genderStr = props.gender;
+
+    let genderFirstLetterStr = genderStr.charAt(0);
+    let genderOtherLetterStr = genderStr.substr(1, genderStr.length);
+
+    return (
+        // hard-coded gender class
+        <div className="in-line text-neut">
+            {/* hard-coded gender class */}
+            <input type="checkbox" name="check-neut"/>
+
+            <label for="check-neut">
+                {genderFirstLetterStr}<span className="gender-text">{genderOtherLetterStr}</span>
+                {/* hard-coded gender class */}
+                <i className="fa fa-genderless" aria-label="neutral"></i>
+            </label>
         </div>
     )
 }

@@ -9,7 +9,16 @@ export function NameSearchResults(props) {
 
 function NameCards(props) {
     // let resultObjArr = props.results;
-    // let resultElemArr = resultObjArr.map(resultElem => <NameCard/>);
+    // let resultElemArr = resultObjArr.map((resultElem) => {
+    //     return (
+    //         <NameCard
+    //             name={resultElem.name}
+    //             gender={resultElem.gender}
+    //             description={resultElem.description}
+    //             isLiked={resultElem.liked}
+    //         />
+    //     )
+    // });
 
     return (
         <div className="container card-container row">
