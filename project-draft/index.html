@@ -55,7 +55,7 @@
                 <div class="row">
                     <h2 class="item center">
                         Names like 
-                        <input type="text" placeholder="NALU" class="search">
+                        <input type="text" placeholder="NALU" class="search"/>
                         :
                     </h2>
                 </div>
@@ -92,17 +92,18 @@
                     </div>
                 </div>
 
-                <!-- Filter for similar... -->
+                <!-- Detailed filters -->
                 <div class="row">
+                    <!-- Filter for similar... -->
                     <div class="item">
                         <h3>With similar...</h3>
 
                         <!-- Pronunciation -->
                         <div class="row">
                             <div class="item">
-                                <input type="checkbox" name="check-pronun"/>
+                                <input type="checkbox" name="check-pronoun"/>
 
-                                <label for="check-pronun">
+                                <label for="check-pronoun">
                                     Pronunciation
                                 </label>
                             </div>
@@ -121,7 +122,7 @@
 
                             <div class="item">
                                 <div class="center">
-                                    <label for=slide-meaning class="small-text">Loose match</label>
+                                    <label for="slide-meaning" class="small-text">Loose match</label>
 
                                     <input type="range" name="slide-meaning" min="1" max="3" list="similarity"/>
 
@@ -131,59 +132,58 @@
                                         <option value="3" label="Close match"></option>
                                     </datalist>
 
-                                    <label for=slide-meaning class="small-text">Close match</label>
+                                    <label for="slide-meaning" class="small-text">Close match</label>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                <!-- Filter for matching... -->
-                <div class="item column">
-                    <h3>And matching...</h3>
-                    
-                    <!-- Origin -->
-                    <div class="item long">
-                        <input type="checkbox" name="check-origin"/>
+                    <!-- Filter for matching... -->
+                    <div class="item column">
+                        <h3>And matching...</h3>
+                        
+                        <!-- Origin -->
+                        <div class="item long">
+                            <input type="checkbox" name="check-origin"/>
 
-                        <label for="check-origin">
-                            Origin 
-                            <span class="small-text">(Hawaiian)</span>
-                        </label>
+                            <label for="check-origin">
+                                Origin 
+                                <span class="small-text">(Hawaiian)</span>
+                            </label>
+                        </div>
+
+                        <!-- Syllables -->
+                        <div class="item long">
+                            <input type="checkbox" name="check-syl"/>
+
+                            <label for="check-syl">
+                                Number of syllables 
+                                <span class="small-text">(2)</span>
+                            </label>
+                        </div>
+
+                        <!-- Length -->
+                        <div class="item long">
+                            <input type="checkbox" name="check-ln"/>
+
+                            <label for="check-ln">
+                                Length 
+                                <span class="small-text">(4 letters)</span>
+                            </label>
+                        </div>
+
+                        <!-- First letters -->
+                        <div class="item long">
+                            <input type="checkbox" name="check-first"/>
+
+                            <label for="check-first">
+                                First
+                                <input type="number" placeholder="3"/>
+                                letters
+                                <span class="small-text">("NAL")</span>
+                            </label>
+                        </div>
                     </div>
-
-                    <!-- Syllables -->
-                    <div class="item long">
-                        <input type="checkbox" name="check-syl"/>
-
-                        <label for="check-syl">
-                            Number of syllables 
-                            <span class="small-text">(2)</span>
-                        </label>
-                    </div>
-
-                    <!-- Length -->
-                    <div class="item long">
-                        <input type="checkbox" name="check-ln"/>
-
-                        <label for="check-ln">
-                            Length 
-                            <span class="small-text">(4 letters)</span>
-                        </label>
-                    </div>
-
-                    <!-- First letters -->
-                    <div class="item long">
-                        <input type="checkbox" name="check-first"/>
-
-                        <label for="check-first">
-                            First
-                            <input type="number" placeholder="3"/>
-                            letters
-                            <span class="small-text">("NAL")</span>
-                        </label>
-                    </div>
-                </div>
-
                 </div>
 
                 <!-- Match button -->
