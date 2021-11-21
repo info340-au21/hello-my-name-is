@@ -132,7 +132,7 @@ function App(props) {
 
                 </div>        
             </div>
-    </main>
+        </main>
     );
 }
 
