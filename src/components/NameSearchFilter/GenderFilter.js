@@ -1,3 +1,5 @@
+// import gender array
+
 // Gender (break down further by gender)
 export function GenderFilter() {
     let genderStrArr = ["Neutral", "Feminine", "Masculine"]; // hard-coded gender array
@@ -47,6 +49,7 @@ export function GenderFilter() {
 
 function Gender(props) {
     let genderStr = props.gender;
+    let isChecked = props.checked; // hard-coded checked
 
     let genderFirstLetterStr = genderStr.charAt(0);
     let genderOtherLetterStr = genderStr.substr(1, genderStr.length);
