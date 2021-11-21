@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.css';
 
-function App() {
+function App(props) {
     return (
         <div>Replace with code</div>
     );
