@@ -1,17 +1,17 @@
 import React from 'react';
 
-export function generateTable(props) {
+export function GenerateTable(props) {
     let contentth = ['', 'Name', 'Relavent information'];
 
     return (
         <table>
-            <generatethead content={contentth}/>
-            <generateRow />
+            <Generatethead content={contentth}/>
+            <GenerateRow />
         </table>
     )
 }
 
-function eachth(props) {
+function Eachth(props) {
     return(
         <th>
             {props.content}
@@ -19,9 +19,9 @@ function eachth(props) {
     )
 }
 
-function generatethead(props) {
+function Generatethead(props) {
     let contentitem = props.content.map((item) => {
-        let cont = <eachth content={item} />;
+        let cont = <Eachth content={item} />;
         return cont;
     })
     return(
@@ -33,18 +33,18 @@ function generatethead(props) {
     )
 }
 
-function generateRow(props){
+function GenerateRow(props){
     return (
         <tbody>
-            <eachRow img={'../public/yellow.jpg'} text={'img for female'} name={'Emma'} origin={'Germanic name'}/>
-            <eachRow img={'../public/pink.jpg'} text={'img for male'} name={'Jacob'} origin={'Hebrew name'}/>
-            <eachRow img={'../public/green.jpg'} text={'img for gender neutral'} name={'Jessie'} origin={'English name'}/>
-            <eachRow img={'../public/yellow.jpg'} text={'img for female'} name={'Gracie'} origin={'English name'}/>
+            <EachRow img={'../public/yellow.jpg'} text={'img for female'} name={'Emma'} origin={'Germanic name'}/>
+            <EachRow img={'../public/pink.jpg'} text={'img for male'} name={'Jacob'} origin={'Hebrew name'}/>
+            <EachRow img={'../public/green.jpg'} text={'img for gender neutral'} name={'Jessie'} origin={'English name'}/>
+            <EachRow img={'../public/yellow.jpg'} text={'img for female'} name={'Gracie'} origin={'English name'}/>
         </tbody>
     )
 }
 
-function eachRow(props) {
+function EachRow(props) {
     const img = props.img;
     const text = props.text;
     const name = props.name;

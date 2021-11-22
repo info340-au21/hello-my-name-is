@@ -1,13 +1,13 @@
 import React from 'react';
-import {generateHeader} from './components/header.js';
-import {generateTable} from './components/generateTable';
+import {GenerateHeader} from './components/Header.js';
+import {GenerateTable} from './components/GenerateTable';
 import './index.css';
 
-export function bookmarkPage(props) {
+export function BookmarkPage(props) {
     return (
         <div className="content-wrap">
-            <generateHeader />
-            <generateTable />
+            <GenerateHeader />
+            <GenerateTable />
         </div>
     )
 }
