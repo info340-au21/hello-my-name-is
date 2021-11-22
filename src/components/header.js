@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function header() {
+export function generateHeader() {
     return (
         <header>
             <div className="book-container">
