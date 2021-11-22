@@ -1,6 +1,8 @@
 import React from 'react';
 
 export function generateTable(props) {
+    let contentth = ['', 'Name', 'Relavent information'];
+
     return (
         <table>
             <generatethead content={contentth}/>
@@ -16,8 +18,6 @@ function eachth(props) {
         </th>
     )
 }
-
-let contentth = ['', 'Name', 'Relavent information'];
 
 function generatethead(props) {
     let contentitem = props.content.map((item) => {
