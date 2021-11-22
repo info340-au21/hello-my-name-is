@@ -36,10 +36,10 @@ function generatethead(props) {
 function generateRow(props){
     return (
         <tbody>
-            <eachRow img={'./public/yellow.jpg'} text={'img for female'} name={'Emma'} origin={'Germanic name'}/>
-            <eachRow img={'./public/pink.jpg'} text={'img for male'} name={'Jacob'} origin={'Hebrew name'}/>
-            <eachRow img={'./public/green.jpg'} text={'img for gender neutral'} name={'Jessie'} origin={'English name'}/>
-            <eachRow img={'./public/yellow.jpg'} text={'img for female'} name={'Gracie'} origin={'English name'}/>
+            <eachRow img={'../public/yellow.jpg'} text={'img for female'} name={'Emma'} origin={'Germanic name'}/>
+            <eachRow img={'../public/pink.jpg'} text={'img for male'} name={'Jacob'} origin={'Hebrew name'}/>
+            <eachRow img={'../public/green.jpg'} text={'img for gender neutral'} name={'Jessie'} origin={'English name'}/>
+            <eachRow img={'../public/yellow.jpg'} text={'img for female'} name={'Gracie'} origin={'English name'}/>
         </tbody>
     )
 }
