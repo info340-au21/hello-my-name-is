@@ -2,11 +2,21 @@ import React from 'react';
 
 export function GenerateHeader() {
     return (
-        <header>
-            <div className="book-container">
-                <h1>Bookmarked names</h1>
-                <p className="fav name">Here is the list of your favorite names</p>
-            </div>
-        </header>
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="author" content="Yufei, Gracie, Maynard" />
+            <meta name="description" content="Main page" />
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+            <title>Hello My Name Is</title>
+            <link rel="icon" type="image/png" href="img/yellow.jpg" sizes="16x16" />
+        
+        
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+        
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+            
+            <link rel="stylesheet" href="css/index.css"/>
+        </head>
     )
 }
