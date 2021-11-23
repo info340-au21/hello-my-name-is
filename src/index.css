@@ -161,8 +161,10 @@ input[type='number'] {
     margin: 1em;
     padding-bottom: 1em;
     text-align: center;
+    justify-content: center;    
     border-radius: 1em;
     border-color: white;
+    width: 80%;
 }
 
 .card .fa {
