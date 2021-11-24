@@ -142,7 +142,6 @@ function NameCards(props) {
                 </h3>
             
             </div>
-
         </div>  
     )
 }
