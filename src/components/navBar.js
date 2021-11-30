@@ -1,13 +1,14 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 export function NavIcon() {
     return (
         <nav>
             <div id="hamburger-menu"><a href="#"><i className="fa fa-bars" aria-label="menu"></i></a></div>
             <div className="nav" id="links">
-                <a href="index.html"><i className="material-icons" aria-label="Home">home</i></a>
-                <a href="bookmark.html"><i className="material-icons" aria-label="bookmarks">bookmarks</i></a>
-                <a href="enter-name.html"><i className="material-icons" aria-label="Enter a name">add</i></a>
+                <NavLink exact to="/" activeClassName="selected"><i className="material-icons" aria-label="Home">home</i></NavLink>
+                <NavLink to="/bookmark" activeClassName="selected"><i className="material-icons" aria-label="bookmarks">bookmarks</i></NavLink>
+                <NavLink to="/submit" activeClassName="selected"><i className="material-icons" aria-label="Enter a name">add</i></NavLink>
             </div>
             <div className="search">
                 <input type="text" placeholder="Search for a name" className="search" />
