@@ -10,6 +10,9 @@ import { BookmarkPage } from './Bookmark.js';
 import { SubmitForm } from './components/SubmitForm.js';
 import { Route, Switch, Redirect} from 'react-router-dom';
 
+// Data
+import nameData from './data/Names.json';
+
 const nameCard = {name:'Nalu', meaning:"Surging surf, wave", pronunciation:'nah-loo', gender:'neutral', genderIcon:'fa fa-genderless', origin:'Hawaiian'}
 
 function App(props) {
@@ -22,8 +25,8 @@ function App(props) {
                     <Route exact path='/'>
                         {/* Pass user input object */}
                         <NameSearchFilter/> 
-                        {/* Pass names object */}
-                        <NameSearchResults/>
+                        {/* Pass names object array (right now just test data, not user input) */}
+                        <NameSearchResults results={nameData}/>
                     </Route>
                     <Route path='/bookmark'>
                         <BookmarkPage/>
