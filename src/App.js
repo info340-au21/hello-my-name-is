@@ -6,6 +6,9 @@ import { LargeNameCard } from './components/LargeNameCard';
 import { HeaderBar } from './components/HeaderBar';
 import { NavIcon } from './components/NavBar';
 import { Footer } from './components/Footer';
+import { BookmarkPage } from './Bookmark.js';
+import { SubmitForm } from './components/SubmitForm.js';
+import { Route, Switch, Redirect} from 'react-router-dom';
 
 const nameCard = {name:'Nalu', meaning:"Surging surf, wave", pronunciation:'nah-loo', gender:'neutral', genderIcon:'fa fa-genderless', origin:'Hawaiian'}
 
@@ -15,10 +18,23 @@ function App(props) {
             <NavIcon />
             <HeaderBar />
             <main>
-                {/* Pass user input object */}
-                <NameSearchFilter/> 
-                {/* Pass names object */}
-                <NameSearchResults/>
+                <Switch>
+                    <Route exact path='/'>
+                        {/* Pass user input object */}
+                        <NameSearchFilter/> 
+                        {/* Pass names object */}
+                        <NameSearchResults/>
+                    </Route>
+                    <Route path='/bookmark'>
+                        <BookmarkPage/>
+                    </Route>
+                    <Route path='/submit'>
+                        <SubmitForm/>
+                    </Route>
+                    <Route>
+                        <Redirect to='/' />
+                    </Route>
+                </Switch>
             </main>
         </div>
     );

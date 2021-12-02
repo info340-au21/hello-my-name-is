@@ -149,7 +149,7 @@ function NameCards(props) {
 function NameCard(props) {
     let nameStr = props.name;
     let genderStr = props.gender; // Need to implement (involves adding/removing gender class)
-    let descStr = props.description;
+    let descStr = props.meaning;
     let isLiked = props.liked; // Need to implement (involves adding/removing gender class)
 
     return (
