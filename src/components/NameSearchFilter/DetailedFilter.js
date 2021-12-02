@@ -9,7 +9,7 @@ export function DetailedFilter(props) {
     )
 }
 
-// Filter for similar... (break down further into Pronunciation and Meaning)
+// Filter htmlFor similar... (break down further into Pronunciation and Meaning)
 function FilterSimilar(props) {
     return (
         <div className="item">
@@ -20,7 +20,7 @@ function FilterSimilar(props) {
                 <div className="item">
                     <input type="checkbox" name="check-pronoun"/>
 
-                    <label for="check-pronoun">
+                    <label htmlFor="check-pronoun">
                         Pronunciation
                     </label>
                 </div>
@@ -32,7 +32,7 @@ function FilterSimilar(props) {
                 <div className="item">
                     <input type="checkbox" name="check-meaning" checked/>
 
-                    <label for="check-meaning" >
+                    <label htmlFor="check-meaning" >
                         Meaning
                     </label>
                 </div>
@@ -48,7 +48,7 @@ function MeaningSlider() {
     return (
         <div className="item">
             <div className="center">
-                <label for="slide-meaning" className="small-text">Loose match</label>
+                <label htmlFor="slide-meaning" className="small-text">Loose match</label>
 
                 <input type="range" name="slide-meaning" min="1" max="3" list="similarity"/>
 
@@ -58,13 +58,13 @@ function MeaningSlider() {
                     <option value="3" label="Close match"></option>
                 </datalist>
 
-                <label for="slide-meaning" className="small-text">Close match</label>
+                <label htmlFor="slide-meaning" className="small-text">Close match</label>
             </div>
         </div>
     )
 }
 
-// Filter for matching... (break down further into Origin, Syllables, Length, and FirstLetters)
+// Filter htmlFor matching... (break down further into Origin, Syllables, Length, and FirstLetters)
 function FilterMatching(props) {
     // Need to map Origin, Syllables, and Length using Checkbox()
     return (
@@ -75,7 +75,7 @@ function FilterMatching(props) {
             <div className="item long">
                 <input type="checkbox" name="check-origin"/>
 
-                <label for="check-origin">
+                <label htmlFor="check-origin">
                     Origin 
                     <span className="small-text">(Hawaiian)</span>
                 </label>
@@ -85,7 +85,7 @@ function FilterMatching(props) {
             <div className="item long">
                 <input type="checkbox" name="check-syl"/>
 
-                <label for="check-syl">
+                <label htmlFor="check-syl">
                     Number of syllables 
                     <span className="small-text">(2)</span>
                 </label>
@@ -95,7 +95,7 @@ function FilterMatching(props) {
             <div className="item long">
                 <input type="checkbox" name="check-ln"/>
 
-                <label for="check-ln">
+                <label htmlFor="check-ln">
                     Length 
                     <span className="small-text">(4 letters)</span>
                 </label>
@@ -116,7 +116,7 @@ function Checkbox(props) {
             {/* is checked hard-coded */}
             <input type="checkbox" name="check-pronoun"/>
 
-            <label for="check-pronoun">
+            <label htmlFor="check-pronoun">
                 {filterStr}
                 <span className="small-text">{smallTextStr}</span>
             </label>
@@ -133,7 +133,7 @@ function FirstLettersCheckBox(props) {
             {/* hard-coded checked */}
             <input type="checkbox" name="check-first"/>
 
-            <label for="check-first">
+            <label htmlFor="check-first">
                 First
                 <input type="number" placeholder="3"/>
                 letters

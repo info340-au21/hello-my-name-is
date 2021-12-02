@@ -1,22 +1,15 @@
-import nameData from './../data/Names.json';
-
 export function NameSearchResults(props) {
     return (
         <div className="section container column">
             <h2 className="row">Your 50 matches:</h2>
-            <NameCards/>
+            <NameCards results={props.results}/>
         </div>
     )
 }
 
 function NameCards(props) {
     // get name results from filtered search
-    // let nameResultObjArr = props.results;
-    let nameResultObjArr = nameData;
-
-    let naluTest = nameResultObjArr[0];
-    console.log("test" + naluTest);
-    console.log("test meaning" + naluTest.meaning);
+    let nameResultObjArr = props.results;
 
     // for each name result object, create a name card
     let nameCardElemArr = nameResultObjArr.map((nameResultObj) => {
@@ -37,6 +30,7 @@ function NameCards(props) {
         </div>
     )
 
+    // Delete once above return works properly
     // return (
     //     <div className="container card-container row">
     //         {/* {resultElemArr} */}
@@ -178,7 +172,7 @@ function NameCard(props) {
                     <div>
                         {nameStr}
                         {/* Hard-coded gender */}
-                        <i className="fa fa-genderless" aria-label="neutral"></i>
+                        <i className="fa fa-genderless" aria-label={genderStr}></i>
                     </div>
                     {/* Hard-coded liked state */}
                     <button type="button" className="btn btn-heart"><span className="material-icons" aria-label="sorting">favorite_border</span></button>
