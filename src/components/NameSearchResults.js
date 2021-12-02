@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export function NameSearchResults(props) {
     return (
         <div className="section container column">
@@ -20,6 +22,7 @@ function NameCards(props) {
     //     )
     // });
 
+
     return (
         <div className="container card-container row">
             {/* {resultElemArr} */}
@@ -41,7 +44,6 @@ function NameCards(props) {
                     <p className="meaning">Surging Surf, Wave</p>
                 </div>
             </div>
-
             <div className="outer card masc">
                 <h3 className="name">
                     <div className="card-container">
