@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export function GenerateTable(props) {
     let contentth = ['', 'Name', 'Relavent information'];
@@ -6,16 +6,8 @@ export function GenerateTable(props) {
     return (
         <table>
             <Generatethead content={contentth}/>
-            <GenerateRow />
+            <GenerateRow fav={props.fav}/>
         </table>
-    )
-}
-
-function Eachth(props) {
-    return(
-        <th>
-            {props.content}
-        </th>
     )
 }
 
@@ -33,22 +25,44 @@ function Generatethead(props) {
     )
 }
 
+function Eachth(props) {
+    return (
+        <th>
+            {props.content}
+        </th>
+    )
+}
+
 function GenerateRow(props){
+    let favNames = props.fav;
+
+    const newFavArray = favNames.map((favNameObj) => {
+        const transformed = <EachRow favData={favNameObj} key={favNameObj.name}/>
+
+        return transformed
+    })
+
     return (
         <tbody>
-            <EachRow img={'../public/yellow.jpg'} text={'img for female'} name={'Emma'} origin={'Germanic name'}/>
-            <EachRow img={'../public/pink.jpg'} text={'img for male'} name={'Jacob'} origin={'Hebrew name'}/>
-            <EachRow img={'../public/green.jpg'} text={'img for gender neutral'} name={'Jessie'} origin={'English name'}/>
-            <EachRow img={'../public/yellow.jpg'} text={'img for female'} name={'Gracie'} origin={'English name'}/>
+            {newFavArray}
         </tbody>
     )
 }
 
 function EachRow(props) {
-    const img = props.img;
-    const text = props.text;
-    const name = props.name;
-    const origin = props.origin;
+    const [isLiked, setIsLiked] = useState(false);
+
+    const img = props.favData.img;
+    const text = props.favData.text;
+    const name = props.favData.name;
+    const origin = props.favData.origin;
+
+    let heartColor = "grey";
+    let heartIcon = "favorite_border";
+    if(isLiked) {
+        heartColor = "red";
+        heartIcon = "favorite";
+    }
 
     return(
         <tr>
@@ -62,10 +76,12 @@ function EachRow(props) {
                 Origin:{origin}
             </td>
             <td>
-                <button type="button" class="btn btn-heart"><span class="material-icons" aria-label="sorting">favorite_border</span></button>
+                <button type="button" className="btn like-button">
+                    <span className="material-icons" style={{color:heartColor}} aria-label="sorting">{heartIcon}</span>
+                </button>
             </td>
             <td>
-                <span class="material-icons" aria-label="sorting">delete</span>
+                <span className="material-icons" aria-label="sorting">delete</span>
             </td>
         </tr>
     )

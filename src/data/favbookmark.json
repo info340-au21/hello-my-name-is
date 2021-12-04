@@ -1,0 +1,26 @@
+[
+    {   
+        "img": "/img/yellow.jpg",
+        "text":"'img for female'",
+        "name": "Emma",
+        "origin": "Germanic name"
+    },
+    {
+        "img": "/img/pink.jpg",
+        "text":"'img for male'",
+        "name": "Jacob",
+        "origin": "Hebrew"
+    },
+    { 
+        "img": "/img/green.jpg",
+        "text":"'img for neutral'",
+        "name": "Jessie",
+        "origin": "English name"
+    },
+    { 
+        "img": "/img/yellow.jpg",
+        "text":"'img for female'",
+        "name": "Gracie",
+        "origin": "English name"
+    }
+  ]
