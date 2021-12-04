@@ -7,7 +7,7 @@ export function NameSearchFilter(props) {
         <div className="section container column">
             <div className="row"><SearchBar/></div>
 
-            <div className="row"><GenderFilter/></div>
+            <div className="row"><GenderFilter genders={props.genders}/></div>
 
             <DetailedFilter/>
 

@@ -13,6 +13,7 @@ import { GenerateBookmark } from './components/GenerateBookmark';
 // Data
 import nameData from './data/Names.json';
 import favData from './data/favbookmark.json';
+import genderData from './data/Genders.json';
 
 const nameCard = {name:'Nalu', meaning:"Surging surf, wave", pronunciation:'nah-loo', gender:'neutral', genderIcon:'fa fa-genderless', origin:'Hawaiian'}
 
@@ -52,7 +53,7 @@ function App(props) {
                 <Switch>
                     <Route exact path='/'>
                         {/* Pass user input object */}
-                        <NameSearchFilter/> 
+                        <NameSearchFilter genders={genderData}/> 
                         {/* Pass names object array (right now just test data, not user input) */}
                         <NameSearchResults results={nameData} /*addtoFav={addtoFav}*//>
                     </Route>
