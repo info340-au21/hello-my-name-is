@@ -1,12 +1,25 @@
-// import gender array
+// get gender from props
+// import genderData from './../../data/Genders.json';
+
 
 // Gender (break down further by gender)
-export function GenderFilter() {
+export function GenderFilter(props) {
     let genderStrArr = ["Neutral", "Feminine", "Masculine"]; // hard-coded gender array
+    let genderObjArr = props.genders;
+    // let genderObjArr = genderData;
+    console.log(genderObjArr);
 
-    let genderElemArr = genderStrArr.map((genderStr) => {
+    // let genderElemArr = genderStrArr.map((genderStr) => {
+    //     return (
+    //         <Gender gender={genderStr} key={genderStr}/>
+    //     )
+    // })
+    let genderElemArr = genderObjArr.map((genderObj) => {
+        let {name, colorClass, symbolClass} = genderObj;
+        console.log({name});
+
         return (
-            <Gender gender={genderStr} key={genderStr}/>
+            <Gender key={name} gender={name} color={colorClass} symbol={symbolClass} />
         )
     })
 
