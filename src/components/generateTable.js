@@ -57,6 +57,10 @@ function EachRow(props) {
     const name = props.favData.name;
     const origin = props.favData.origin;
 
+    const handleClick = (event) => {
+         setIsLiked(!isLiked);
+    }
+
     let heartColor = "grey";
     let heartIcon = "favorite_border";
     if(isLiked) {
@@ -76,7 +80,7 @@ function EachRow(props) {
                 Origin:{origin}
             </td>
             <td>
-                <button type="button" className="btn like-button">
+                <button type="button" className="btn like-button" onClick={handleClick}>
                     <span className="material-icons" style={{color:heartColor}} aria-label="sorting">{heartIcon}</span>
                 </button>
             </td>
