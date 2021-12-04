@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './index.css';
 import { NameSearchFilter } from './components/NameSearchFilter/NameSearchFilter.js';
 import { NameSearchResults } from './components/NameSearchResults.js';
@@ -17,6 +17,33 @@ import favData from './data/favbookmark.json';
 const nameCard = {name:'Nalu', meaning:"Surging surf, wave", pronunciation:'nah-loo', gender:'neutral', genderIcon:'fa fa-genderless', origin:'Hawaiian'}
 
 function App(props) {
+    const [bookmarkArray, setbookmarkArray] = useState(favData)
+
+    
+    /*
+    const addtoFav = (name, gender, origin) => {
+        const img = "";
+        const text = "";
+        if (gender == "Female") {
+            img = "/img/yellow.jpg";
+            text = "img for female"
+        } else if (gender == "Male") {
+            img = "/img/pink.jpg";
+            text = "img for male"
+        } else {
+            img = "/img/green.jpg"
+            text = "img for neutral"
+        }
+        const newFavObj = {
+            name:name,
+            img:img,
+            text:text,
+            origin:origin
+        }
+        const newbookmarkArray = [...bookmarkArray, newFavObj];
+        setbookmarkArray(newbookmarkArray);
+    }
+    */
     return (
         <div>
             <NavIcon />
@@ -27,10 +54,10 @@ function App(props) {
                         {/* Pass user input object */}
                         <NameSearchFilter/> 
                         {/* Pass names object array (right now just test data, not user input) */}
-                        <NameSearchResults results={nameData}/>
+                        <NameSearchResults results={nameData} /*addtoFav={addtoFav}*//>
                     </Route>
                     <Route path='/bookmark'>
-                        <GenerateBookmark fav={favData}/>
+                        <GenerateBookmark fav={bookmarkArray}/>
                     </Route>
                     <Route path='/submit'>
                         <SubmitForm/>

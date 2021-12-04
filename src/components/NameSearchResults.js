@@ -161,14 +161,28 @@ function NameCards(props) {
 
 function NameCard(props) {
     const [isLiked, setIsLiked] = useState(false);
+    //const [cardInfo, setcardInfo] = useState([{name:"", gender:"", origin:""}]);
 
     let nameStr = props.name;
     let genderStr = props.gender; // Need to implement (involves adding/removing gender class)
     let meaningStr = props.meaning;
+    // let originStr = props.origin;
     // let isLiked = props.liked; // Need to implement (involves adding/removing gender class)
-
+    
+    console.log(props)
     const handleClick = (event) => {
         setIsLiked(!isLiked);
+        /*console.log(event.target.name)
+        const cardCopy = cardInfo.map((cardArr) => {
+            cardArr.name = event.target.name;
+            cardArr.gender = event.target.gender;
+            cardArr.origin = event.target.origin;
+            return cardArr;
+        })
+        setcardInfo(cardCopy)
+        console.log(cardCopy)
+        props.addtoFav(cardInfo)
+        */
    }
 
    let heartColor = "grey";
