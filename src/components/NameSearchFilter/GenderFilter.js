@@ -15,11 +15,11 @@ export function GenderFilter(props) {
     //     )
     // })
     let genderElemArr = genderObjArr.map((genderObj) => {
-        let {name, colorClass, symbolClass} = genderObj;
-        console.log({name});
+        let {genderLabel, colorClass, symbolClass} = genderObj;
+        console.log({genderLabel});
 
         return (
-            <Gender key={name} gender={name} color={colorClass} symbol={symbolClass} />
+            <Gender key={genderLabel} genderLabel={genderLabel} colorClass={colorClass} symbolClass={symbolClass} />
         )
     })
 
@@ -61,15 +61,34 @@ export function GenderFilter(props) {
 }
 
 function Gender(props) {
-    let genderStr = props.gender;
+    let genderStr = props.genderLabel;
+    let { genderLabel, colorClass, symbolSymbol } = props;
     let isChecked = props.checked; // hard-coded checked
 
     let genderFirstLetterStr = genderStr.charAt(0);
     let genderOtherLetterStr = genderStr.substr(1, genderStr.length);
 
+    // console.log(colorClass);
+    // let colorClassStr = colorClass;
+    // let newColorClass = "in-line " + colorClass;
+    // console.log(newColorClass);
+
+    // return (
+    //     // hard-coded gender class
+    //     <div className="in-line text-neut">
+    //         {/* hard-coded gender class */}
+    //         <input type="checkbox" name="check-neut"/>
+
+    //         <label htmlFor="check-neut">
+    //             {genderFirstLetterStr}<span className="gender-text">{genderOtherLetterStr}</span>
+    //             {/* hard-coded gender class */}
+    //             <i className="fa fa-genderless" aria-label="neutral"></i>
+    //         </label>
+    //     </div>
+    // )
     return (
         // hard-coded gender class
-        <div className="in-line text-neut">
+        <div className={"in-line " + colorClass}>
             {/* hard-coded gender class */}
             <input type="checkbox" name="check-neut"/>
 
