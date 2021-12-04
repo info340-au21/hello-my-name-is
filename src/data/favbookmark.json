@@ -3,7 +3,7 @@
         "img": "/img/yellow.jpg",
         "text":"'img for female'",
         "name": "Emma",
-        "origin": "Germanic name"
+        "origin": "Germanic"
     },
     {
         "img": "/img/pink.jpg",
@@ -15,12 +15,12 @@
         "img": "/img/green.jpg",
         "text":"'img for neutral'",
         "name": "Jessie",
-        "origin": "English name"
+        "origin": "English"
     },
     { 
         "img": "/img/yellow.jpg",
         "text":"'img for female'",
         "name": "Gracie",
-        "origin": "English name"
+        "origin": "English"
     }
   ]

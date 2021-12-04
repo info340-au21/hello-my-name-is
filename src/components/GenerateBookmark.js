@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export function GenerateTable(props) {
+export function GenerateBookmark(props) {
     let contentth = ['', 'Name', 'Relavent information'];
 
     return (
@@ -13,7 +13,7 @@ export function GenerateTable(props) {
 
 function Generatethead(props) {
     let contentitem = props.content.map((item) => {
-        let cont = <Eachth content={item} />;
+        let cont = <Eachth content={item} key={item}/>;
         return cont;
     })
     return(
@@ -36,7 +36,7 @@ function Eachth(props) {
 function GenerateRow(props){
     let favNames = props.fav;
     const [msgArray, setmsgArray] = useState(favNames)
-    
+
 
     const newFavArray = favNames.map((favNameObj) => {
         const transformed = <EachRow favData={favNameObj} key={favNameObj.name}/>
@@ -57,7 +57,7 @@ function EachRow(props) {
     const img = props.favData.img;
     const text = props.favData.text;
     const name = props.favData.name;
-    const origin = props.favData.origin;
+    const origin = props.favData.origin+" name";
 
     const handleClick = (event) => {
          setIsLiked(!isLiked);
