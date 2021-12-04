@@ -4,10 +4,10 @@
 
 // Gender (break down further by gender)
 export function GenderFilter(props) {
-    let genderStrArr = ["Neutral", "Feminine", "Masculine"]; // hard-coded gender array
+    // let genderStrArr = ["Neutral", "Feminine", "Masculine"]; // hard-coded gender array
     let genderObjArr = props.genders;
     // let genderObjArr = genderData;
-    console.log(genderObjArr);
+    // console.log(genderObjArr);
 
     // let genderElemArr = genderStrArr.map((genderStr) => {
     //     return (
@@ -16,7 +16,7 @@ export function GenderFilter(props) {
     // })
     let genderElemArr = genderObjArr.map((genderObj) => {
         let {genderLabel, colorClass, symbolClass} = genderObj;
-        console.log({genderLabel});
+        // console.log({genderLabel});
 
         return (
             <Gender key={genderLabel} genderLabel={genderLabel} colorClass={colorClass} symbolClass={symbolClass} />
@@ -62,9 +62,13 @@ export function GenderFilter(props) {
 
 function Gender(props) {
     let genderStr = props.genderLabel;
-    let { genderLabel, colorClass, symbolSymbol } = props;
+    let { genderLabel, colorClass, symbolClass } = props;
     let isChecked = props.checked; // hard-coded checked
 
+    // htmlFor label changes; not sure what this is for yet, might be an ID
+    let htmlForStr = "in-line " + colorClass;
+
+    // Text changes
     let genderFirstLetterStr = genderStr.charAt(0);
     let genderOtherLetterStr = genderStr.substr(1, genderStr.length);
 
@@ -90,12 +94,12 @@ function Gender(props) {
         // hard-coded gender class
         <div className={"in-line " + colorClass}>
             {/* hard-coded gender class */}
-            <input type="checkbox" name="check-neut"/>
+            <input type="checkbox" name={genderLabel}/>
 
-            <label htmlFor="check-neut">
+            <label htmlFor={htmlForStr}>
                 {genderFirstLetterStr}<span className="gender-text">{genderOtherLetterStr}</span>
                 {/* hard-coded gender class */}
-                <i className="fa fa-genderless" aria-label="neutral"></i>
+                <i className={"fa " + symbolClass} aria-label={genderLabel}></i>
             </label>
         </div>
     )
