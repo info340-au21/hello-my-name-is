@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+
 export function NameSearchResults(props) {
     return (
         <div className="section container column">
@@ -158,10 +160,23 @@ function NameCards(props) {
 }
 
 function NameCard(props) {
+    const [isLiked, setIsLiked] = useState(false);
+
     let nameStr = props.name;
     let genderStr = props.gender; // Need to implement (involves adding/removing gender class)
     let meaningStr = props.meaning;
-    let isLiked = props.liked; // Need to implement (involves adding/removing gender class)
+    // let isLiked = props.liked; // Need to implement (involves adding/removing gender class)
+
+    const handleClick = (event) => {
+        setIsLiked(!isLiked);
+   }
+
+   let heartColor = "grey";
+   let heartIcon = "favorite_border";
+   if(isLiked) {
+       heartColor = "red";
+       heartIcon = "favorite";
+   }
 
     return (
         // Hard-coded gender
@@ -175,7 +190,7 @@ function NameCard(props) {
                         <i className="fa fa-genderless" aria-label={genderStr}></i>
                     </div>
                     {/* Hard-coded liked state */}
-                    <button type="button" className="btn btn-heart"><span className="material-icons" aria-label="sorting">favorite_border</span></button>
+                    <button type="button" className="btn btn-heart" onClick={handleClick}><span className="material-icons"  style={{color:heartColor}} aria-label="sorting">{heartIcon}</span></button>
                 </div>
             </h3>
 

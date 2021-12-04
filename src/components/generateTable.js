@@ -35,6 +35,8 @@ function Eachth(props) {
 
 function GenerateRow(props){
     let favNames = props.fav;
+    const [msgArray, setmsgArray] = useState(favNames)
+    
 
     const newFavArray = favNames.map((favNameObj) => {
         const transformed = <EachRow favData={favNameObj} key={favNameObj.name}/>
