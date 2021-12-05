@@ -14,11 +14,23 @@ import { GenerateBookmark } from './components/GenerateBookmark';
 import nameData from './data/Names.json';
 import favData from './data/favbookmark.json';
 import genderData from './data/Genders.json';
-
+const updateFavData = favData.map(obj => ({...obj, isDelete:false}))
 const nameCard = {name:'Nalu', meaning:"Surging surf, wave", pronunciation:'nah-loo', gender:'neutral', genderIcon:'fa fa-genderless', origin:'Hawaiian'}
 
 function App(props) {
-    const [bookmarkArray, setbookmarkArray] = useState(favData)
+    const [bookmarkArray, setbookmarkArray] = useState(favData) //store the array of names to be generated for Bookmark page
+
+    const modifyDelete = (name) => {
+        let update = updateFavData.map((theCard) => {
+            let updateCopy = {...theCard}
+            if(theCard.name === name) {
+                theCard.isDelete = true
+            }
+            return updateCopy
+        })
+        let whatLeftAfterDelete = update.filter((name) => name.isDelete==false);
+        setbookmarkArray(whatLeftAfterDelete) //generate the filtered array, enable user to delete any bookmarked names
+    }
 
     
     /*
@@ -58,7 +70,7 @@ function App(props) {
                         <NameSearchResults results={nameData} /*addtoFav={addtoFav}*//>
                     </Route>
                     <Route path='/bookmark'>
-                        <GenerateBookmark fav={bookmarkArray}/>
+                        <GenerateBookmark fav={bookmarkArray} handleUpdate={modifyDelete}/>
                     </Route>
                     <Route path='/submit'>
                         <SubmitForm/>

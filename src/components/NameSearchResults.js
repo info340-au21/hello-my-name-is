@@ -169,7 +169,7 @@ function NameCard(props) {
     // let originStr = props.origin;
     // let isLiked = props.liked; // Need to implement (involves adding/removing gender class)
     
-    console.log(props)
+ 
     const handleClick = (event) => {
         setIsLiked(!isLiked);
         /*console.log(event.target.name)

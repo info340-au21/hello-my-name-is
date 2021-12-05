@@ -6,7 +6,7 @@ export function GenerateBookmark(props) {
     return (
         <table>
             <Generatethead content={contentth}/>
-            <GenerateRow fav={props.fav}/>
+            <GenerateRow fav={props.fav} howToHandleUpdate={props.handleUpdate}/>
         </table>
     )
 }
@@ -37,7 +37,7 @@ function GenerateRow(props){
     let favNames = props.fav;
     
     const newFavArray = favNames.map((favNameObj) => {
-        const transformed = <EachRow favData={favNameObj} key={favNameObj.name}/>
+        const transformed = <EachRow favData={favNameObj} key={favNameObj.name} update={props.howToHandleUpdate}/>
 
         return transformed
     })
@@ -51,7 +51,6 @@ function GenerateRow(props){
 
 function EachRow(props) {
     const [isLiked, setIsLiked] = useState(false);
-    const [isDelete, setIsDelete] = useState(false);
 
     const img = props.favData.img;
     const text = props.favData.text;
@@ -63,9 +62,10 @@ function EachRow(props) {
     }
 
     const handleDelete = (event) => {
-        setIsDelete(true);
+       props.update(props.favData.name)
     }
- 
+    
+
     let heartColor = "grey";
     let heartIcon = "favorite_border";
     if(isLiked) {
