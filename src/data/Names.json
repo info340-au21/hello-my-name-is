@@ -3,36 +3,42 @@
         "name": "Nalu",
         "gender": "Neutral",
         "meaning": "Surging Surf, Wave",
-        "origin": "Hawaiian"
+        "origin": "Hawaiian",
+        "liked": false
     },
     {
         "name": "Jacob", 
         "gender": "Male", 
         "meaning": "Supplanter, usurper",
-        "origin": "Hebrew"
+        "origin": "Hebrew",
+        "liked": false
     },
     { 
         "name": "Carolina", 
         "gender": "Female", 
         "meaning": "Song of happiness or joy",
-        "origin": "Italian"
+        "origin": "Italian",
+        "liked": false
     },
     { 
         "name": "Maynard", 
         "gender": "Male", 
         "meaning": "Strength, brave, strong",
-        "origin": "English"
+        "origin": "English",
+        "liked": false
     },
     { 
         "name": "Kevin", 
         "gender": "Male", 
         "meaning": "Handsome",
-        "origin": "English"
+        "origin": "English",
+        "liked": false
     },
     { 
         "name": "Andy", 
         "gender": "Male", 
         "meaning": "Brave",
-        "origin": "English"
+        "origin": "English",
+        "liked": false
     }
   ]

@@ -6,7 +6,7 @@ export function GenderFilter() {
 
     let genderElemArr = genderStrArr.map((genderStr) => {
         return (
-            <Gender gender={genderStr}/>
+            <Gender gender={genderStr} key={genderStr}/>
         )
     })
 
@@ -20,7 +20,7 @@ export function GenderFilter() {
             {/* <div className="in-line text-neut">
                 <input type="checkbox" name="check-neut"/>
 
-                <label for="check-neut">
+                <label htmlFor="check-neut">
                     N<span className="gender-text">eutral</span>
                     <i className="fa fa-genderless" aria-label="neutral"></i>
                 </label>
@@ -29,7 +29,7 @@ export function GenderFilter() {
             <div className="in-line text-fem">
                 <input type="checkbox" name="check-fem"/>
 
-                <label for="check-fem">
+                <label htmlFor="check-fem">
                     F<span className="gender-text">eminine</span>
                     <i className="fa fa-venus" aria-label="feminine"></i>
                 </label>
@@ -38,7 +38,7 @@ export function GenderFilter() {
             <div className="in-line text-masc">
                 <input type="checkbox" name="check-masc"/>
 
-                <label for="check-masc">
+                <label htmlFor="check-masc">
                     M<span className="gender-text">asculine</span>
                     <i className="fa fa-mars" aria-label="masculine"></i>
                 </label>
@@ -60,7 +60,7 @@ function Gender(props) {
             {/* hard-coded gender class */}
             <input type="checkbox" name="check-neut"/>
 
-            <label for="check-neut">
+            <label htmlFor="check-neut">
                 {genderFirstLetterStr}<span className="gender-text">{genderOtherLetterStr}</span>
                 {/* hard-coded gender class */}
                 <i className="fa fa-genderless" aria-label="neutral"></i>
