@@ -1,6 +1,21 @@
 import React from 'react';
+import { useParams } from 'react-router';
+import nameData from '../data/Names.json';
+import _ from 'lodash';
+
 
 export function LargeNameCard(props) {
+
+    let nameID = useParams();
+    let name =  _.find(nameData, {name: nameID});
+
+    if(!name) {return <h2>No name specified.</h2>}
+
+    // let expand = (event) => {
+    //     event.preventDefault();
+    // }
+
+
     return (
         <main>
             <div className="section2">

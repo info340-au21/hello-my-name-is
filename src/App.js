@@ -90,11 +90,15 @@ function App(props) {
                         {/* Should rename results prop to nameObjArr */}
                         <NameSearchResults results={nameData} /*addtoFav={addtoFav}*//>
                     </Route>
+                    <Route path="/LargeNameCard/:name">
+                        <LargeNameCard />
+                        <div><Link to="/" className="btn btn-primary mb-3">Back</Link></div>
+                    </Route>
                     <Route path='/bookmark'>
                         <GenerateBookmark fav={bookmarkArray} handleUpdate={modifyDelete}/>
                     </Route>
                     <Route path='/submit'>
-                        <SubmitForm/>
+                        <SubmitForm applyUpdate={updateDatabase}/>
                     </Route>
                     <Route>
                         <Redirect to='/' />
@@ -106,6 +110,12 @@ function App(props) {
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossOrigin="anonymous"></script>
         </div>
     );
+
+    function updateDatabase(nameInfo) {
+        console.log(nameInfo);
+        const form = document.querySelector("form");
+        form.reset();
+    }
 }
 
 export default App;

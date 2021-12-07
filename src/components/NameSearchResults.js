@@ -22,9 +22,10 @@ function NameCards(props) {
                 meaning={nameResultObj.meaning}
                 isLiked={nameResultObj.liked}
                 key={nameResultObj.name}
-            />
+             />
         )
     });
+
 
     return (
         <div className="container card-container row">
