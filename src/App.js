@@ -7,7 +7,7 @@ import { HeaderBar } from './components/HeaderBar';
 import { NavIcon } from './components/NavBar';
 import { Footer } from './components/Footer';
 import { SubmitForm } from './components/SubmitForm.js';
-import { Route, Switch, Redirect} from 'react-router-dom';
+import { Route, Switch, Redirect, Link } from 'react-router-dom';
 import { GenerateBookmark } from './components/GenerateBookmark';
 
 // Data
@@ -51,7 +51,7 @@ function App(props) {
         newObj[genderStr] = !newObj[genderStr];
 
         setGenderFilterObjArr(newObj);
-        console.log(genderFilterObjArr); // testing
+        // console.log(genderFilterObjArr); // testing
     }
     
     /*
