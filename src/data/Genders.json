@@ -1,15 +1,18 @@
 [
     {
+        "genderStr": "neutral",
         "genderLabel": "Neutral",
         "colorClass": "text-neut",
         "symbolClass": "fa-genderless"
     },
     {
+        "genderStr": "feminine",
         "genderLabel": "Feminine",
         "colorClass": "text-fem",
         "symbolClass": "fa-venus"
     },
     { 
+        "genderStr": "masculine",
         "genderLabel": "Masculine",
         "colorClass": "text-masc",
         "symbolClass": "fa-mars"

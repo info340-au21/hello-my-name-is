@@ -2,10 +2,10 @@ export function GenderFilter(props) {
     let genderObjArr = props.genders;
     
     let genderElemArr = genderObjArr.map((genderObj) => {
-        let {genderLabel, colorClass, symbolClass} = genderObj;
+        let {genderStr, genderLabel, colorClass, symbolClass} = genderObj;
 
         return (
-            <Gender key={genderLabel} genderLabel={genderLabel} colorClass={colorClass} symbolClass={symbolClass} callback={props.callback} />
+            <Gender key={genderLabel} genderStr={genderStr} genderLabel={genderLabel} colorClass={colorClass} symbolClass={symbolClass} callback={props.callback} />
         )
     })
 
@@ -17,30 +17,16 @@ export function GenderFilter(props) {
 }
 
 function Gender(props) {
-    // variables
-    let genderStr = props.genderLabel;
-    let { genderLabel, colorClass, symbolClass } = props;
+    let { genderStr, genderLabel, colorClass, symbolClass } = props;
     let checkId = "check-" + genderLabel;
-
-    // check event
-    // const [isChecked, setIsChecked] = useState(false);
-    // const handleCheck = () => {
-    //     setIsChecked(!isChecked); // set it to the opposite of its current state (true/false)
-    //     if (isChecked) {
-    //         console.log("Is checked");
-    //     } else {
-    //         console.log("Is not checked");
-    //     }
-    // }
-
 
     return (
         <div className={"in-line " + colorClass}>
-            <input type="checkbox" id={checkId} name={genderLabel} onClick={props.callback}/>
+            <input type="checkbox" id={checkId} name={genderStr} onClick={props.callback} /*checked="true"*//>
 
             <label htmlFor={checkId} className="gender-text">
                 {/* Gender text */}
-                {genderStr + "  "}
+                {genderLabel + "  "}
                 {/* Gender symbol */}
                 <i className={"fa " + symbolClass} aria-label={genderLabel}></i>
             </label>

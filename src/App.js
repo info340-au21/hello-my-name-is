@@ -33,19 +33,25 @@ function App(props) {
     }
 
     // FILTER/SEARCH STATES AND EVENT HANDLING
-    // gender filter
-    // const [genderIsChecked, setGenderIsChecked] = useState(false);
-    // const handleGenderCheck = () => {
-    //     setGenderIsChecked(!genderIsChecked); // set it to the opposite of its current state (true/false)
-    //     if (genderIsChecked) {
-    //         console.log("Is checked");
-    //     } else {
-    //         console.log("Is not checked");
-    //     }
-    // }
-    const [genderIsChecked, setGenderIsChecked] = useState([]);
+    // Gender filter
+    const [genderFilterObjArr, setGenderFilterObjArr] = useState({
+        neutral: false,
+        feminine: false,
+        masculine: false
+    });
+    
     const handleGenderCheck = (event) => {
-        console.log(event.target.name);
+        // get gender
+        let genderStr = event.target.name;
+
+        // create new object
+        let newObj = genderFilterObjArr;
+
+        // toggle the proper gender
+        newObj[genderStr] = !newObj[genderStr];
+
+        setGenderFilterObjArr(newObj);
+        console.log(genderFilterObjArr); // testing
     }
     
     /*
@@ -80,9 +86,9 @@ function App(props) {
                 <Switch>
                     <Route exact path='/'>
                         {/* Pass data states down to NameSearchFilter filters, then lift up and pass down to NameSearchResults */}
-                        <NameSearchFilter genders={genderData} callback={handleGenderCheck}/>
+                        <NameSearchFilter genders={genderData} callback={handleGenderCheck} genderFilter={genderFilterObjArr}/>
                         {/* Should rename results prop to nameObjArr */}
-                        <NameSearchResults results={nameData} genderFilter={genderIsChecked} /*addtoFav={addtoFav}*//>
+                        <NameSearchResults results={nameData} /*addtoFav={addtoFav}*//>
                     </Route>
                     <Route path='/bookmark'>
                         <GenerateBookmark fav={bookmarkArray} handleUpdate={modifyDelete}/>

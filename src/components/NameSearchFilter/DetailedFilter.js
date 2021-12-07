@@ -30,7 +30,7 @@ function FilterSimilar(props) {
             <div className="row column">
                 {/* Meaning checkbox (use Checkbox()) */}
                 <div className="item">
-                    <input type="checkbox" name="check-meaning" checked/>
+                    <input type="checkbox" name="check-meaning"/>
 
                     <label htmlFor="check-meaning" >
                         Meaning
