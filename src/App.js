@@ -32,6 +32,21 @@ function App(props) {
         setbookmarkArray(whatLeftAfterDelete) //generate the filtered array, enable user to delete any bookmarked names
     }
 
+    // FILTER/SEARCH STATES AND EVENT HANDLING
+    // gender filter
+    // const [genderIsChecked, setGenderIsChecked] = useState(false);
+    // const handleGenderCheck = () => {
+    //     setGenderIsChecked(!genderIsChecked); // set it to the opposite of its current state (true/false)
+    //     if (genderIsChecked) {
+    //         console.log("Is checked");
+    //     } else {
+    //         console.log("Is not checked");
+    //     }
+    // }
+    const [genderIsChecked, setGenderIsChecked] = useState([]);
+    const handleGenderCheck = (event) => {
+        console.log(event.target.name);
+    }
     
     /*
     const addtoFav = (name, gender, origin) => {
@@ -64,10 +79,10 @@ function App(props) {
             <main>
                 <Switch>
                     <Route exact path='/'>
-                        {/* Pass user input object */}
-                        <NameSearchFilter genders={genderData}/> 
-                        {/* Pass names object array (right now just test data, not user input) */}
-                        <NameSearchResults results={nameData} /*addtoFav={addtoFav}*//>
+                        {/* Pass data states down to NameSearchFilter filters, then lift up and pass down to NameSearchResults */}
+                        <NameSearchFilter genders={genderData} callback={handleGenderCheck}/>
+                        {/* Should rename results prop to nameObjArr */}
+                        <NameSearchResults results={nameData} genderFilter={genderIsChecked} /*addtoFav={addtoFav}*//>
                     </Route>
                     <Route path='/bookmark'>
                         <GenerateBookmark fav={bookmarkArray} handleUpdate={modifyDelete}/>
