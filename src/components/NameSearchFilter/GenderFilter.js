@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export function GenderFilter(props) {
     let genderObjArr = props.genders;
     
@@ -17,23 +19,34 @@ export function GenderFilter(props) {
 }
 
 function Gender(props) {
+    // variables
     let genderStr = props.genderLabel;
     let { genderLabel, colorClass, symbolClass } = props;
-    let isChecked = props.checked; // hard-coded checked
+    // let isChecked = props.checked; // hard-coded checked
+
+    // check event
+    const [isChecked, setIsChecked] = useState(false);
+    const handleCheck = () => {
+        setIsChecked(!isChecked); // set it to the opposite of its current state (true/false)
+        if (isChecked) {
+            console.log("Is checked");
+        } else {
+            console.log("Is not checked");
+        }
+    }
 
     // htmlFor label changes; not sure what this is for yet, might be an ID
-    let htmlForStr = "in-line " + colorClass;
+    let textClass = "in-line " + colorClass;
 
     // Text changes
-    let genderFirstLetterStr = genderStr.charAt(0);
-    let genderOtherLetterStr = genderStr.substr(1, genderStr.length);
+    let genderFirstLetterStr = genderStr.charAt(0); // ex: "N"
+    let genderOtherLetterStr = genderStr.substr(1, genderStr.length); // ex: "eutral"
 
     return (
-        // hard-coded gender class
-        <div className={"in-line " + colorClass}>
-            <input type="checkbox" name={genderLabel}/>
+        <div className={textClass}>
+            <input onClick={handleCheck} type="checkbox" name={genderLabel}/>
 
-            <label htmlFor={htmlForStr}>
+            <label htmlFor={textClass}>
                 {genderFirstLetterStr}<span className="gender-text">{genderOtherLetterStr}</span>
                 <i className={"fa " + symbolClass} aria-label={genderLabel}></i>
             </label>

@@ -28,7 +28,7 @@ function App(props) {
             }
             return updateCopy
         })
-        let whatLeftAfterDelete = update.filter((name) => name.isDelete==false);
+        let whatLeftAfterDelete = update.filter((name) => !name.isDelete);
         setbookmarkArray(whatLeftAfterDelete) //generate the filtered array, enable user to delete any bookmarked names
     }
 
