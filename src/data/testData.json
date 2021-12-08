@@ -1,0 +1,112 @@
+[
+  {
+    "nameData":
+      [
+        {
+          "name": "Nalu",
+          "gender": "Neutral",
+          "meaning": "Surging, surf, wave",
+          "origin": "Hawaiian",
+          "likedByUsers": [],
+          "pronunciation": "NAH-loo"
+        },
+        {
+          "name": "Jacob",
+          "gender": "Male",
+          "meaning": "Supplanter, usurper",
+          "origin": "Hebrew",
+          "likedByUsers": [],
+          "pronunciation": "JAY-cuhb"
+        },
+        {
+          "name": "Carolina",
+          "gender": "Female",
+          "meaning": "Song of happiness or joy",
+          "origin": "Italian",
+          "likedByUsers": [],
+          "pronunciation": "CAYR-oh-LEE-nuh"
+        },
+        {
+          "name": "Maynard",
+          "gender": "Male",
+          "meaning": "Strength, brave, strong",
+          "origin": "English",
+          "likedByUsers": [],
+          "pronunciation": "MAY-nahrd"
+        },
+        {
+          "name": "Kevin",
+          "gender": "Male",
+          "meaning": "Handsome",
+          "origin": "English",
+          "likedByUsers": [],
+          "pronunciation": "KEH-vin"
+        },
+        {
+          "name": "Andy",
+          "gender": "Male",
+          "meaning": "Brave",
+          "origin": "English",
+          "likedByUsers": [],
+          "pronunciation": "AN-dee"
+        },
+        {
+          "name": "Emma",
+          "gender": "Female",
+          "meaning": "Universal",
+          "origin": "Germanic",
+          "likedByUsers": [],
+          "pronunciation": "EH-muh"
+        },
+        {
+          "name": "Jessie",
+          "gender": "Neutral",
+          "meaning": "Gracious",
+          "origin": "English",
+          "likedByUsers": [],
+          "pronunciation": "JEH-see"
+        },
+        {
+          "name": "Gracie",
+          "gender": "Female",
+          "meaning": "Favor, blessing",
+          "origin": "English",
+          "likedByUsers": [],
+          "pronunciation": "GRAY-see"
+        },
+        {
+          "name": "Devin",
+          "gender": "Neutral",
+          "meaning": "Fawn, poet, divine",
+          "origin": "French",
+          "likedByUsers": [],
+          "pronunciation": "DEH-vin"
+        },
+        {
+          "name": "Devon",
+          "gender": "Neutral",
+          "meaning": "English county Devon",
+          "origin": "North American",
+          "likedByUsers": [],
+          "pronunciation": "DEH-vin"
+        }
+      ],
+    "userData":
+      [
+        {
+          "userName": "user1",
+          "likedNames": [
+            "Nalu",
+            "Maynard",
+            "Carolina"
+          ]
+        },
+        {
+          "userName": "user2",
+          "likedNames": [
+            "Jessie"
+          ]
+        }
+      ]
+  }
+]

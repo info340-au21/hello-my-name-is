@@ -25,10 +25,9 @@ function SearchBar(props) {
 
     return (
         <h2 className="item center">
-            Names like 
+            Names like...
             {/* Hard-coded placeholder (should be user input) */}
-            <input type="text" placeholder="NALU" className="search"/>
-            :
+            <input type="text" placeholder="TYPE NAME" className="search"/>
         </h2>
     )
 }

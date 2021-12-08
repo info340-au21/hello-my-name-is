@@ -68,8 +68,9 @@ h3 {
 }
 
 .item .search {
-    width: 7em;
-    margin: 0;
+    width: 8em;
+    padding: .15em;
+    /* margin: 0; */
 }
 
 .column {
