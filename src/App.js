@@ -10,6 +10,7 @@ import { Footer } from './components/Footer';
 import { SubmitForm } from './components/SubmitForm.js';
 import { Route, Switch, Redirect, Link } from 'react-router-dom';
 import { GenerateBookmark } from './components/GenerateBookmark';
+import { getDatabase, ref, set, onValue } from 'firebase/database';
 
 // Data
 import nameData from './data/Names.json';
