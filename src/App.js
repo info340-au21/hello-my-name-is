@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './index.css';
-import { NameSearchFilter } from './components/OldNameSearchFilter/NameSearchFilter.js';
-import { NameSearchResults } from './components/OldNameSearchFilter/NameSearchResults.js';
+// import { NameSearchFilter } from './components/NameSearchForm/NameSearchFilter.js';
+// import { NameSearchResults } from './components/NameSearchForm/NameSearchResults.js';
+import { NameSearchForm } from './components/NameSearchForm/NameSearchForm';
 import { LargeNameCard } from './components/LargeNameCard';
 import { HeaderBar } from './components/HeaderBar';
 import { NavIcon } from './components/NavBar';
@@ -15,7 +16,7 @@ import nameData from './data/Names.json';
 import favData from './data/favbookmark.json';
 import genderData from './data/Genders.json';
 const updateFavData = favData.map(obj => ({...obj, isDelete:false}))
-const nameCard = {name:'Nalu', meaning:"Surging surf, wave", pronunciation:'nah-loo', gender:'neutral', genderIcon:'fa fa-genderless', origin:'Hawaiian'}
+// const nameCard = {name:'Nalu', meaning:"Surging surf, wave", pronunciation:'nah-loo', gender:'neutral', genderIcon:'fa fa-genderless', origin:'Hawaiian'}
 
 function App(props) {
     const [bookmarkArray, setbookmarkArray] = useState(favData) //store the array of names to be generated for Bookmark page
@@ -85,10 +86,11 @@ function App(props) {
             <main>
                 <Switch>
                     <Route exact path='/'>
+                        <NameSearchForm genders={genderData} callback={handleGenderCheck} genderFilter={genderFilterObjArr} results={nameData}/>
                         {/* Pass data states down to NameSearchFilter filters, then lift up and pass down to NameSearchResults */}
-                        <NameSearchFilter genders={genderData} callback={handleGenderCheck} genderFilter={genderFilterObjArr}/>
+                        {/* <NameSearchFilter genders={genderData} callback={handleGenderCheck} genderFilter={genderFilterObjArr}/> */}
                         {/* Should rename results prop to nameObjArr */}
-                        <NameSearchResults results={nameData} /*addtoFav={addtoFav}*//>
+                        {/* <NameSearchResults results={nameData} addtoFav={addtoFav}/> */}
                     </Route>
                     <Route path="/LargeNameCard/:name">
                         <LargeNameCard />
