@@ -4,7 +4,7 @@ export function NameSearchResults(props) {
     return (
         <div className="section container column">
             <h2 className="row">Your 50 matches:</h2>
-            <NameCards results={props.results}/>
+            <NameCards results={props.results} callback={props.callback} like={props.like}/>
         </div>
     )
 }
@@ -22,6 +22,8 @@ function NameCards(props) {
                 meaning={nameResultObj.meaning}
                 isLiked={nameResultObj.liked}
                 key={nameResultObj.name}
+                callback={props.callback}
+                like={props.like}
              />
         )
     });
@@ -161,8 +163,10 @@ function NameCards(props) {
 }
 
 function NameCard(props) {
-    const [isLiked, setIsLiked] = useState(false);
+    //const [isLiked, setIsLiked] = useState(false);
     //const [cardInfo, setcardInfo] = useState([{name:"", gender:"", origin:""}]);
+    console.log(props)
+    let isLiked = props.like;
 
     let nameStr = props.name;
     let genderStr = props.gender; // Need to implement (involves adding/removing gender class)
@@ -171,8 +175,8 @@ function NameCard(props) {
     // let isLiked = props.liked; // Need to implement (involves adding/removing gender class)
     
  
-    const handleClick = (event) => {
-        setIsLiked(!isLiked);
+    //const handleClick = (event) => {
+     //   setIsLiked(!isLiked);
         /*console.log(event.target.name)
         const cardCopy = cardInfo.map((cardArr) => {
             cardArr.name = event.target.name;
@@ -184,7 +188,8 @@ function NameCard(props) {
         console.log(cardCopy)
         props.addtoFav(cardInfo)
         */
-   }
+   //}
+
 
    let heartColor = "grey";
    let heartIcon = "favorite_border";
@@ -192,6 +197,7 @@ function NameCard(props) {
        heartColor = "red";
        heartIcon = "favorite";
    }
+
 
     return (
         // Hard-coded gender
@@ -205,7 +211,7 @@ function NameCard(props) {
                         <i className="fa fa-genderless" aria-label={genderStr}></i>
                     </div>
                     {/* Hard-coded liked state */}
-                    <button type="button" className="btn btn-heart" onClick={handleClick}><span className="material-icons"  style={{color:heartColor}} aria-label="sorting">{heartIcon}</span></button>
+                    <button type="button" className="btn btn-heart" onClick={props.callback}><span className="material-icons"  style={{color:heartColor}} aria-label="sorting">{heartIcon}</span></button>
                 </div>
             </h3>
 
