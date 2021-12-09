@@ -20,7 +20,7 @@ const updateFavData = favData.map(obj => ({...obj, isDelete:false}))
 // const nameCard = {name:'Nalu', meaning:"Surging surf, wave", pronunciation:'nah-loo', gender:'neutral', genderIcon:'fa fa-genderless', origin:'Hawaiian'}
 
 function App(props) {
-    const [bookmarkArray, setbookmarkArray] = useState(favData) //store the array of names to be generated for Bookmark page
+    const [bookmarkArray, setbookmarkArray] = useState('') //store the array of names to be generated for Bookmark page
     const [nameDataArray, setNameData] = useState('')
 
     const db = getDatabase();
@@ -29,7 +29,7 @@ function App(props) {
         const dataref = ref(db, "0/nameData");
         const offFucntion = onValue(dataref, (snapshot) => {
             const newValue = snapshot.val();
-            const keysArray = Object.keys(nameData)
+            const keysArray = Object.keys(newValue)
             const array = keysArray.map((key) => {
                 const nameCopy = {...newValue[key], firebaseKey: key};
                 return nameCopy;
@@ -48,10 +48,6 @@ function App(props) {
         }
         return cleanup
     }, []);
-
-     console.log(nameDataArray);
-  
-
 
     const modifyDelete = (name) => {
         let update = updateFavData.map((theCard) => {
