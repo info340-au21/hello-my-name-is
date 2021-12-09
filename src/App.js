@@ -10,7 +10,7 @@ import { Footer } from './components/Footer';
 import { SubmitForm } from './components/SubmitForm.js';
 import { Route, Switch, Redirect, Link } from 'react-router-dom';
 import { GenerateBookmark } from './components/GenerateBookmark';
-import { getDatabase, ref, set, onValue } from 'firebase/database';
+import { getDatabase, ref, set, push, onValue } from 'firebase/database';
 
 // Data
 import nameData from './data/Names.json';
@@ -27,30 +27,31 @@ function App(props) {
 
     useEffect(() => {
         const dataref = ref(db, "0/nameData");
-        onValue(dataref, (snapshot) => {
+        const offFucntion = onValue(dataref, (snapshot) => {
             const newValue = snapshot.val();
-            console.log(newValue);
+            const keysArray = Object.keys(nameData)
+            const array = keysArray.map((key) => {
+                const nameCopy = {...newValue[key], firebaseKey: key};
+                return nameCopy;
+            })
             setNameData(newValue);
         })
 
         const likeref = ref(db, "0/userData/0/likedNames");
         onValue(likeref, (snapshot) => {
             const newValue = snapshot.val();
-            console.log(newValue);
             setbookmarkArray(newValue);
         })
-
+        
+        function cleanup() {
+            offFucntion();
+        }
+        return cleanup
     }, []);
 
-    let nameDataCopy = nameDataArray;
-    const filterName = (nameDataCopy, bookmarkArray) => {
-        let result = []
-        for (let i = 0; i = bookmarkArray.length; i++) {
-            result.push(nameDataCopy.filter(item => item.name = bookmarkArray[i]))
-        }
-        return result
-    }
-    console.log(filterName)
+     console.log(nameDataArray);
+  
+
 
     const modifyDelete = (name) => {
         let update = updateFavData.map((theCard) => {
@@ -63,6 +64,7 @@ function App(props) {
         let whatLeftAfterDelete = update.filter((name) => !name.isDelete);
         setbookmarkArray(whatLeftAfterDelete) //generate the filtered array, enable user to delete any bookmarked names
     }
+
 
     // FILTER/SEARCH STATES AND EVENT HANDLING
     // Gender filter
@@ -128,7 +130,7 @@ function App(props) {
                         <div><Link to="/" className="btn btn-primary mb-3">Back</Link></div>
                     </Route>
                     <Route path='/bookmark'>
-                        <GenerateBookmark fav={bookmarkArray} handleUpdate={modifyDelete}/>
+                        <GenerateBookmark fav={bookmarkArray} handleUpdate={modifyDelete} />
                     </Route>
                     <Route path='/submit'>
                         <SubmitForm applyUpdate={updateDatabase}/>
