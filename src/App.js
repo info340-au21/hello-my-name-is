@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './index.css';
 // import { NameSearchFilter } from './components/NameSearchForm/NameSearchFilter.js';
 // import { NameSearchResults } from './components/NameSearchForm/NameSearchResults.js';
@@ -21,6 +21,36 @@ const updateFavData = favData.map(obj => ({...obj, isDelete:false}))
 
 function App(props) {
     const [bookmarkArray, setbookmarkArray] = useState(favData) //store the array of names to be generated for Bookmark page
+    const [nameDataArray, setNameData] = useState('')
+
+    const db = getDatabase();
+
+    useEffect(() => {
+        const dataref = ref(db, "0/nameData");
+        onValue(dataref, (snapshot) => {
+            const newValue = snapshot.val();
+            console.log(newValue);
+            setNameData(newValue);
+        })
+
+        const likeref = ref(db, "0/userData/0/likedNames");
+        onValue(likeref, (snapshot) => {
+            const newValue = snapshot.val();
+            console.log(newValue);
+            setbookmarkArray(newValue);
+        })
+
+    }, []);
+
+    let nameDataCopy = nameDataArray;
+    const filterName = (nameDataCopy, bookmarkArray) => {
+        let result = []
+        for (let i = 0; i = bookmarkArray.length; i++) {
+            result.push(nameDataCopy.filter(item => item.name = bookmarkArray[i]))
+        }
+        return result
+    }
+    console.log(filterName)
 
     const modifyDelete = (name) => {
         let update = updateFavData.map((theCard) => {
