@@ -22,7 +22,6 @@ const updateFavData = favData.map(obj => ({...obj, isDelete:false}))
 function App(props) {
     const [bookmarkArray, setbookmarkArray] = useState(favData) //store the array of names to be generated for Bookmark page
     const [nameDataArray, setNameData] = useState('')
-    const [isLiked, setIsLiked] = useState(false);
 
     const db = getDatabase();
 
@@ -56,6 +55,7 @@ function App(props) {
         setbookmarkArray(whatLeftAfterDelete) //generate the filtered array, enable user to delete any bookmarked names
     }
 
+    const [isLiked, setIsLiked] = useState(false);
     const handleClick = (event) => {
         setIsLiked(!isLiked);
     }
