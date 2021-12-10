@@ -83,7 +83,7 @@ function EachRow(props) {
                 {name}
             </td>
             <td>
-                Origin:{origin}
+                Origin: {origin}
             </td>
             <td>
                 <button type="button" className="btn like-button" onClick={handleClick}>
