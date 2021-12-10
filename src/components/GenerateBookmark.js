@@ -50,29 +50,18 @@ function GenerateRow(props){
 }
 
 function EachRow(props) {
-    const [isLiked, setIsLiked] = useState(false);
-    
+ 
     const img = props.favData.img;
     const text = props.favData.text;
     const name = props.favData.name;
     const origin = props.favData.origin+" name";
 
-    const handleClick = (event) => {
-         setIsLiked(!isLiked);
-    }
 
     
     const handleDelete = (event) => {
        props.update(props.favData.name)
     }
     
-
-    let heartColor = "grey";
-    let heartIcon = "favorite_border";
-    if(isLiked) {
-        heartColor = "red";
-        heartIcon = "favorite";
-    }
 
     return(
         <tr>
@@ -84,11 +73,6 @@ function EachRow(props) {
             </td>
             <td>
                 Origin: {origin}
-            </td>
-            <td>
-                <button type="button" className="btn like-button" onClick={handleClick}>
-                    <span className="material-icons" style={{color:heartColor}} aria-label="sorting">{heartIcon}</span>
-                </button>
             </td>
             <td> 
                 <button type="button" className="btn like-button" onClick={handleDelete}>
