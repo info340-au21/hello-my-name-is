@@ -4,7 +4,7 @@ export function NameSearchResults(props) {
     return (
         <div className="section container column">
             <h2 className="row">Your 50 matches:</h2>
-            <NameCards results={props.results} allData={props.allData}/>
+            <NameCards results={props.results} allData={props.allData} booked={props.booked} handleBook={props.handleBook}/>
         </div>
     )
 }
@@ -23,6 +23,8 @@ function NameCards(props) {
                 isLiked={nameResultObj.liked}
                 key={nameResultObj.name}
                 allData={props.allData}
+                booked={props.booked}
+                handleBook={props.handleBook}
              />
         )
     });
@@ -175,7 +177,7 @@ function NameCard(props) {
  
     const handleClick = (event) => {
       setIsLiked(!isLiked);
-      
+      props.handleBook(props.name, props.gender, props.origin)
         /*console.log(event.target.name)
         const cardCopy = cardInfo.map((cardArr) => {
             cardArr.name = event.target.name;

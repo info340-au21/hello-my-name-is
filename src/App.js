@@ -45,7 +45,7 @@ function App(props) {
 
     //console.log(nameDataArray)
 
-    const modifyDelete = (name) => {
+    const modifyDelete = (name) => { //handle delete
         let update = updateFavData.map((theCard) => {
             let updateCopy = {...theCard}
             if(theCard.name === name) {
@@ -55,6 +55,31 @@ function App(props) {
         })
         let whatLeftAfterDelete = update.filter((name) => !name.isDelete);
         setbookmarkArray(whatLeftAfterDelete) //generate the filtered array, enable user to delete any bookmarked names
+    }
+
+    const AddtoFav = (name, gender, origin) => {
+        let img = "";
+        let text = "";
+        if (gender == "Female") {
+            img = "/img/yellow.jpg";
+            text = "img for female"
+        } else if (gender == "Male") {
+            img = "/img/pink.jpg";
+            text = "img for male"
+        } else {
+            img = "/img/green.jpg"
+            text = "img for neutral"
+        }
+        const newFavObj = {
+            img: img,
+            text: text,
+            name: name,
+            origin: origin
+        }
+
+        const newbookmarkArray = [...bookmarkArray, newFavObj];
+        setbookmarkArray(newbookmarkArray);
+
     }
 
 
@@ -111,7 +136,7 @@ function App(props) {
             <main>
                 <Switch>
                     <Route exact path='/'>
-                        <NameSearchForm genders={genderData} callback={handleGenderCheck} genderFilter={genderFilterObjArr} results={nameData} allData={nameDataArray}/>
+                        <NameSearchForm genders={genderData} callback={handleGenderCheck} genderFilter={genderFilterObjArr} results={nameData} allData={nameDataArray} booked={bookmarkArray} handleBook={AddtoFav}/>
                         {/* Pass data states down to NameSearchFilter filters, then lift up and pass down to NameSearchResults */}
                         {/* <NameSearchFilter genders={genderData} callback={handleGenderCheck} genderFilter={genderFilterObjArr}/> */}
                         {/* Should rename results prop to nameObjArr */}
