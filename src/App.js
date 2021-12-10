@@ -43,6 +43,8 @@ function App(props) {
         return cleanup
     }, []);
 
+    //console.log(nameDataArray)
+
     const modifyDelete = (name) => {
         let update = updateFavData.map((theCard) => {
             let updateCopy = {...theCard}
@@ -109,7 +111,7 @@ function App(props) {
             <main>
                 <Switch>
                     <Route exact path='/'>
-                        <NameSearchForm genders={genderData} callback={handleGenderCheck} genderFilter={genderFilterObjArr} results={nameData}/>
+                        <NameSearchForm genders={genderData} callback={handleGenderCheck} genderFilter={genderFilterObjArr} results={nameData} allData={nameDataArray}/>
                         {/* Pass data states down to NameSearchFilter filters, then lift up and pass down to NameSearchResults */}
                         {/* <NameSearchFilter genders={genderData} callback={handleGenderCheck} genderFilter={genderFilterObjArr}/> */}
                         {/* Should rename results prop to nameObjArr */}

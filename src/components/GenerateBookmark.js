@@ -51,7 +51,7 @@ function GenerateRow(props){
 
 function EachRow(props) {
     const [isLiked, setIsLiked] = useState(false);
-
+    
     const img = props.favData.img;
     const text = props.favData.text;
     const name = props.favData.name;
@@ -61,6 +61,7 @@ function EachRow(props) {
          setIsLiked(!isLiked);
     }
 
+    
     const handleDelete = (event) => {
        props.update(props.favData.name)
     }

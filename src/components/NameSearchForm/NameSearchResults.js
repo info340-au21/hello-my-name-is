@@ -4,7 +4,7 @@ export function NameSearchResults(props) {
     return (
         <div className="section container column">
             <h2 className="row">Your 50 matches:</h2>
-            <NameCards results={props.results} />
+            <NameCards results={props.results} allData={props.allData}/>
         </div>
     )
 }
@@ -22,6 +22,7 @@ function NameCards(props) {
                 meaning={nameResultObj.meaning}
                 isLiked={nameResultObj.liked}
                 key={nameResultObj.name}
+                allData={props.allData}
              />
         )
     });
@@ -163,7 +164,7 @@ function NameCards(props) {
 function NameCard(props) {
     const [isLiked, setIsLiked] = useState(false);
     //const [cardInfo, setcardInfo] = useState([{name:"", gender:"", origin:""}]);
-    console.log(props)
+    const allData = props.allData;
 
     let nameStr = props.name;
     let genderStr = props.gender; // Need to implement (involves adding/removing gender class)
@@ -174,6 +175,7 @@ function NameCard(props) {
  
     const handleClick = (event) => {
       setIsLiked(!isLiked);
+      
         /*console.log(event.target.name)
         const cardCopy = cardInfo.map((cardArr) => {
             cardArr.name = event.target.name;

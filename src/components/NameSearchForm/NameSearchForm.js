@@ -7,7 +7,7 @@ export function NameSearchForm(props) {
         <div>
             <NameSearchFilter genders={props.genders} callback={props.callback} genderFilter={props.genderFilter}/>
             
-            <NameSearchResults results={props.results}/>
+            <NameSearchResults results={props.results} allData={props.allData}/>
         </div>
     )
 }
