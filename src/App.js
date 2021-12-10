@@ -55,10 +55,6 @@ function App(props) {
         setbookmarkArray(whatLeftAfterDelete) //generate the filtered array, enable user to delete any bookmarked names
     }
 
-    const [isLiked, setIsLiked] = useState(false);
-    const handleClick = (event) => {
-        setIsLiked(!isLiked);
-    }
 
     // FILTER/SEARCH STATES AND EVENT HANDLING
     // Gender filter
@@ -113,7 +109,7 @@ function App(props) {
             <main>
                 <Switch>
                     <Route exact path='/'>
-                        <NameSearchForm genders={genderData} callback={handleGenderCheck} genderFilter={genderFilterObjArr} results={nameData} callback={handleClick} like={isLiked}/>
+                        <NameSearchForm genders={genderData} callback={handleGenderCheck} genderFilter={genderFilterObjArr} results={nameData}/>
                         {/* Pass data states down to NameSearchFilter filters, then lift up and pass down to NameSearchResults */}
                         {/* <NameSearchFilter genders={genderData} callback={handleGenderCheck} genderFilter={genderFilterObjArr}/> */}
                         {/* Should rename results prop to nameObjArr */}
