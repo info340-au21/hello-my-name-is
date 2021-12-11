@@ -21,6 +21,7 @@ function NameCards(props) {
                 name={nameResultObj.name}
                 gender={nameResultObj.gender}
                 meaning={nameResultObj.meaning}
+                origin={nameResultObj.origin}
                 isLiked={nameResultObj.liked}
                 key={nameResultObj.name}
                 allData={props.allData}
