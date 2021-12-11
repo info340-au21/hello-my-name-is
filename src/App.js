@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './index.css';
-// import { NameSearchFilter } from './components/NameSearchForm/NameSearchFilter.js';
-// import { NameSearchResults } from './components/NameSearchForm/NameSearchResults.js';
 import { NameSearchForm } from './components/NameSearchForm/NameSearchForm';
 import { LargeNameCard } from './components/LargeNameCard';
 import { HeaderBar } from './components/HeaderBar';

@@ -99,6 +99,7 @@ input[type='number'] {
 .fa {
     font-weight: 400;
     font-size: 2em;
+    padding: .2em;
 }
 
 .text-neut {
