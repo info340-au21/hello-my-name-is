@@ -20,8 +20,8 @@ const updateFavData = favData.map(obj => ({...obj, isDelete:false}))
 // const nameCard = {name:'Nalu', meaning:"Surging surf, wave", pronunciation:'nah-loo', gender:'neutral', genderIcon:'fa fa-genderless', origin:'Hawaiian'}
 
 function App(props) {
-    const [bookmarkArray, setbookmarkArray] = useState(favData) //store the array of names to be generated for Bookmark page
-    const [nameDataArray, setNameData] = useState('')
+    const [bookmarkArray, setbookmarkArray] = useState([]) //store the array of names to be generated for Bookmark page
+    const [nameDataArray, setNameData] = useState([])
 
     const db = getDatabase();
 
@@ -99,7 +99,7 @@ function App(props) {
         }
     }
 
-
+    console.log(bookmarkArray)
     // FILTER/SEARCH STATES AND EVENT HANDLING
     // Gender filter
     const [genderFilterObjArr, setGenderFilterObjArr] = useState({

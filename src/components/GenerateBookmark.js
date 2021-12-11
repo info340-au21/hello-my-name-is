@@ -35,7 +35,11 @@ function Eachth(props) {
 
 function GenerateRow(props){
     let favNames = props.fav;
-    
+
+    if (Array.isArray(favNames) === false) {
+        return <EachRow favData={favNames} update={props.howToHandleUpdate}/>
+    } // check if there is only one element in the array
+
     const newFavArray = favNames.map((favNameObj) => {
         const transformed = <EachRow favData={favNameObj} key={favNameObj.name} update={props.howToHandleUpdate}/>
 
