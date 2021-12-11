@@ -1,17 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { GenderFilter } from './GenderFilter';
 import { DetailedFilter } from './DetailedFilter';
 
 export function NameSearchFilter(props) {
+    const [searchedNameStr, setSearchedNameStr] = useState('');
+    const handleSearch = (event) => {
+        setSearchedNameStr(event.target.value);
+    }
+
+    // test name input
+    // console.log(searchedNameStr);
+
     return (
         <div className="section container column">
-            <div className="row"><SearchBar/></div>
+            {/* First get name */}
+            <div className="row">
+                <SearchBar callback={handleSearch}/>
+            </div>
 
-            <div className="row"><GenderFilter genders={props.genders} callback={props.callback}/></div>
-
+            {/* Then filter names based on given name */}
             <DetailedFilter results={props.results}/>
 
-            <div className="row"><GetNamesButton/></div>
+            {/* Then filter by gender */}
+            <div className="row">
+                <GenderFilter
+                    genders={props.genders}
+                    callback={props.callback}
+                />
+            </div>
+
+            {/* Then trigger update results */}
+            <div className="row">
+                <GetNamesButton/>
+            </div>
         </div>
     )
 }
@@ -19,15 +40,16 @@ export function NameSearchFilter(props) {
 
 // Search
 function SearchBar(props) {
-    // let searchStr = props.search;
-
-    // create input and change placeholder to searchStr
-
     return (
         <h2 className="item center">
             Names like...
             {/* Hard-coded placeholder (should be user input) */}
-            <input type="text" placeholder="TYPE NAME" className="search"/>
+            <input
+                type="text"
+                placeholder="ENTER NAME"
+                className="search"
+                onChange={props.callback}
+            />
         </h2>
     )
 }

@@ -100,11 +100,11 @@ function App(props) {
     console.log(bookmarkArray)
     // FILTER/SEARCH STATES AND EVENT HANDLING
     // Gender filter
-    const [genderFilterObjArr, setGenderFilterObjArr] = useState({
-        neutral: false,
-        feminine: false,
-        masculine: false
-    });
+    // const [genderFilterObjArr, setGenderFilterObjArr] = useState({
+    //     neutral: false,
+    //     feminine: false,
+    //     masculine: false
+    // });
     
     const handleGenderCheck = (event) => {
         // get gender
@@ -151,11 +151,7 @@ function App(props) {
             <main>
                 <Switch>
                     <Route exact path='/'>
-                        <NameSearchForm genders={genderData} callback={handleGenderCheck} genderFilter={genderFilterObjArr} results={nameData} allData={nameDataArray} booked={bookmarkArray} handleBook={AddtoFav}/>
-                        {/* Pass data states down to NameSearchFilter filters, then lift up and pass down to NameSearchResults */}
-                        {/* <NameSearchFilter genders={genderData} callback={handleGenderCheck} genderFilter={genderFilterObjArr}/> */}
-                        {/* Should rename results prop to nameObjArr */}
-                        {/* <NameSearchResults results={nameData} addtoFav={addtoFav}/> */}
+                        <NameSearchForm genders={genderData} callback={handleGenderCheck} /*genderFilter={genderFilterObjArr}*/ results={nameData} allData={nameDataArray} booked={bookmarkArray} handleBook={AddtoFav}/>
                     </Route>
                     <Route path="/LargeNameCard/:name">
                         <LargeNameCard />
