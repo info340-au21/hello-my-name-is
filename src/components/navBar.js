@@ -13,6 +13,9 @@ export function NavIcon() {
             <div className="search">
                 <input type="text" placeholder="Search for a name" className="search" />
             </div>
+            <div className="topnav-right">
+                <NavLink to="/signin" className="nav-link">Sign in</NavLink>
+            </div>
         </nav>
     )
 }

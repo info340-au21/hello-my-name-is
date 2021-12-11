@@ -1,11 +1,12 @@
 import { set } from '@firebase/database';
 import React, { useState } from 'react';
+import genderData from './../../data/Genders.json';
 
 export function NameSearchResults(props) {
     return (
         <div className="section container column">
             <h2 className="row">Your 50 matches:</h2>
-            <NameCards results={props.results}/>
+            <NameCards results={props.results} allData={props.allData} booked={props.booked} handleBook={props.handleBook}/>
         </div>
     )
 }
@@ -24,8 +25,12 @@ function NameCards(props) {
                 name={nameResultObj.name}
                 gender={nameResultObj.gender}
                 meaning={nameResultObj.meaning}
+                origin={nameResultObj.origin}
                 isLiked={nameResultObj.liked}
                 key={nameResultObj.name}
+                allData={props.allData}
+                booked={props.booked}
+                handleBook={props.handleBook}
              />
         )
     });
@@ -167,16 +172,30 @@ function NameCards(props) {
 function NameCard(props) {
     const [isLiked, setIsLiked] = useState(false);
     //const [cardInfo, setcardInfo] = useState([{name:"", gender:"", origin:""}]);
+    const allData = props.allData;
 
     let nameStr = props.name;
-    let genderStr = props.gender; // Need to implement (involves adding/removing gender class)
+    // let genderStr = props.gender; // Need to implement (involves adding/removing gender class)
     let meaningStr = props.meaning;
     // let originStr = props.origin;
     // let isLiked = props.liked; // Need to implement (involves adding/removing gender class)
-    
+
+    // get classes based on card gender
+    let genderObj = genderData.find((genderObj) => {
+        // console.log(genderObj.genderLabel);
+        // console.log(props.gender);
+
+        return genderObj.genderLabel === props.gender
+    })
+    // console.log("gender:" + genderObj);
+    // let genderLabel = genderObj.genderLabel;
+    let colorClass = genderObj.colorClass;
+    let symbolClass = genderObj.symbolClass;
+    // console.log(symbolClass);
  
     const handleClick = (event) => {
-        setIsLiked(!isLiked);
+      setIsLiked(!isLiked);
+      props.handleBook(props.name, props.gender, props.origin)
         /*console.log(event.target.name)
         const cardCopy = cardInfo.map((cardArr) => {
             cardArr.name = event.target.name;
@@ -257,57 +276,5 @@ function NameCard(props) {
                 </div>
             </div>
         </div>
-
-    //delete when expand is done
-    //     <div className="col-lg-6">
-    //             <div className="nameCard" onClick={expand}>
-    //                 <div>
-    //                     <div className="card outer neut">
-    //                         <h3 className="name">
-    //                             <div className="card-container">
-    //                                 <div></div>
-    //                                 <div>
-    //                                     {nameStr + "  "}
-    //                                     <i className="fa fa-genderless" aria-label={genderStr}></i>
-    //                                 </div>
-    //                                 <button type="button" className="btn btn-heart" onClick={handleClick}><span className="material-icons"  style={{color:heartColor}} aria-label="sorting">{heartIcon}</span></button>
-    //                             </div>
-    //                         </h3>
-
-    //                         <div className="inner card">
-    //                             <p className="meaning">{meaningStr}</p>
-    //                         </div>
-    //                     </div>
-    //                 </div>
-    //                     <div className="collaspable">
-                                // <div className="row justify-content-center">
-                                //         <div className="card attribute col-lg-6">
-                                //             <h4>Meaning</h4>
-                                //             <p className="meaning">{props.meaning}</p>
-                                //         </div>
-                                //         <div className="card attribute col-sm-2 col-lg-6">
-                                //             <h4>Origin</h4>
-                                //             <p className="meaning">{props.origin}</p>
-                                //         </div>
-                                //         <div className="card attribute col-sm-2 col-lg-6">
-                                //             <h4>Pronunciation</h4>
-                                //             <p className="meaning">{props.pronunciation}</p>
-                                //         </div>
-                                //         <div className="card attribute col-sm-2 col-lg-6">
-                                //             <h4>Gender</h4>
-                                //             <p className="meaning">{props.gender}</p>
-                                //         </div>
-                                //         <div className="card attribute col-sm-2 col-lg-6">
-                                //             <h4>Length</h4>
-                                //             <p className="meaning">{props.name.length}</p>
-                                //         </div>
-                                //         <div className="card attribute col-sm-2 col-lg-6">
-                                //             <h4>First Letter</h4>
-                                //             <p className="meaning">{props.name}</p>
-                                //         </div>
-                                // </div>
-    //                     </div>
-    //         </div>
-    // </div>
     )
 }

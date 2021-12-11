@@ -8,35 +8,35 @@
     },
     {
         "name": "Jacob", 
-        "gender": "Male", 
+        "gender": "Masculine", 
         "meaning": "Supplanter, usurper",
         "origin": "Hebrew",
         "liked": false
     },
     { 
         "name": "Carolina", 
-        "gender": "Female", 
+        "gender": "Feminine", 
         "meaning": "Song of happiness or joy",
         "origin": "Italian",
         "liked": false
     },
     { 
         "name": "Maynard", 
-        "gender": "Male", 
+        "gender": "Masculine", 
         "meaning": "Strength, brave, strong",
         "origin": "English",
         "liked": false
     },
     { 
         "name": "Kevin", 
-        "gender": "Male", 
+        "gender": "Masculine", 
         "meaning": "Handsome",
         "origin": "English",
         "liked": false
     },
     { 
         "name": "Andy", 
-        "gender": "Male", 
+        "gender": "Masculine", 
         "meaning": "Brave",
         "origin": "English",
         "liked": false

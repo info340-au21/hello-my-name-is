@@ -68,8 +68,9 @@ h3 {
 }
 
 .item .search {
-    width: 7em;
-    margin: 0;
+    width: 11em;
+    padding: .15em;
+    /* margin: 0; */
 }
 
 .column {
@@ -98,6 +99,7 @@ input[type='number'] {
 .fa {
     font-weight: 400;
     font-size: 2em;
+    padding: .2em;
 }
 
 .text-neut {
@@ -252,6 +254,10 @@ nav a {
     color: black;
     margin-right: .5em;
     margin-left: .5em;
+}
+
+.topnav-right {
+    float: right;
 }
 
 #hamburger-menu {

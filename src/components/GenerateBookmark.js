@@ -35,7 +35,11 @@ function Eachth(props) {
 
 function GenerateRow(props){
     let favNames = props.fav;
-    
+
+    if (Array.isArray(favNames) === false) {
+        return <EachRow favData={favNames} update={props.howToHandleUpdate}/>
+    } // check if there is only one element in the array
+
     const newFavArray = favNames.map((favNameObj) => {
         const transformed = <EachRow favData={favNameObj} key={favNameObj.name} update={props.howToHandleUpdate}/>
 
@@ -50,28 +54,18 @@ function GenerateRow(props){
 }
 
 function EachRow(props) {
-    const [isLiked, setIsLiked] = useState(false);
-
+ 
     const img = props.favData.img;
     const text = props.favData.text;
     const name = props.favData.name;
     const origin = props.favData.origin+" name";
 
-    const handleClick = (event) => {
-         setIsLiked(!isLiked);
-    }
 
+    
     const handleDelete = (event) => {
        props.update(props.favData.name)
     }
     
-
-    let heartColor = "grey";
-    let heartIcon = "favorite_border";
-    if(isLiked) {
-        heartColor = "red";
-        heartIcon = "favorite";
-    }
 
     return(
         <tr>
@@ -82,12 +76,7 @@ function EachRow(props) {
                 {name}
             </td>
             <td>
-                Origin:{origin}
-            </td>
-            <td>
-                <button type="button" className="btn like-button" onClick={handleClick}>
-                    <span className="material-icons" style={{color:heartColor}} aria-label="sorting">{heartIcon}</span>
-                </button>
+                Origin: {origin}
             </td>
             <td> 
                 <button type="button" className="btn like-button" onClick={handleDelete}>

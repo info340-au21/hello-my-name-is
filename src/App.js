@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './index.css';
-import { NameSearchFilter } from './components/OldNameSearchFilter/NameSearchFilter.js';
-import { NameSearchResults } from './components/OldNameSearchFilter/NameSearchResults.js';
+import { NameSearchForm } from './components/NameSearchForm/NameSearchForm';
 import { LargeNameCard } from './components/LargeNameCard';
 import { HeaderBar } from './components/HeaderBar';
 import { NavIcon } from './components/NavBar';
@@ -9,18 +8,54 @@ import { Footer } from './components/Footer'
 import { SubmitForm } from './components/SubmitForm.js';
 import { Route, Switch, Redirect, Link } from 'react-router-dom';
 import { GenerateBookmark } from './components/GenerateBookmark';
+import { getDatabase, ref, set, push as firebasePush, onValue } from 'firebase/database';
 
 // Data
 import nameData from './data/Names.json';
 import favData from './data/favbookmark.json';
 import genderData from './data/Genders.json';
 const updateFavData = favData.map(obj => ({...obj, isDelete:false}))
-const nameCard = {name:'Nalu', meaning:"Surging surf, wave", pronunciation:'nah-loo', gender:'neutral', genderIcon:'fa fa-genderless', origin:'Hawaiian'}
+// const nameCard = {name:'Nalu', meaning:"Surging surf, wave", pronunciation:'nah-loo', gender:'neutral', genderIcon:'fa fa-genderless', origin:'Hawaiian'}
 
 function App(props) {
-    const [bookmarkArray, setbookmarkArray] = useState(favData) //store the array of names to be generated for Bookmark page
+    const [bookmarkArray, setbookmarkArray] = useState([]) //store the array of names to be generated for Bookmark page
+    const [nameDataArray, setNameData] = useState([])
 
-    const modifyDelete = (name) => {
+    const db = getDatabase();
+
+    useEffect(() => {
+        const dataref = ref(db, "nameData");
+        const offFucntion1 = onValue(dataref, (snapshot) => {
+            const allDataValue = snapshot.val();
+            const keysArray = Object.keys(allDataValue)
+            const array1 = keysArray.map((datakey) => {
+                const nameCopy = {...allDataValue[datakey], firebaseKey: datakey};
+                return nameCopy;
+            })
+            setNameData(array1);
+        })
+
+        const bookmarkref = ref(db, "userData");
+        const offFucntion2 = onValue(bookmarkref, (snapshot) => {
+            const userDataValue = snapshot.val();
+            if(userDataValue === null) {return null}
+            const keysArray = Object.keys(userDataValue)
+            const array2 = keysArray.map((favkey) => {
+                const nameCopy = {...userDataValue[favkey], firebaseKey: favkey};
+                return nameCopy;
+            })
+            setbookmarkArray(array2);
+        })
+
+        function cleanup() {
+            offFucntion1();
+            offFucntion2();
+        }
+        return cleanup
+    }, []);
+
+    //const updateFavData = bookmarkArray.map(obj => ({...obj, isDelete:false}))
+    const modifyDelete = (name) => { //handle delete
         let update = updateFavData.map((theCard) => {
             let updateCopy = {...theCard}
             if(theCard.name === name) {
@@ -32,13 +67,44 @@ function App(props) {
         setbookmarkArray(whatLeftAfterDelete) //generate the filtered array, enable user to delete any bookmarked names
     }
 
+    const AddtoFav = (name, gender, origin) => {
+        let img = "";
+        let text = "";
+        let newOrigin = "";
+        if (origin === undefined) {
+            origin = newOrigin;
+        }
+        if (gender == "Female") {
+            img = "/img/yellow.jpg";
+            text = "img for female"
+        } else if (gender == "Male") {
+            img = "/img/pink.jpg";
+            text = "img for male"
+        } else {
+            img = "/img/green.jpg"
+            text = "img for neutral"
+        }
+        const newFavObj = {
+            img: img,
+            text: text,
+            name: name,
+            origin: origin
+        }
+
+        const bookRef = ref(db, "userData")
+        if (bookmarkArray.filter(e => e.name === newFavObj.name).length === 0) {
+            firebasePush(bookRef, newFavObj)
+        }
+    }
+
+    console.log(bookmarkArray)
     // FILTER/SEARCH STATES AND EVENT HANDLING
     // Gender filter
-    const [genderFilterObjArr, setGenderFilterObjArr] = useState({
-        neutral: false,
-        feminine: false,
-        masculine: false
-    });
+    // const [genderFilterObjArr, setGenderFilterObjArr] = useState({
+    //     neutral: false,
+    //     feminine: false,
+    //     masculine: false
+    // });
     
     const handleGenderCheck = (event) => {
         // get gender
@@ -86,17 +152,14 @@ function App(props) {
             <main>
                 <Switch>
                     <Route exact path='/'>
-                        {/* Pass data states down to NameSearchFilter filters, then lift up and pass down to NameSearchResults */}
-                        <NameSearchFilter genders={genderData} callback={handleGenderCheck} genderFilter={genderFilterObjArr}/>
-                        {/* Should rename results prop to nameObjArr */}
-                        <NameSearchResults results={nameData} /*addtoFav={addtoFav}*//>
+                        <NameSearchForm genders={genderData} callback={handleGenderCheck} /*genderFilter={genderFilterObjArr}*/ results={nameData} allData={nameDataArray} booked={bookmarkArray} handleBook={AddtoFav}/>
                     </Route>
                     {/* <Route path="/LargeNameCard/:name">
                         <LargeNameCard />
                         <div><Link to="/" className="btn btn-primary mb-3">Back</Link></div>
                     </Route> */}
                     <Route path='/bookmark'>
-                        <GenerateBookmark fav={bookmarkArray} handleUpdate={modifyDelete}/>
+                        <GenerateBookmark fav={bookmarkArray} handleUpdate={modifyDelete} />
                     </Route>
                     <Route path='/submit'>
                         <SubmitForm applyUpdate={updateDatabase}/>
