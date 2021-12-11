@@ -10,7 +10,7 @@ import { Footer } from './components/Footer';
 import { SubmitForm } from './components/SubmitForm.js';
 import { Route, Switch, Redirect, Link } from 'react-router-dom';
 import { GenerateBookmark } from './components/GenerateBookmark';
-import { getDatabase, ref, set, push, onValue } from 'firebase/database';
+import { getDatabase, ref, set, push as firebasePush, onValue } from 'firebase/database';
 
 // Data
 import nameData from './data/Names.json';
@@ -26,25 +26,40 @@ function App(props) {
     const db = getDatabase();
 
     useEffect(() => {
-        const dataref = ref(db, "0/nameData");
-        const offFucntion = onValue(dataref, (snapshot) => {
-            const newValue = snapshot.val();
-            const keysArray = Object.keys(newValue)
-            const array = keysArray.map((key) => {
-                const nameCopy = {...newValue[key], firebaseKey: key};
+        const dataref = ref(db, "nameData");
+        const offFucntion1 = onValue(dataref, (snapshot) => {
+            const allDataValue = snapshot.val();
+            const keysArray = Object.keys(allDataValue)
+            const array1 = keysArray.map((datakey) => {
+                const nameCopy = {...allDataValue[datakey], firebaseKey: datakey};
                 return nameCopy;
             })
-            setNameData(newValue);
+            setNameData(array1);
+        })
+
+        const bookmarkref = ref(db, "userData");
+        const offFucntion2 = onValue(bookmarkref, (snapshot) => {
+            const userDataValue = snapshot.val();
+            if(userDataValue === null) {return null}
+            const keysArray = Object.keys(userDataValue)
+            console.log(keysArray)
+            const array2 = keysArray.map((favkey) => {
+                const nameCopy = {...userDataValue[favkey], firebaseKey: favkey};
+                return nameCopy;
+            })
+            setbookmarkArray(array2);
         })
 
         function cleanup() {
-            offFucntion();
+            offFucntion1();
+            offFucntion2();
         }
         return cleanup
     }, []);
 
     //console.log(nameDataArray)
 
+    //const updateFavData = bookmarkArray.map(obj => ({...obj, isDelete:false}))
     const modifyDelete = (name) => { //handle delete
         let update = updateFavData.map((theCard) => {
             let updateCopy = {...theCard}
@@ -60,6 +75,10 @@ function App(props) {
     const AddtoFav = (name, gender, origin) => {
         let img = "";
         let text = "";
+        let newOrigin = "";
+        if (origin === undefined) {
+            origin = newOrigin;
+        }
         if (gender == "Female") {
             img = "/img/yellow.jpg";
             text = "img for female"
@@ -77,8 +96,10 @@ function App(props) {
             origin: origin
         }
 
-        const newbookmarkArray = [...bookmarkArray, newFavObj];
-        setbookmarkArray(newbookmarkArray);
+        const bookRef = ref(db, "userData")
+        firebasePush(bookRef, newFavObj)
+        //const newbookmarkArray = [...bookmarkArray, newFavObj];
+        //setbookmarkArray(newbookmarkArray);
 
     }
 
