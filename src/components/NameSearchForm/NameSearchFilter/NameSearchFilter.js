@@ -19,7 +19,10 @@ export function NameSearchFilter(props) {
             </div>
 
             {/* Then filter names based on given name */}
-            <DetailedFilter results={props.results}/>
+            <DetailedFilter
+                results={props.results}
+                searchedNameStr={searchedNameStr}
+            />
 
             {/* Then filter by gender */}
             <div className="row">

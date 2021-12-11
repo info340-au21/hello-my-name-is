@@ -3,63 +3,8 @@
 export function DetailedFilter(props) {
     return (
         <div className="row">
-            <FilterSimilar/>
             <FilterMatching/>
-        </div>
-    )
-}
-
-// Filter htmlFor similar... (break down further into Pronunciation and Meaning)
-function FilterSimilar(props) {
-    return (
-        <div className="item">
-            <h3>With similar...</h3>
-
-            {/* <!-- Pronunciation checkbox (use Checkbox()) --> */}
-            <div className="row">
-                <div className="item">
-                    <input type="checkbox" name="check-pronoun"/>
-
-                    <label htmlFor="check-pronoun">
-                        Pronunciation
-                    </label>
-                </div>
-            </div>
-
-            {/* <!-- Meaning --> */}
-            <div className="row column">
-                {/* Meaning checkbox (use Checkbox()) */}
-                <div className="item">
-                    <input type="checkbox" name="check-meaning"/>
-
-                    <label htmlFor="check-meaning" >
-                        Meaning
-                    </label>
-                </div>
-
-                {/* Meaning slider */}
-                <MeaningSlider/>
-            </div>
-        </div>
-    )
-}
-
-function MeaningSlider() {
-    return (
-        <div className="item">
-            <div className="center">
-                <label htmlFor="slide-meaning" className="small-text">Loose match</label>
-
-                <input type="range" name="slide-meaning" min="1" max="3" list="similarity"/>
-
-                <datalist>
-                    <option value="1" label="Loose match"></option>
-                    <option value="2"></option>
-                    <option value="3" label="Close match"></option>
-                </datalist>
-
-                <label htmlFor="slide-meaning" className="small-text">Close match</label>
-            </div>
+            <FilterSimilar/>
         </div>
     )
 }
@@ -69,7 +14,7 @@ function FilterMatching(props) {
     // Need to map Origin, Syllables, and Length using Checkbox()
     return (
         <div className="item column">
-            <h3>And matching...</h3>
+            <h3>With matching...</h3>
             
             {/* <!-- Origin --> */}
             <div className="item long">
@@ -141,4 +86,59 @@ function FirstLettersCheckBox(props) {
             </label>
         </div>
     )   
+}
+
+// Filter htmlFor similar... (break down further into Pronunciation and Meaning)
+function FilterSimilar(props) {
+    return (
+        <div className="item">
+            <h3>And similar...</h3>
+
+            {/* <!-- Pronunciation checkbox (use Checkbox()) --> */}
+            <div className="row">
+                <div className="item">
+                    <input type="checkbox" name="check-pronoun"/>
+
+                    <label htmlFor="check-pronoun">
+                        Pronunciation
+                    </label>
+                </div>
+            </div>
+
+            {/* <!-- Meaning --> */}
+            <div className="row column">
+                {/* Meaning checkbox (use Checkbox()) */}
+                <div className="item">
+                    <input type="checkbox" name="check-meaning"/>
+
+                    <label htmlFor="check-meaning" >
+                        Meaning
+                    </label>
+                </div>
+
+                {/* Meaning slider */}
+                <MeaningSlider/>
+            </div>
+        </div>
+    )
+}
+
+function MeaningSlider() {
+    return (
+        <div className="item">
+            <div className="center">
+                <label htmlFor="slide-meaning" className="small-text">Loose match</label>
+
+                <input type="range" name="slide-meaning" min="1" max="3" list="similarity"/>
+
+                <datalist>
+                    <option value="1" label="Loose match"></option>
+                    <option value="2"></option>
+                    <option value="3" label="Close match"></option>
+                </datalist>
+
+                <label htmlFor="slide-meaning" className="small-text">Close match</label>
+            </div>
+        </div>
+    )
 }
