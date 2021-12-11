@@ -42,7 +42,6 @@ function App(props) {
             const userDataValue = snapshot.val();
             if(userDataValue === null) {return null}
             const keysArray = Object.keys(userDataValue)
-            console.log(keysArray)
             const array2 = keysArray.map((favkey) => {
                 const nameCopy = {...userDataValue[favkey], firebaseKey: favkey};
                 return nameCopy;
@@ -56,8 +55,6 @@ function App(props) {
         }
         return cleanup
     }, []);
-
-    //console.log(nameDataArray)
 
     //const updateFavData = bookmarkArray.map(obj => ({...obj, isDelete:false}))
     const modifyDelete = (name) => { //handle delete
@@ -97,10 +94,9 @@ function App(props) {
         }
 
         const bookRef = ref(db, "userData")
-        firebasePush(bookRef, newFavObj)
-        //const newbookmarkArray = [...bookmarkArray, newFavObj];
-        //setbookmarkArray(newbookmarkArray);
-
+        if (bookmarkArray.filter(e => e.name === newFavObj.name).length === 0) {
+            firebasePush(bookRef, newFavObj)
+        }
     }
 
 
