@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './index.css';
-// import { NameSearchFilter } from './components/NameSearchForm/NameSearchFilter.js';
-// import { NameSearchResults } from './components/NameSearchForm/NameSearchResults.js';
 import { NameSearchForm } from './components/NameSearchForm/NameSearchForm';
 import { LargeNameCard } from './components/LargeNameCard';
 import { HeaderBar } from './components/HeaderBar';
@@ -26,19 +24,32 @@ function App(props) {
     const db = getDatabase();
 
     useEffect(() => {
-        const dataref = ref(db, "0/nameData");
-        const offFucntion = onValue(dataref, (snapshot) => {
-            const newValue = snapshot.val();
-            const keysArray = Object.keys(newValue)
-            const array = keysArray.map((key) => {
-                const nameCopy = {...newValue[key], firebaseKey: key};
+        const dataref = ref(db, "nameData");
+        const offFucntion1 = onValue(dataref, (snapshot) => {
+            const allDataValue = snapshot.val();
+            const keysArray = Object.keys(allDataValue)
+            const array1 = keysArray.map((datakey) => {
+                const nameCopy = {...allDataValue[datakey], firebaseKey: datakey};
                 return nameCopy;
             })
-            setNameData(newValue);
+            setNameData(array1);
+        })
+
+        const bookmarkref = ref(db, "userData");
+        const offFucntion2 = onValue(bookmarkref, (snapshot) => {
+            const userDataValue = snapshot.val();
+            if(userDataValue === null) {return null}
+            const keysArray = Object.keys(userDataValue)
+            const array2 = keysArray.map((favkey) => {
+                const nameCopy = {...userDataValue[favkey], firebaseKey: favkey};
+                return nameCopy;
+            })
+            setbookmarkArray(array2);
         })
 
         function cleanup() {
-            offFucntion();
+            offFucntion1();
+            offFucntion2();
         }
         return cleanup
     }, []);
@@ -60,10 +71,10 @@ function App(props) {
     const AddtoFav = (name, gender, origin) => {
         let img = "";
         let text = "";
-        if (gender == "Female") {
+        if (gender === "Female") {
             img = "/img/yellow.jpg";
             text = "img for female"
-        } else if (gender == "Male") {
+        } else if (gender === "Male") {
             img = "/img/pink.jpg";
             text = "img for male"
         } else {

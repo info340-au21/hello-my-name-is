@@ -21,7 +21,7 @@ function Gender(props) {
     let checkId = "check-" + genderLabel;
 
     return (
-        <div className={"in-line " + colorClass}>
+        <div className={"in-line text-" + colorClass}>
             <input type="checkbox" id={checkId} name={genderStr} onClick={props.callback} /*checked="true"*//>
 
             <label htmlFor={checkId} className="gender-text">

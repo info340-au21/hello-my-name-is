@@ -9,7 +9,7 @@ export function NameSearchFilter(props) {
 
             <div className="row"><GenderFilter genders={props.genders} callback={props.callback}/></div>
 
-            <DetailedFilter/>
+            <DetailedFilter results={props.results}/>
 
             <div className="row"><GetNamesButton/></div>
         </div>
