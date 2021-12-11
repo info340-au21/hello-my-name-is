@@ -2,22 +2,21 @@ import React from 'react';
 import { useParams } from 'react-router';
 import nameData from '../data/Names.json';
 import _ from 'lodash';
+import { useState } from 'react';
 
 
 export function LargeNameCard(props) {
 
-    let nameID = useParams();
-    let name =  _.find(nameData, {name: nameID});
+    // let nameID = useParams();
+    // let name =  _.find(nameData, {name: nameID});
 
-    if(!name) {return <h2>No name specified.</h2>}
+    // if(!name) {return <h2>No name specified.</h2>}
+    const [isBigger, setIsBigger] = useState(null);
 
-    // let expand = (event) => {
-    //     event.preventDefault();
-    // }
-
-
-    return (
-        <main>
+    if(isBigger != true){
+        return null;
+    } else {
+        return (
             <div className="section2">
                 <div className="container"> 
                     <div className="large-card neut">
@@ -65,6 +64,6 @@ export function LargeNameCard(props) {
                     </div>
                 </div>
             </div>
-        </main>
     )
+    }
 }

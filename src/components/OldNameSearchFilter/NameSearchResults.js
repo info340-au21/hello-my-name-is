@@ -1,3 +1,4 @@
+import { set } from '@firebase/database';
 import React, { useState } from 'react';
 
 export function NameSearchResults(props) {
@@ -13,8 +14,11 @@ function NameCards(props) {
     // get name results from filtered search
     let nameResultObjArr = props.results;
 
+    
+
     // for each name result object, create a name card
     let nameCardElemArr = nameResultObjArr.map((nameResultObj) => {
+
         return (
             <NameCard
                 name={nameResultObj.name}
@@ -28,7 +32,7 @@ function NameCards(props) {
 
 
     return (
-        <div className="container card-container row">
+        <div className="container card-container row justify-content-center">
             { nameCardElemArr }
         </div>
     )
@@ -193,25 +197,117 @@ function NameCard(props) {
        heartIcon = "favorite";
    }
 
-    return (
-        // Hard-coded gender
-        <div className="card outer neut">
-            <h3 className="name">
-                <div className="card-container">
-                    <div></div>
-                    <div>
-                        {nameStr}
-                        {/* Hard-coded gender */}
-                        <i className="fa fa-genderless" aria-label={genderStr}></i>
-                    </div>
-                    {/* Hard-coded liked state */}
-                    <button type="button" className="btn btn-heart" onClick={handleClick}><span className="material-icons"  style={{color:heartColor}} aria-label="sorting">{heartIcon}</span></button>
-                </div>
-            </h3>
+   function expand(event) {
+        //console.log(event.target)
+        const card = event.target
+        card.classList.toggle('name-expanded');
 
-            <div className="inner card">
-                <p className="meaning">{meaningStr}</p>
+        // If card is not expanded after toggle, add 'unexpanded' class
+        if (!card.classList.contains('name-expanded')) card.classList.toggle('name-unexpanded');
+        // Else if card is expanded after toggle and still contains 'unexpanded' class, remove 'unexpanded'
+        else if (card.classList.contains('name-expanded') && card.classList.contains('name-unexpanded')) card.classList.toggle('name-unexpanded');
+    }
+
+    return (
+        <div className="card outer neut" onClick={expand}>
+            <div>
+                <h3 className="name">
+                    <div className="card-container">
+                        <div></div>
+                        <div>
+                            {nameStr + "  "}
+                            {/* Hard-coded gender */}
+                            <i className="fa fa-genderless" aria-label={genderStr}></i>
+                        </div>
+                        {/* Hard-coded liked state */}
+                        <button type="button" className="btn btn-heart" onClick={handleClick}><span className="material-icons"  style={{color:heartColor}} aria-label="sorting">{heartIcon}</span></button>
+                    </div>
+                </h3>
+
+                <div className="inner card">
+                    <p className="meaning">{meaningStr}</p>
+                </div>
+            </div>
+            <div className="collapsable">
+                <div className="row justify-content-center">
+                    <div className="card attribute col-sm-6 col-lg-6">
+                        <h4>Meaning</h4>
+                        <p className="meaning">{props.meaning}</p>
+                    </div>
+                    <div className="card attribute col-sm-6 col-lg-6">
+                        <h4>Origin</h4>
+                        <p className="meaning">{props.origin}</p>
+                    </div>
+                    <div className="card attribute col-sm-6 col-lg-6">
+                        <h4>Pronunciation</h4>
+                        <p className="meaning">{props.pronunciation}</p>
+                    </div>
+                    <div className="card attribute col-sm-6 col-lg-6">
+                        <h4>Gender</h4>
+                        <p className="meaning">{props.gender}</p>
+                    </div>
+                    <div className="card attribute col-sm-6 col-lg-6">
+                        <h4>Length</h4>
+                        <p className="meaning">{props.name.length}</p>
+                    </div>
+                    <div className="card attribute col-sm-6 col-lg-6">
+                        <h4>First Letter</h4>
+                        <p className="meaning">{props.name.substring(0, 1)}</p>
+                    </div>
+                </div>
             </div>
         </div>
+
+    //delete when expand is done
+    //     <div className="col-lg-6">
+    //             <div className="nameCard" onClick={expand}>
+    //                 <div>
+    //                     <div className="card outer neut">
+    //                         <h3 className="name">
+    //                             <div className="card-container">
+    //                                 <div></div>
+    //                                 <div>
+    //                                     {nameStr + "  "}
+    //                                     <i className="fa fa-genderless" aria-label={genderStr}></i>
+    //                                 </div>
+    //                                 <button type="button" className="btn btn-heart" onClick={handleClick}><span className="material-icons"  style={{color:heartColor}} aria-label="sorting">{heartIcon}</span></button>
+    //                             </div>
+    //                         </h3>
+
+    //                         <div className="inner card">
+    //                             <p className="meaning">{meaningStr}</p>
+    //                         </div>
+    //                     </div>
+    //                 </div>
+    //                     <div className="collaspable">
+                                // <div className="row justify-content-center">
+                                //         <div className="card attribute col-lg-6">
+                                //             <h4>Meaning</h4>
+                                //             <p className="meaning">{props.meaning}</p>
+                                //         </div>
+                                //         <div className="card attribute col-sm-2 col-lg-6">
+                                //             <h4>Origin</h4>
+                                //             <p className="meaning">{props.origin}</p>
+                                //         </div>
+                                //         <div className="card attribute col-sm-2 col-lg-6">
+                                //             <h4>Pronunciation</h4>
+                                //             <p className="meaning">{props.pronunciation}</p>
+                                //         </div>
+                                //         <div className="card attribute col-sm-2 col-lg-6">
+                                //             <h4>Gender</h4>
+                                //             <p className="meaning">{props.gender}</p>
+                                //         </div>
+                                //         <div className="card attribute col-sm-2 col-lg-6">
+                                //             <h4>Length</h4>
+                                //             <p className="meaning">{props.name.length}</p>
+                                //         </div>
+                                //         <div className="card attribute col-sm-2 col-lg-6">
+                                //             <h4>First Letter</h4>
+                                //             <p className="meaning">{props.name}</p>
+                                //         </div>
+                                // </div>
+    //                     </div>
+    //         </div>
+    // </div>
     )
 }

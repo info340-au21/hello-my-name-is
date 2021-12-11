@@ -9,8 +9,8 @@ export function GenerateHead() {
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
             <title>Hello My Name Is</title>
             <link rel="icon" type="image/png" href="img/yellow.jpg" sizes="16x16" />
-        
-        
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"/>
+
             <script src="https://unpkg.com/react/umd/react.production.min.js" crossorigin></script>
 
             <script
@@ -22,7 +22,7 @@ export function GenerateHead() {
             crossorigin></script>
 
             <script>var Alert = ReactBootstrap.Alert;</script>
-                    
+
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
             

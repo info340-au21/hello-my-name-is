@@ -5,7 +5,7 @@ import { NameSearchResults } from './components/OldNameSearchFilter/NameSearchRe
 import { LargeNameCard } from './components/LargeNameCard';
 import { HeaderBar } from './components/HeaderBar';
 import { NavIcon } from './components/NavBar';
-import { Footer } from './components/Footer';
+import { Footer } from './components/Footer'
 import { SubmitForm } from './components/SubmitForm.js';
 import { Route, Switch, Redirect, Link } from 'react-router-dom';
 import { GenerateBookmark } from './components/GenerateBookmark';
@@ -82,6 +82,7 @@ function App(props) {
         <div>
             <NavIcon />
             <HeaderBar />
+
             <main>
                 <Switch>
                     <Route exact path='/'>
@@ -90,10 +91,10 @@ function App(props) {
                         {/* Should rename results prop to nameObjArr */}
                         <NameSearchResults results={nameData} /*addtoFav={addtoFav}*//>
                     </Route>
-                    <Route path="/LargeNameCard/:name">
+                    {/* <Route path="/LargeNameCard/:name">
                         <LargeNameCard />
                         <div><Link to="/" className="btn btn-primary mb-3">Back</Link></div>
-                    </Route>
+                    </Route> */}
                     <Route path='/bookmark'>
                         <GenerateBookmark fav={bookmarkArray} handleUpdate={modifyDelete}/>
                     </Route>
@@ -108,6 +109,7 @@ function App(props) {
             <Footer/>
             {/* <Footer /> */}
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossOrigin="anonymous"></script>
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         </div>
     );
 
