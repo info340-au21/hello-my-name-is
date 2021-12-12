@@ -100,11 +100,11 @@ function App(props) {
     // console.log(bookmarkArray)
     // FILTER/SEARCH STATES AND EVENT HANDLING
     // Gender filter
-    // const [genderFilterObjArr, setGenderFilterObjArr] = useState({
-    //     neutral: false,
-    //     feminine: false,
-    //     masculine: false
-    // });
+    const [genderFilterObjArr, setGenderFilterObjArr] = useState({
+        neutral: false,
+        feminine: false,
+        masculine: false
+    });
     
     // const handleGenderCheck = (event) => {
     //     // get gender

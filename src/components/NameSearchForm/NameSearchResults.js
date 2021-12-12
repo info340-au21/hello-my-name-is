@@ -227,7 +227,8 @@ function NameCard(props) {
                         <div></div>
                         <div>
                             {nameStr + "  "}
-                            <i className={"fa " + symbolClass} aria-label={genderLabel}></i>
+                            {/* Hard-coded gender */}
+                            <i className={"fa " + symbolClass} aria-label={props.gender}></i>
                         </div>
                         <button type="button" className="btn btn-heart" onClick={handleClick}><span className="material-icons"  style={{color:heartColor}} aria-label="sorting">{heartIcon}</span></button>
                     </div>
