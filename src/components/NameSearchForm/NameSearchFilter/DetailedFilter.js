@@ -56,7 +56,7 @@ function FilterMatching(props) {
 
                 <label htmlFor="check-ln">
                     Length 
-                    <span className="small-text">   ({searchedNameObj.name.length} letters)</span>
+                    <span className="small-text">   ({searchedNameObj ? searchedNameObj.name.length : ""} letters)</span>
                 </label>
             </div>
 

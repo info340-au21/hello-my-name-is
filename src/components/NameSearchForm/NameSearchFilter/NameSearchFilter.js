@@ -9,7 +9,7 @@ export function NameSearchFilter(props) {
     }
 
     // Get associated name object from nameData based on the name typed in the search bar
-    // console.log("Current searched name: " + searchedNameStr); // testing
+    console.log("Current searched name: " + searchedNameStr); // testing
     let searchedNameObj = props.nameDataObjArr.find(nameDataObj => nameDataObj.name === searchedNameStr);
 
     return (
