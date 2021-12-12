@@ -1,9 +1,20 @@
-// import filter option array
+// import firebase from 'firebase/compat/app';
+// import 'firebase/auth';
+// import database from '@react-native-firebase/database';
+
+// import firebase from 'firebase/compat/app';
+// import 'firebase/database';
 
 export function DetailedFilter(props) {
+    // let searchedNameStr = props.searchedNameStr;
+
     return (
         <div className="row">
-            <FilterMatching/>
+            <FilterMatching
+                // searchedNameStr={searchedNameStr}
+                searchedNameObj={props.searchedNameObj}
+                nameDataObjArr={props.nameDataObjArr}
+            />
             <FilterSimilar/>
         </div>
     )
@@ -11,6 +22,8 @@ export function DetailedFilter(props) {
 
 // Filter htmlFor matching... (break down further into Origin, Syllables, Length, and FirstLetters)
 function FilterMatching(props) {
+    // console.log(props.searchedNameObj); // testing
+
     // Need to map Origin, Syllables, and Length using Checkbox()
     return (
         <div className="item column">

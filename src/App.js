@@ -8,7 +8,7 @@ import { Footer } from './components/Footer'
 import { SubmitForm } from './components/SubmitForm.js';
 import { Route, Switch, Redirect, Link } from 'react-router-dom';
 import { GenerateBookmark } from './components/GenerateBookmark';
-import { getDatabase, ref, set, push as firebasePush, onValue } from 'firebase/database';
+import { getDatabase, ref, set, push as firebasePush, onValue, get, child } from 'firebase/database';
 
 // Data
 import nameData from './data/Names.json';
@@ -97,7 +97,7 @@ function App(props) {
         }
     }
 
-    console.log(bookmarkArray)
+    // console.log(bookmarkArray)
     // FILTER/SEARCH STATES AND EVENT HANDLING
     // Gender filter
     // const [genderFilterObjArr, setGenderFilterObjArr] = useState({
@@ -156,7 +156,7 @@ function App(props) {
                             genders={genderData}
                             // callback={handleGenderCheck}
                             /*genderFilter={genderFilterObjArr}*/ results={nameData}
-                            allData={nameDataArray}
+                            nameDataObjArr={nameDataArray}
                             booked={bookmarkArray}
                             handleBook={AddtoFav}
                         />
@@ -184,7 +184,7 @@ function App(props) {
     );
 
     function updateDatabase(nameInfo) {
-        console.log(nameInfo);
+        // console.log(nameInfo);
         const form = document.querySelector("form");
         form.reset();
     }
