@@ -472,17 +472,17 @@ th {
     min-height: inherit;
 } */
 
-.nameCard {
+/* .nameCard {
     width: 100%;
-}
+} */
+
 
 .card.outer:hover {
     cursor: pointer;
 }
 
-
 .card.outer.name-expanded {
-    height: 750px;
+    height: 780px;
     animation: expand 0.5s ease;
 }
 
@@ -494,10 +494,8 @@ th {
 .name-unexpanded > .collapsable, .name-expanded > .collapsable {
     width: 100%;
     text-align: center;
-    padding-top: inherit;
     height: 66px;
-    position: absolute;
-    top: 50px;
+    position: relative;
 
     display: flex;
     flex-wrap: nowrap;
@@ -511,11 +509,12 @@ th {
 .name-unexpanded > .collapsable {
     opacity: 0;
     display: none;
-    animation: unreveal 0.2s ease;
+    animation: unreveal 0.5s ease;
 }
 
 .name-expanded > .collapsable {
     opacity: 1;
+    display: block;
     animation: reveal 0.7s ease;
 }
 
@@ -556,12 +555,12 @@ th {
         height: 180px;
     }
     100% {
-        height: 750px;
+        height: 780px;
     }
 }
 @keyframes unexpand {
     0% {
-        height: 750px;
+        height: 780px;
     }
     100% {
         height: 180px;

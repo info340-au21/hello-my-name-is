@@ -228,7 +228,7 @@ function NameCard(props) {
     }
 
     return (
-        <div className="card outer neut" onClick={expand}>
+        <div className={"card outer " + colorClass} onClick={expand}>
             <div>
                 <h3 className="name">
                     <div className="card-container">
@@ -236,7 +236,7 @@ function NameCard(props) {
                         <div>
                             {nameStr + "  "}
                             {/* Hard-coded gender */}
-                            <i className="fa fa-genderless" aria-label={genderStr}></i>
+                            <i className={"fa " + symbolClass} aria-label={props.gender}></i>
                         </div>
                         {/* Hard-coded liked state */}
                         <button type="button" className="btn btn-heart" onClick={handleClick}><span className="material-icons"  style={{color:heartColor}} aria-label="sorting">{heartIcon}</span></button>

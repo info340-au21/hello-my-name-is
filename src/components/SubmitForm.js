@@ -38,6 +38,13 @@ export function SubmitForm(props) {
         setNameInfo(currentInfo)
     }
 
+    function handlePronunciation(event) {
+        event.preventDefault();
+        const val = {pronunciation: event.target.value};
+        const currentInfo = Object.assign(nameInfo, val);
+        setNameInfo(currentInfo)
+    }
+
     function handleOrigin(event) {
         event.preventDefault();
         const val = {origin: event.target.value};
@@ -61,7 +68,7 @@ export function SubmitForm(props) {
 
     function submitCallback(event) {
         event.preventDefault();
-        const nameRef = ref(db, "names");
+        const nameRef = ref(db, "nameData");
         firebasePush(nameRef, nameInfo)
         props.applyUpdate(nameInfo);
     }
@@ -73,6 +80,11 @@ export function SubmitForm(props) {
                 <div className="form-attribute">
                     <label htmlFor="name">What name would you like to submit to the data base? </label>
                     <input id="name" onBlur={handleName} type = "text" placeholder="Enter a name" className="search" />
+                </div>
+
+                <div className="form-attribute">
+                    <label htmlFor="pronunciation">How do you pronounce this name?</label>
+                    <input id="pronunciation" onBlur={handlePronunciation} type="text" placeholder="eg. nah-loo" className="search"></input>
                 </div>
 
                 <div className="form-attribute">
