@@ -3,35 +3,36 @@ import { GenderFilter } from './GenderFilter';
 import { DetailedFilter } from './DetailedFilter';
 
 export function NameSearchFilter(props) {
+    let {searchedNameObj, nameDataObjArr, genders, callback, filterObj, setFilterObj} = props;
     // SearchBar
-    const [searchedNameObj, setSearchedNameObj] = useState(undefined);
-    const handleSearch = (event) => {
-        let searchedNameStr = event.target.value;
+    // const [searchedNameObj, setSearchedNameObj] = useState(undefined);
+    // const handleSearch = (event) => {
+    //     let searchedNameStr = event.target.value;
 
-        setSearchedNameObj(props.nameDataObjArr.find(nameDataObj => nameDataObj.name === searchedNameStr));
-    }
+    //     setSearchedNameObj(props.nameDataObjArr.find(nameDataObj => nameDataObj.name === searchedNameStr));
+    // }
     // console.log(searchedNameObj); // testing
 
     return (
         <div className="section container column">
             {/* First get name */}
-            <div className="row">
+            {/* <div className="row">
                 <SearchBar callback={handleSearch}/>
-            </div>
+            </div> */}
 
             {/* Then filter names based on given name */}
             <DetailedFilter
-                results={props.results}
+                // results={props.results}
                 // searchedNameStr={searchedNameStr}
                 searchedNameObj={searchedNameObj}
-                nameDataObjArr={props.nameDataObjArr}
+                nameDataObjArr={nameDataObjArr}
             />
 
             {/* Then filter by gender */}
             <div className="row">
                 <GenderFilter
-                    genders={props.genders}
-                    callback={props.callback}
+                    genders={genders}
+                    callback={callback}
                 />
             </div>
 

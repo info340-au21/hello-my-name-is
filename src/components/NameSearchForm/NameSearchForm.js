@@ -3,18 +3,33 @@ import { NameSearchFilter } from './NameSearchFilter/NameSearchFilter';
 import { NameSearchResults } from './NameSearchResults';
 
 export function NameSearchForm(props) {
-    // Filters
+    // Search
     const [searchedNameObj, setSearchedNameObj] = useState({
-        name: null,
-        origin: "English",
-        length: 6,
+        name: "",
+        pronunciation: null,
+        gender: null,
+        meaning: null,
+        origin: null
+    });
+    const handleSearch = (event) => {
+        let searchedNameStr = event.target.value;
+        let matchingNameObj = props.allNameObjArr.find(dbNameObj => dbNameObj.name === searchedNameStr);
+
+        setSearchedNameObj(matchingNameObj);
+    }
+    // console.log(searchedNameObj); // testing
+
+    // Filter
+    const [filterObj, setFilterObj] = useState({
+        origin: null,
+        length: null,
         firstNumLetters: null,
         pronunciation: null,
         meaning: null,
         gender: null
-    });
+    })
 
-    // Result names
+    // Results
     const [resultNameObjArr, setResultNameObjArr] = useState(props.allNameObjArr);
 
     // When "Get names" is clicked, apply filters to a copy of name dataset
@@ -24,36 +39,20 @@ export function NameSearchForm(props) {
 
         // Filter matching
         function filterMatchingFn(filterParam, filterFn) {
-            if (searchedNameObj[filterParam] !== null) {
+            if (filterObj[filterParam] !== null) {
                 filteredNameObjArr = filteredNameObjArr.filter(filterFn)
             }
         }
         // By origin
         filterMatchingFn('origin', (dbNameObj) =>  dbNameObj.origin === searchedNameObj.origin);
-        // if (searchedNameObj.origin !== null) {
-        //     filteredNameObjArr = filteredNameObjArr.filter((dbNameObj) => {
-        //         return dbNameObj.origin === searchedNameObj.origin;
-        //     })
-        // }
+
         // By name length
-        filterMatchingFn('length', (dbNameObj) => dbNameObj.name.length === searchedNameObj.length);
-        // if (searchedNameObj.length !== null) {
-        //     filteredNameObjArr = filteredNameObjArr.filter((dbNameObj) => {
-        //         return dbNameObj.name.length === searchedNameObj.length;
-        //     })
-        // }
+        filterMatchingFn('length', (dbNameObj) => dbNameObj.name.length === searchedNameObj.name.length);
+
         // By first # letters
-        filterMatchingFn('firstNumLetters', (dbNameObj) => dbNameObj.name.substring(0, searchedNameObj.firstNumLetters) === searchedNameObj.name.substring(0, searchedNameObj.firstNumLetters));
-        // if (searchedNameObj.firstNumLetters !== null) {
-        //     let firstNumLetters = searchedNameObj.firstNumLetters;
-
-        //     filteredNameObjArr = filteredNameObjArr.filter((dbNameObj) => {
-        //         return dbNameObj.name.substring(0, firstNumLetters) === searchedNameObj.name.substring(0, firstNumLetters);
-        //     })
-        // }
-
-        // console.log(filteredNameObjArr); // testing
-        // console.log("clicked"); // testing
+        // let firstNumLetters = searchedNameObj.firstNumLetters;
+        // let searchedNameFirstLetters = searchedNameObj.name.substring(0, firstNumLetters);
+        // filterMatchingFn('firstNumLetters', (dbNameObj) => dbNameObj.name.substring(0, firstNumLetters) === searchedNameFirstLetters);
 
         // Filter similar
 
@@ -65,10 +64,17 @@ export function NameSearchForm(props) {
 
     return (
         <div>
+            <div className="row">
+                <SearchBar callback={handleSearch}/>
+            </div>
+
             <NameSearchFilter
                 genders={props.genders}
                 callback={props.callback}
                 nameDataObjArr={props.nameDataObjArr}
+                searchedNameObj={searchedNameObj}
+                filterObj={filterObj}
+                setFilterObj={setFilterObj}
             />
 
             {/* Then trigger update results */}
@@ -83,6 +89,22 @@ export function NameSearchForm(props) {
                 handleBook={props.handleBook}
             />
         </div>
+    )
+}
+
+// Search
+function SearchBar(props) {
+    return (
+        <h2 className="item center">
+            Names like...
+            {/* Hard-coded placeholder (should be user input) */}
+            <input
+                type="text"
+                placeholder="ENTER NAME"
+                className="search"
+                onChange={props.callback}
+            />
+        </h2>
     )
 }
 

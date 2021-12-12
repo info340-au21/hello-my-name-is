@@ -5,7 +5,7 @@ import genderData from './../../data/Genders.json';
 export function NameSearchResults(props) {
     return (
         <div className="section container column">
-            <h2 className="row">Your 50 matches:</h2>
+            <h2 className="row">Your # matches:</h2>
             <NameCards
                 results={props.results}
                 booked={props.booked}
