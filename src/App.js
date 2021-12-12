@@ -11,13 +11,14 @@ import { GenerateBookmark } from './components/GenerateBookmark';
 import { getDatabase, ref, set as firebaseSet, push as firebasePush, onValue, get, child } from 'firebase/database';
 
 // Data
-import nameData from './data/Names.json';
+import testNameData from './data/Names.json';
 import genderData from './data/Genders.json';
 // const nameCard = {name:'Nalu', meaning:"Surging surf, wave", pronunciation:'nah-loo', gender:'neutral', genderIcon:'fa fa-genderless', origin:'Hawaiian'}
 
 function App(props) {
     const [bookmarkArray, setbookmarkArray] = useState([]) //store the array of names to be generated for Bookmark page
     const [nameDataArray, setNameData] = useState([])
+    // console.log(nameDataArray); // testing
 
     const db = getDatabase();
 
@@ -79,10 +80,10 @@ function App(props) {
         if (origin === undefined) {
             origin = newOrigin;
         }
-        if (gender == "Feminine") {
+        if (gender === "Feminine") {
             img = "/img/yellow.jpg";
             text = "img for female"
-        } else if (gender == "Masculine") {
+        } else if (gender === "Masculine") {
             img = "/img/pink.jpg";
             text = "img for male"
         } else {
@@ -103,13 +104,6 @@ function App(props) {
     }
 
     // console.log(bookmarkArray)
-    // FILTER/SEARCH STATES AND EVENT HANDLING
-    // Gender filter
-    const [genderFilterObjArr, setGenderFilterObjArr] = useState({
-        neutral: false,
-        feminine: false,
-        masculine: false
-    });
     
     // const handleGenderCheck = (event) => {
     //     // get gender
@@ -159,8 +153,8 @@ function App(props) {
                     <Route exact path='/'>
                         <NameSearchForm
                             genders={genderData}
-                            // callback={handleGenderCheck}
-                            /*genderFilter={genderFilterObjArr}*/ results={nameData}
+                            allNameObjArr={testNameData}
+                            // allNameObjArr={nameDataArray}
                             nameDataObjArr={nameDataArray}
                             booked={bookmarkArray}
                             handleBook={AddtoFav}

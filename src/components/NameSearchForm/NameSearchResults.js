@@ -6,7 +6,11 @@ export function NameSearchResults(props) {
     return (
         <div className="section container column">
             <h2 className="row">Your 50 matches:</h2>
-            <NameCards results={props.results} allData={props.allData} booked={props.booked} handleBook={props.handleBook}/>
+            <NameCards
+                results={props.results}
+                booked={props.booked}
+                handleBook={props.handleBook}
+            />
         </div>
     )
 }
@@ -28,7 +32,7 @@ function NameCards(props) {
                 origin={nameResultObj.origin}
                 isLiked={nameResultObj.liked}
                 key={nameResultObj.name}
-                allData={props.allData}
+                // allData={props.allData}
                 booked={props.booked}
                 handleBook={props.handleBook}
              />

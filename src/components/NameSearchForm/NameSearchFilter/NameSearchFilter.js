@@ -12,22 +12,6 @@ export function NameSearchFilter(props) {
     }
     // console.log(searchedNameObj); // testing
 
-    // Gather filters
-    const [filterArr, setFilterArr] = useState({
-        match: {
-            origin: null,
-            length: null,
-            firstNumLetters: null
-        },
-        similar: {
-            pronunciation: null,
-            meaning: null
-        },
-        gender: null
-    });
-
-
-
     return (
         <div className="section container column">
             {/* First get name */}

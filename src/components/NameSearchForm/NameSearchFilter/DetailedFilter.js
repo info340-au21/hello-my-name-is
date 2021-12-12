@@ -1,3 +1,6 @@
+import { set } from "@firebase/database";
+import { useState } from "react";
+
 export function DetailedFilter(props) {
     // let searchedNameStr = props.searchedNameStr;
 
@@ -17,6 +20,12 @@ export function DetailedFilter(props) {
 function FilterMatching(props) {
     // console.log(props.searchedNameObj); // testing
     let searchedNameObj = props.searchedNameObj;
+
+    const [firstNumLetters, setFirstNumLetters] = useState(0);
+    const handleChangeFirstNumLetters = (event) => {
+        console.log(event.target.value);
+        setFirstNumLetters(event.target.value);
+    }
 
     // Need to map Origin, Syllables, and Length using Checkbox()
     return (
@@ -54,45 +63,26 @@ function FilterMatching(props) {
             </div>
 
             {/* <!-- First letters (special checkbox) --> */}
-            <FirstLettersCheckBox/>
+            {/* <FirstLettersCheckBox/> */}
+            <div className="item long">
+                {/* hard-coded checked */}
+                <input type="checkbox" name="check-first"/>
+
+                <label htmlFor="check-first">
+                    First
+                    <input
+                        type="number"
+                        placeholder="#"
+                        onChange={handleChangeFirstNumLetters}
+                    />
+                    letters
+                    <span className="small-text">
+                           ("{searchedNameObj ? searchedNameObj.name.substring(0, firstNumLetters) : ""}")
+                    </span>
+                </label>
+            </div>
         </div>
     )
-}
-
-
-function Checkbox(props) {
-    var {filterStr, isChecked, smallTextStr} = props;
-
-    return (
-        <div className="item">
-            {/* is checked hard-coded */}
-            <input type="checkbox" name="check-pronoun"/>
-
-            <label htmlFor="check-pronoun">
-                {filterStr}
-                <span className="small-text">{smallTextStr}</span>
-            </label>
-        </div>
-    )
-}
-
-
-function FirstLettersCheckBox(props) {
-    var {isChecked, smallTextStr} = props;
-
-    return (
-        <div className="item long">
-            {/* hard-coded checked */}
-            <input type="checkbox" name="check-first"/>
-
-            <label htmlFor="check-first">
-                First
-                <input type="number" placeholder="#"/>
-                letters
-                <span className="small-text">{smallTextStr}</span>
-            </label>
-        </div>
-    )   
 }
 
 // Filter htmlFor similar... (break down further into Pronunciation and Meaning)
