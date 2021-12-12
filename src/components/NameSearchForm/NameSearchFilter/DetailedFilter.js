@@ -23,6 +23,7 @@ export function DetailedFilter(props) {
 // Filter htmlFor matching... (break down further into Origin, Syllables, Length, and FirstLetters)
 function FilterMatching(props) {
     // console.log(props.searchedNameObj); // testing
+    let searchedNameObj = props.searchedNameObj;
 
     // Need to map Origin, Syllables, and Length using Checkbox()
     return (
@@ -35,19 +36,19 @@ function FilterMatching(props) {
 
                 <label htmlFor="check-origin">
                     Origin 
-                    <span className="small-text">(Hawaiian)</span>
+                    <span className="small-text">   ({searchedNameObj ? searchedNameObj.origin : ""})</span>
                 </label>
             </div>
 
-            {/* <!-- Syllables --> */}
-            <div className="item long">
+            {/* <!-- Syllables (hidden for now b/c don't have property for this in db currently) --> */}
+            {/* <div className="item long">
                 <input type="checkbox" name="check-syl"/>
 
                 <label htmlFor="check-syl">
                     Number of syllables 
-                    <span className="small-text">(2)</span>
+                    <span className="small-text">   (2)</span>
                 </label>
-            </div>
+            </div> */}
 
             {/* <!-- Length --> */}
             <div className="item long">
@@ -55,7 +56,7 @@ function FilterMatching(props) {
 
                 <label htmlFor="check-ln">
                     Length 
-                    <span className="small-text">(4 letters)</span>
+                    <span className="small-text">   ({searchedNameObj.name.length} letters)</span>
                 </label>
             </div>
 
@@ -93,7 +94,7 @@ function FirstLettersCheckBox(props) {
 
             <label htmlFor="check-first">
                 First
-                <input type="number" placeholder="3"/>
+                <input type="number" placeholder="#"/>
                 letters
                 <span className="small-text">{smallTextStr}</span>
             </label>
