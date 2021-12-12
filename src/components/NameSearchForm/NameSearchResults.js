@@ -172,26 +172,18 @@ function NameCards(props) {
 function NameCard(props) {
     const [isLiked, setIsLiked] = useState(false);
     //const [cardInfo, setcardInfo] = useState([{name:"", gender:"", origin:""}]);
-    const allData = props.allData;
+    // const allData = props.allData;
 
     let nameStr = props.name;
-    // let genderStr = props.gender; // Need to implement (involves adding/removing gender class)
     let meaningStr = props.meaning;
-    // let originStr = props.origin;
-    // let isLiked = props.liked; // Need to implement (involves adding/removing gender class)
 
     // get classes based on card gender
     let genderObj = genderData.find((genderObj) => {
-        // console.log(genderObj.genderLabel);
-        // console.log(props.gender);
-
         return genderObj.genderLabel === props.gender
     })
-    // console.log("gender:" + genderObj);
-    // let genderLabel = genderObj.genderLabel;
+    let genderLabel = genderObj.genderLabel;
     let colorClass = genderObj.colorClass;
     let symbolClass = genderObj.symbolClass;
-    // console.log(symbolClass);
  
     const handleClick = (event) => {
       setIsLiked(!isLiked);
@@ -238,7 +230,6 @@ function NameCard(props) {
                             {/* Hard-coded gender */}
                             <i className={"fa " + symbolClass} aria-label={props.gender}></i>
                         </div>
-                        {/* Hard-coded liked state */}
                         <button type="button" className="btn btn-heart" onClick={handleClick}><span className="material-icons"  style={{color:heartColor}} aria-label="sorting">{heartIcon}</span></button>
                     </div>
                 </h3>

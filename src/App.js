@@ -8,7 +8,7 @@ import { Footer } from './components/Footer'
 import { SubmitForm } from './components/SubmitForm.js';
 import { Route, Switch, Redirect, Link } from 'react-router-dom';
 import { GenerateBookmark } from './components/GenerateBookmark';
-import { getDatabase, ref, set, push as firebasePush, onValue } from 'firebase/database';
+import { getDatabase, ref, set, push as firebasePush, onValue, get, child } from 'firebase/database';
 
 // Data
 import nameData from './data/Names.json';
@@ -97,7 +97,7 @@ function App(props) {
         }
     }
 
-    console.log(bookmarkArray)
+    // console.log(bookmarkArray)
     // FILTER/SEARCH STATES AND EVENT HANDLING
     // Gender filter
     const [genderFilterObjArr, setGenderFilterObjArr] = useState({
@@ -106,19 +106,19 @@ function App(props) {
         masculine: false
     });
     
-    const handleGenderCheck = (event) => {
-        // get gender
-        let genderStr = event.target.name;
+    // const handleGenderCheck = (event) => {
+    //     // get gender
+    //     let genderStr = event.target.name;
 
-        // create new object
-        let newObj = genderFilterObjArr;
+    //     // create new object
+    //     let newObj = genderFilterObjArr;
 
-        // toggle the proper gender
-        newObj[genderStr] = !newObj[genderStr];
+    //     // toggle the proper gender
+    //     newObj[genderStr] = !newObj[genderStr];
 
-        setGenderFilterObjArr(newObj);
-        // console.log(genderFilterObjArr); // testing
-    }
+    //     setGenderFilterObjArr(newObj);
+    //     // console.log(genderFilterObjArr); // testing
+    // }
     
     /*
     const addtoFav = (name, gender, origin) => {
@@ -152,7 +152,14 @@ function App(props) {
             <main>
                 <Switch>
                     <Route exact path='/'>
-                        <NameSearchForm genders={genderData} callback={handleGenderCheck} /*genderFilter={genderFilterObjArr}*/ results={nameData} allData={nameDataArray} booked={bookmarkArray} handleBook={AddtoFav}/>
+                        <NameSearchForm
+                            genders={genderData}
+                            // callback={handleGenderCheck}
+                            /*genderFilter={genderFilterObjArr}*/ results={nameData}
+                            nameDataObjArr={nameDataArray}
+                            booked={bookmarkArray}
+                            handleBook={AddtoFav}
+                        />
                     </Route>
                     {/* <Route path="/LargeNameCard/:name">
                         <LargeNameCard />
@@ -172,12 +179,12 @@ function App(props) {
             <Footer/>
             {/* <Footer /> */}
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossOrigin="anonymous"></script>
-            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossOrigin="anonymous"></script>
         </div>
     );
 
     function updateDatabase(nameInfo) {
-        console.log(nameInfo);
+        // console.log(nameInfo);
         const form = document.querySelector("form");
         form.reset();
     }

@@ -8,8 +8,9 @@ export function NameSearchFilter(props) {
         setSearchedNameStr(event.target.value);
     }
 
-    // test name input
-    // console.log(searchedNameStr);
+    // Get associated name object from nameData based on the name typed in the search bar
+    // console.log("Current searched name: " + searchedNameStr); // testing
+    let searchedNameObj = props.nameDataObjArr.find(nameDataObj => nameDataObj.name === searchedNameStr);
 
     return (
         <div className="section container column">
@@ -19,7 +20,12 @@ export function NameSearchFilter(props) {
             </div>
 
             {/* Then filter names based on given name */}
-            <DetailedFilter results={props.results}/>
+            <DetailedFilter
+                results={props.results}
+                // searchedNameStr={searchedNameStr}
+                searchedNameObj={searchedNameObj}
+                nameDataObjArr={props.nameDataObjArr}
+            />
 
             {/* Then filter by gender */}
             <div className="row">
