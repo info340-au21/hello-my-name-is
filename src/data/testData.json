@@ -12,7 +12,7 @@
         },
         {
           "name": "Jacob",
-          "gender": "Male",
+          "gender": "Masculine",
           "meaning": "Supplanter, usurper",
           "origin": "Hebrew",
           "likedByUsers": [],
@@ -20,7 +20,7 @@
         },
         {
           "name": "Carolina",
-          "gender": "Female",
+          "gender": "Feminine",
           "meaning": "Song of happiness or joy",
           "origin": "Italian",
           "likedByUsers": [],
@@ -28,7 +28,7 @@
         },
         {
           "name": "Maynard",
-          "gender": "Male",
+          "gender": "Masculine",
           "meaning": "Strength, brave, strong",
           "origin": "English",
           "likedByUsers": [],
@@ -36,7 +36,7 @@
         },
         {
           "name": "Kevin",
-          "gender": "Male",
+          "gender": "Masculine",
           "meaning": "Handsome",
           "origin": "English",
           "likedByUsers": [],
@@ -44,7 +44,7 @@
         },
         {
           "name": "Andy",
-          "gender": "Male",
+          "gender": "Masculine",
           "meaning": "Brave",
           "origin": "English",
           "likedByUsers": [],
@@ -52,7 +52,7 @@
         },
         {
           "name": "Emma",
-          "gender": "Female",
+          "gender": "Feminine",
           "meaning": "Universal",
           "origin": "Germanic",
           "likedByUsers": [],
@@ -68,7 +68,7 @@
         },
         {
           "name": "Gracie",
-          "gender": "Female",
+          "gender": "Feminine",
           "meaning": "Favor, blessing",
           "origin": "English",
           "likedByUsers": [],
@@ -89,23 +89,6 @@
           "origin": "North American",
           "likedByUsers": [],
           "pronunciation": "DEH-vin"
-        }
-      ],
-    "userData":
-      [
-        {
-          "userName": "user1",
-          "likedNames": [
-            "Nalu",
-            "Maynard",
-            "Carolina"
-          ]
-        },
-        {
-          "userName": "user2",
-          "likedNames": [
-            "Jessie"
-          ]
         }
       ]
   }

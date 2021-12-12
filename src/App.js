@@ -80,10 +80,10 @@ function App(props) {
         if (origin === undefined) {
             origin = newOrigin;
         }
-        if (gender === "Feminine") {
+        if (gender.toLowerCase() == "feminine") {
             img = "/img/yellow.jpg";
             text = "img for female"
-        } else if (gender === "Masculine") {
+        } else if (gender.toLowerCase() == "masculine") {
             img = "/img/pink.jpg";
             text = "img for male"
         } else {
