@@ -1,10 +1,3 @@
-// import firebase from 'firebase/compat/app';
-// import 'firebase/auth';
-// import database from '@react-native-firebase/database';
-
-// import firebase from 'firebase/compat/app';
-// import 'firebase/database';
-
 export function DetailedFilter(props) {
     // let searchedNameStr = props.searchedNameStr;
 
