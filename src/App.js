@@ -3,8 +3,8 @@ import './index.css';
 import { NameSearchForm } from './components/NameSearchForm/NameSearchForm';
 import { LargeNameCard } from './components/LargeNameCard';
 import { HeaderBar } from './components/HeaderBar';
-import { NavIcon } from './components/navBar';
-import { Footer } from './components/footer'
+import { NavIcon } from './components/NavBar';
+import { Footer } from './components/Footer'
 import { SubmitForm } from './components/SubmitForm.js';
 import { Route, Switch, Redirect, Link } from 'react-router-dom';
 import { GenerateBookmark } from './components/GenerateBookmark';

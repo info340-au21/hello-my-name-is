@@ -12,6 +12,22 @@ export function NameSearchFilter(props) {
     }
     // console.log(searchedNameObj); // testing
 
+    // Gather filters
+    const [filterArr, setFilterArr] = useState({
+        match: {
+            origin: null,
+            length: null,
+            firstNumLetters: null
+        },
+        similar: {
+            pronunciation: null,
+            meaning: null
+        },
+        gender: null
+    });
+
+
+
     return (
         <div className="section container column">
             {/* First get name */}
@@ -36,9 +52,9 @@ export function NameSearchFilter(props) {
             </div>
 
             {/* Then trigger update results */}
-            <div className="row">
+            {/* <div className="row">
                 <GetNamesButton/>
-            </div>
+            </div> */}
         </div>
     )
 }
@@ -61,11 +77,11 @@ function SearchBar(props) {
 }
 
 
-// Match button
-function GetNamesButton() {
-    return (
-        <div className="item">
-            <button type="button" className="btn btn-light">Get names</button>
-        </div>
-    )
-}
+// // Match button
+// function GetNamesButton() {
+//     return (
+//         <div className="item">
+//             <button type="button" className="btn btn-light">Get names</button>
+//         </div>
+//     )
+// }
