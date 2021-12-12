@@ -185,6 +185,7 @@ function NameCard(props) {
     let colorClass = genderObj.colorClass;
     let symbolClass = genderObj.symbolClass;
  
+    console.log(props.gender)
     const handleClick = (event) => {
       setIsLiked(!isLiked);
       props.handleBook(props.name, props.gender, props.origin)

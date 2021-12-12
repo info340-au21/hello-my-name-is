@@ -3,18 +3,16 @@ import './index.css';
 import { NameSearchForm } from './components/NameSearchForm/NameSearchForm';
 import { LargeNameCard } from './components/LargeNameCard';
 import { HeaderBar } from './components/HeaderBar';
-import { NavIcon } from './components/NavBar';
-import { Footer } from './components/Footer'
+import { NavIcon } from './components/navBar';
+import { Footer } from './components/footer'
 import { SubmitForm } from './components/SubmitForm.js';
 import { Route, Switch, Redirect, Link } from 'react-router-dom';
 import { GenerateBookmark } from './components/GenerateBookmark';
-import { getDatabase, ref, set, push as firebasePush, onValue, get, child } from 'firebase/database';
+import { getDatabase, ref, set as firebaseSet, push as firebasePush, onValue, get, child } from 'firebase/database';
 
 // Data
 import nameData from './data/Names.json';
-import favData from './data/favbookmark.json';
 import genderData from './data/Genders.json';
-const updateFavData = favData.map(obj => ({...obj, isDelete:false}))
 // const nameCard = {name:'Nalu', meaning:"Surging surf, wave", pronunciation:'nah-loo', gender:'neutral', genderIcon:'fa fa-genderless', origin:'Hawaiian'}
 
 function App(props) {
@@ -55,6 +53,7 @@ function App(props) {
     }, []);
 
     //const updateFavData = bookmarkArray.map(obj => ({...obj, isDelete:false}))
+    /*
     const modifyDelete = (name) => { //handle delete
         let update = updateFavData.map((theCard) => {
             let updateCopy = {...theCard}
@@ -66,6 +65,12 @@ function App(props) {
         let whatLeftAfterDelete = update.filter((name) => !name.isDelete);
         setbookmarkArray(whatLeftAfterDelete) //generate the filtered array, enable user to delete any bookmarked names
     }
+    */
+    const modifyDelete = (name) => { //handle delete
+        let remainsOfDelete = bookmarkArray.filter((userObj) => userObj.name !== name);
+        const bookmarkref = ref(db, "userData");
+        firebaseSet(bookmarkref, remainsOfDelete)
+    }
 
     const AddtoFav = (name, gender, origin) => {
         let img = "";
@@ -74,10 +79,10 @@ function App(props) {
         if (origin === undefined) {
             origin = newOrigin;
         }
-        if (gender == "Female") {
+        if (gender == "Feminine") {
             img = "/img/yellow.jpg";
             text = "img for female"
-        } else if (gender == "Male") {
+        } else if (gender == "Masculine") {
             img = "/img/pink.jpg";
             text = "img for male"
         } else {
