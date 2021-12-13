@@ -49,6 +49,11 @@ export function NameSearchForm(props) {
         // By name length
         filterMatchingFn('length', (dbNameObj) => dbNameObj.name.length === searchedNameObj.name.length);
 
+        // By first # letters
+        let firstNumLetters = filterObj.firstNumLetters;
+        let searchedNameFirstLetters = searchedNameObj.name.substring(0, firstNumLetters);
+        filterMatchingFn('firstNumLetters', (dbNameObj) => dbNameObj.name.substring(0, firstNumLetters) === searchedNameFirstLetters);
+
         // Update results
         setResultNameObjArr(filteredNameObjArr);
     }

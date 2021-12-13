@@ -20,7 +20,7 @@ export function NameSearchFilter(props) {
     }
 
     // length filter
-    const handleCheckFilter = (event) => {
+    const handleCheckLength = (event) => {
         let newFilterObj = filterObj;
 
         if (event.target.checked) {
@@ -34,7 +34,23 @@ export function NameSearchFilter(props) {
     }
 
     // first # letters filter
-    // const handleClickFirst
+    const [firstNumLetters, setFirstNumLetters] = useState(0);
+    const handleChangeFirstNumLetters = (event) => {
+        setFirstNumLetters(event.target.value);
+    }
+
+    const handleCheckFirst = (event) => {
+        let newFilterObj = filterObj;
+
+        if (event.target.checked) {
+            newFilterObj.firstNumLetters = firstNumLetters;
+        } else {
+            newFilterObj.firstNumLetters = null;
+        }
+
+        setFilterObj(newFilterObj);
+        console.log(filterObj);
+    }
 
     // pronunciation filter
 
@@ -48,8 +64,11 @@ export function NameSearchFilter(props) {
                 <FilterMatching
                     searchedNameObj={searchedNameObj}
                     nameDataObjArr={nameDataObjArr}
-                    handleClickOrigin={handleCheckOrigin}
-                    handleClickFilter={handleCheckFilter}
+                    handleCheckOrigin={handleCheckOrigin}
+                    handleCheckLength={handleCheckLength}
+                    handleCheckFirst={handleCheckFirst}
+                    handleChangeFirstNumLetters={handleChangeFirstNumLetters}
+                    firstNumLetters={firstNumLetters}
                 />
                 <FilterSimilar/>
             </div>
@@ -67,12 +86,12 @@ export function NameSearchFilter(props) {
 
 // Filter htmlFor matching... (break down further into Origin, Syllables, Length, and FirstLetters)
 function FilterMatching(props) {
-    let {searchedNameObj, handleClickOrigin, handleClickFilter} = props;
+    let {searchedNameObj, handleCheckOrigin, handleCheckLength, handleCheckFirst, handleChangeFirstNumLetters, firstNumLetters} = props;
 
-    const [firstNumLetters, setFirstNumLetters] = useState(0);
-    const handleChangeFirstNumLetters = (event) => {
-        setFirstNumLetters(event.target.value);
-    }
+    // const [firstNumLetters, setFirstNumLetters] = useState(0);
+    // const handleChangeFirstNumLetters = (event) => {
+    //     setFirstNumLetters(event.target.value);
+    // }
 
     // Need to map Origin, Syllables, and Length using Checkbox()
     return (
@@ -84,7 +103,7 @@ function FilterMatching(props) {
                 <input
                     type="checkbox"
                     name="check-origin"
-                    onClick={handleClickOrigin}
+                    onClick={handleCheckOrigin}
                 />
 
                 <label htmlFor="check-origin">
@@ -98,7 +117,7 @@ function FilterMatching(props) {
                 <input
                     type="checkbox"
                     name="check-ln"
-                    onClick={handleClickFilter}
+                    onChange={handleCheckLength}
                 />
 
                 <label htmlFor="check-ln">
@@ -110,7 +129,11 @@ function FilterMatching(props) {
             {/* <!-- First letters (special checkbox) --> */}
             <div className="item long">
                 {/* hard-coded checked */}
-                <input type="checkbox" name="check-first"/>
+                <input
+                    type="checkbox"
+                    name="check-first"
+                    onChange={handleCheckFirst}
+                />
 
                 <label htmlFor="check-first">
                     First
