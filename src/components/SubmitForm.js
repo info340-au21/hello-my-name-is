@@ -8,6 +8,7 @@ export function SubmitForm(props) {
     const [nameData, setNameData] = useState(names)
 
     const db = getDatabase();
+    // console.log(db);
 
     useEffect(()=> {
         const exampleRef = ref(db, nameInfo.name);
@@ -19,6 +20,8 @@ export function SubmitForm(props) {
             // console.log(currentNames);
             setNameData(currentNames);
         })
+
+        console.log(exampleRef);
 
         //turn off listener
         function cleanup() {
@@ -33,7 +36,8 @@ export function SubmitForm(props) {
 
     function handleName(event) {
         event.preventDefault();
-        const val = {name: event.target.value};
+        const name = event.target.value
+        const val = {name: name.toLowerCase()};
         const currentInfo = Object.assign(nameInfo, val);
         setNameInfo(currentInfo)
     }
@@ -69,7 +73,7 @@ export function SubmitForm(props) {
     function submitCallback(event) {
         event.preventDefault();
         const nameRef = ref(db, "nameData");
-        firebasePush(nameRef, nameInfo)
+        firebasePush(nameRef, nameInfo);
         props.applyUpdate(nameInfo);
     }
     

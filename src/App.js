@@ -22,6 +22,8 @@ function App(props) {
     const [nameDataArray, setNameData] = useState([])
 
     const db = getDatabase();
+    // const currentData = ref(db, nameData);
+    // console.log(currentData);
 
     useEffect(() => {
         const dataref = ref(db, "nameData");
@@ -183,10 +185,18 @@ function App(props) {
         </div>
     );
 
+    //change this to display page when name is already in the database
     function updateDatabase(nameInfo) {
-        // console.log(nameInfo);
+        //console.log(nameInfo.name);
         const form = document.querySelector("form");
         form.reset();
+        //console.log('form reset')
+        nameData.map(name => {
+            console.log(name.name)
+            if(name.name === nameInfo.name) {
+                console.log("already here")
+            }
+        })
     }
 }
 

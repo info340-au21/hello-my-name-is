@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App.js'
 import { BrowserRouter } from 'react-router-dom';
 import {initializeApp} from 'firebase/app';
+import { getDatabase } from "firebase/database";
 // import 'firebase/database';
 
 const firebaseConfig = {
@@ -15,6 +16,7 @@ const firebaseConfig = {
     appId: "1:982239722808:web:9f9d320e9af22d258ad5cd",
     measurementId: "G-7TTGC3VJSY"
   };
+
 
   
   // Initialize Firebase
