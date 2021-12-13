@@ -2,6 +2,7 @@ import userEvent from '@testing-library/user-event';
 import React, { useState, useEffect } from 'react';
 import { getDatabase, ref, set as firebaseSet, onValue, push as firebasePush} from 'firebase/database'
 import { NameInDB } from './NameInDB';
+import { Redirect } from 'react-router-dom';
 
 
 export function SubmitForm(props) {
@@ -95,6 +96,8 @@ export function SubmitForm(props) {
         setNameInfo(currentInfo)
     }
 
+    //const [isInDB, setInDB] = useState(false);
+
     //loop through, if name in database, redirect to other page
     function submitCallback(event) {
         //event.preventDefault();
@@ -117,8 +120,8 @@ export function SubmitForm(props) {
     
 
     if(inDB === true) {
-        return(
-            <NameInDB />
+        return (
+            <Redirect to='/inDB' />
         )
     } else {
         return (

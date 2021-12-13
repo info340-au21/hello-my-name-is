@@ -16,11 +16,17 @@ export function NameSearchForm(props) {
         meaning: null,
         origin: null
     });
+
+    const [nameInDB, setNameInDB] = useState(true);
+    const [searchedName, setSearchedName] = useState(undefined);
+
+
     const handleSearch = (event) => {
         let searchedNameStr = event.target.value;
+        setSearchedName(searchedNameStr);
         let matchingNameObj = allNameObjArr.find(dbNameObj => dbNameObj.name === searchedNameStr);
-
         setSearchedNameObj(matchingNameObj);
+        
     }
 
     // Filter based off of name and selected/inputed filters
@@ -44,51 +50,64 @@ export function NameSearchForm(props) {
     // When "Get names" is clicked, apply filters to a copy of name dataset
     const handleClickGetNames = () => {
         // Start with all data in database
-        let filteredNameObjArr = allNameObjArr;
-
-
-        // Filter matching
-        function filterMatchingFn(filterParam, filterFn) {
-            if (filterObj[filterParam] !== null) {
-                filteredNameObjArr = filteredNameObjArr.filter(filterFn)
+        let inDB = false;
+        console.log(allNameObjArr);
+        console.log(searchedNameObj);
+        allNameObjArr.map((name) => {
+            if(name.name === searchedName) {
+                inDB = true;
             }
+        })
+
+        if(inDB === true) {
+            let filteredNameObjArr = allNameObjArr;
+
+            // Filter matching
+            function filterMatchingFn(filterParam, filterFn) {
+                if (filterObj[filterParam] !== null) {
+                    filteredNameObjArr = filteredNameObjArr.filter(filterFn)
+                }
+            }
+
+            // By origin
+            filterMatchingFn('origin', (dbNameObj) => dbNameObj.origin === searchedNameObj.origin);
+
+            // By name length
+            filterMatchingFn('length', (dbNameObj) => dbNameObj.name.length === searchedNameObj.name.length);
+
+            // By first # letters
+            let firstNumLetters = filterObj.firstNumLetters;
+            let searchedNameFirstLetters = searchedNameObj.name.substring(0, firstNumLetters);
+            filterMatchingFn(
+                'firstNumLetters',
+                (dbNameObj) => dbNameObj.name.substring(0, firstNumLetters) === searchedNameFirstLetters
+            );
+
+
+            // Filter by gender
+            filteredNameObjArr = filteredNameObjArr.filter((dbNameObj) => {
+                let genderFilter = ['neutral', 'feminine', 'masculine'];
+                if (filterObj.gender !== null) {
+                    genderFilter = Object.keys(filterObj.gender).filter((genderProp) => filterObj.gender[genderProp]);
+                }
+
+                return (
+                    genderFilter.includes(dbNameObj.gender)
+                )
+            })
+
+
+            // Update results
+            setResultNameObjArr(filteredNameObjArr);
+            console.log(filteredNameObjArr);
+        } else {
+            setNameInDB(false);
         }
 
-        // By origin
-        filterMatchingFn('origin', (dbNameObj) => dbNameObj.origin === searchedNameObj.origin);
-
-        // By name length
-        filterMatchingFn('length', (dbNameObj) => dbNameObj.name.length === searchedNameObj.name.length);
-
-        // By first # letters
-        let firstNumLetters = filterObj.firstNumLetters;
-        let searchedNameFirstLetters = searchedNameObj.name.substring(0, firstNumLetters);
-        filterMatchingFn(
-            'firstNumLetters',
-            (dbNameObj) => dbNameObj.name.substring(0, firstNumLetters) === searchedNameFirstLetters
-        );
-
-
-        // Filter by gender
-        filteredNameObjArr = filteredNameObjArr.filter((dbNameObj) => {
-            let genderFilter = ['neutral', 'feminine', 'masculine'];
-            if (filterObj.gender !== null) {
-                genderFilter = Object.keys(filterObj.gender).filter((genderProp) => filterObj.gender[genderProp]);
-            }
-
-            return (
-                genderFilter.includes(dbNameObj.gender)
-            )
-        })
-        console.log(filterObj.gender);
-
-
-        // Update results
-        setResultNameObjArr(filteredNameObjArr);
-        console.log(filterObj); // testing
+        
     }
 
-    if(resultNameObjArr.length < 0) {
+    if(nameInDB !== true) {
         return (
             <NameNotInDB />
         )
