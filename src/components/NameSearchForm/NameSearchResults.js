@@ -92,6 +92,7 @@ function NameCard(props) {
        heartColor = "red";
        heartIcon = "favorite";
    }
+   // const [isExpanded, setIsExpanded] = useState(false);
 
    function expand(event) {
         //console.log(event.target)
