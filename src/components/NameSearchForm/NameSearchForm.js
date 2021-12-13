@@ -30,7 +30,11 @@ export function NameSearchForm(props) {
         firstNumLetters: 0,
         pronunciation: null,
         meaning: null,
-        gender: null
+        gender: {
+            'neutral': false,
+            'feminine': false,
+            'masculine': false
+        }
     })
 
     // Display results
@@ -76,11 +80,12 @@ export function NameSearchForm(props) {
                 genderFilter.includes(dbNameObj.gender)
             )
         })
+        console.log(filterObj.gender);
 
 
         // Update results
         setResultNameObjArr(filteredNameObjArr);
-        console.log(filteredNameObjArr);
+        console.log(filterObj); // testing
     }
 
     if(resultNameObjArr.length < 0) {
