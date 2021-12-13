@@ -10,6 +10,7 @@ import { Route, Switch, Redirect, Link } from 'react-router-dom';
 import { GenerateBookmark } from './components/GenerateBookmark';
 import { getDatabase, ref, set as firebaseSet, push as firebasePush, onValue, get, child } from 'firebase/database';
 import { NameNotInDB } from './components/NameSearchForm/NameNotInDB'
+import { NameInDB } from './components/NameInDB';
 
 // Data
 import testNameData from './data/Names.json';
@@ -148,6 +149,7 @@ function App(props) {
                             handleBook={AddtoFav}
                         />
                     </Route>
+                    <Route path="/notInDB"> <NameNotInDB /> </Route>
                     {/* <Route path="/LargeNameCard/:name">
                         <LargeNameCard />
                         <div><Link to="/" className="btn btn-primary mb-3">Back</Link></div>
@@ -158,6 +160,7 @@ function App(props) {
                     <Route path='/submit'>
                         <SubmitForm />
                     </Route>
+                    <Route path='/inDB'> <NameInDB /> </Route>
                     <Route>
                         <Redirect to='/' />
                     </Route>
