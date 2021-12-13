@@ -107,12 +107,12 @@ export function NameSearchForm(props) {
                     <GetNamesButton callback={handleClickGetNames}/>
                 </div>
                 
-                {/* <NameSearchResults
+                <NameSearchResults
                     results={resultNameObjArr}
                     // allData={props.allData}
                     booked={props.booked}
                     handleBook={props.handleBook}
-                /> */}
+                />
             </div>
         )
     }
