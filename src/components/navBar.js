@@ -10,12 +10,6 @@ export function NavIcon() {
                 <NavLink to="/bookmark" activeClassName="selected"><i className="material-icons" aria-label="bookmarks">bookmarks</i></NavLink>
                 <NavLink to="/submit" activeClassName="selected"><i className="material-icons" aria-label="Enter a name">add</i></NavLink>
             </div>
-            <div className="search">
-                <input type="text" placeholder="Search for a name" className="search" />
-            </div>
-            <div className="topnav-right">
-                <NavLink to="/signin" className="nav-link">Sign in</NavLink>
-            </div>
         </nav>
     )
 }
