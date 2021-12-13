@@ -6,7 +6,7 @@ export function NameSearchFilter(props) {
     let {searchedNameObj, nameDataObjArr, genders, callback, filterObj, setFilterObj} = props;
 
     // origin filter
-    const handleClickOrigin = (event) => {
+    const handleCheckOrigin = (event) => {
         let newFilterObj = filterObj;
         
         if (event.target.checked) {
@@ -20,8 +20,21 @@ export function NameSearchFilter(props) {
     }
 
     // length filter
+    const handleCheckFilter = (event) => {
+        let newFilterObj = filterObj;
+
+        if (event.target.checked) {
+            newFilterObj.length = searchedNameObj.name.length;
+        } else {
+            newFilterObj.length = null;
+        }
+
+        setFilterObj(newFilterObj);
+        console.log(filterObj);
+    }
 
     // first # letters filter
+    // const handleClickFirst
 
     // pronunciation filter
 
@@ -35,7 +48,8 @@ export function NameSearchFilter(props) {
                 <FilterMatching
                     searchedNameObj={searchedNameObj}
                     nameDataObjArr={nameDataObjArr}
-                    handleClickOrigin={handleClickOrigin}
+                    handleClickOrigin={handleCheckOrigin}
+                    handleClickFilter={handleCheckFilter}
                 />
                 <FilterSimilar/>
             </div>
@@ -53,7 +67,7 @@ export function NameSearchFilter(props) {
 
 // Filter htmlFor matching... (break down further into Origin, Syllables, Length, and FirstLetters)
 function FilterMatching(props) {
-    let {searchedNameObj, handleClickOrigin} = props;
+    let {searchedNameObj, handleClickOrigin, handleClickFilter} = props;
 
     const [firstNumLetters, setFirstNumLetters] = useState(0);
     const handleChangeFirstNumLetters = (event) => {
@@ -81,7 +95,11 @@ function FilterMatching(props) {
 
             {/* <!-- Length --> */}
             <div className="item long">
-                <input type="checkbox" name="check-ln"/>
+                <input
+                    type="checkbox"
+                    name="check-ln"
+                    onClick={handleClickFilter}
+                />
 
                 <label htmlFor="check-ln">
                     Length 
