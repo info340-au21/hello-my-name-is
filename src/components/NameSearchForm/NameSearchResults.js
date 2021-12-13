@@ -30,6 +30,7 @@ function NameCards(props) {
             <NameCard
                 name={nameResultObj.name}
                 gender={nameResultObj.gender}
+                pronunciation={nameResultObj.pronunciation}
                 meaning={nameResultObj.meaning}
                 origin={nameResultObj.origin}
                 isLiked={nameResultObj.liked}
@@ -92,7 +93,7 @@ function NameCard(props) {
        heartColor = "red";
        heartIcon = "favorite";
    }
-   // const [isExpanded, setIsExpanded] = useState(false);
+   console.log(props.pronunciation)
 
    function expand(event) {
         //console.log(event.target)
@@ -107,7 +108,7 @@ function NameCard(props) {
 
     return (
         <div className={"card outer " + colorClass} onClick={expand}>
-            <div>
+            <div onClick={expand}>
                 <h3 className="name">
                     <div className="card-container">
                         <div></div>
@@ -130,23 +131,23 @@ function NameCard(props) {
                         <h4>Meaning</h4>
                         <p className="meaning">{props.meaning}</p>
                     </div>
-                    <div className="card attribute col-sm-12 col-lg-6">
+                    <div className="card attribute col-sm-3 col-lg-6">
                         <h4>Origin</h4>
                         <p className="meaning">{props.origin}</p>
                     </div>
-                    <div className="card attribute col-sm-12 col-lg-6">
+                    <div className="card attribute col-sm-3 col-lg-6">
                         <h4>Pronunciation</h4>
                         <p className="meaning">{props.pronunciation}</p>
                     </div>
-                    <div className="card attribute col-sm-12 col-lg-6">
+                    <div className="card attribute col-sm-3 col-lg-6">
                         <h4>Gender</h4>
                         <p className="meaning">{props.gender}</p>
                     </div>
-                    <div className="card attribute col-sm-12 col-lg-6">
+                    <div className="card attribute col-sm-3 col-lg-6">
                         <h4>Length</h4>
                         <p className="meaning">{props.name.length}</p>
                     </div>
-                    <div className="card attribute col-sm-12 col-lg-6">
+                    <div className="card attribute col-sm-3 col-lg-6">
                         <h4>First Letter</h4>
                         <p className="meaning">{props.name.substring(0, 1)}</p>
                     </div>

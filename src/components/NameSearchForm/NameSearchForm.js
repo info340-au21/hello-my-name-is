@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NameSearchFilter } from './NameSearchFilter/NameSearchFilter';
+import { NameSearchFilter } from './NameSearchFilter';
 import { NameSearchResults } from './NameSearchResults';
 import { NameNotInDB } from './NameNotInDB'
 
