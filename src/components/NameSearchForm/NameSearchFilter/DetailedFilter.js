@@ -23,7 +23,6 @@ function FilterMatching(props) {
 
     const [firstNumLetters, setFirstNumLetters] = useState(0);
     const handleChangeFirstNumLetters = (event) => {
-        console.log(event.target.value);
         setFirstNumLetters(event.target.value);
     }
 
@@ -76,9 +75,7 @@ function FilterMatching(props) {
                         onChange={handleChangeFirstNumLetters}
                     />
                     letters
-                    <span className="small-text">
-                           ("{searchedNameObj ? searchedNameObj.name.substring(0, firstNumLetters) : ""}")
-                    </span>
+                    <span className="small-text">   ("{searchedNameObj ? searchedNameObj.name.substring(0, firstNumLetters) : ""}")</span>
                 </label>
             </div>
         </div>

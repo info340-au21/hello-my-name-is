@@ -3,13 +3,15 @@ import React, { useState } from 'react';
 import genderData from './../../data/Genders.json';
 
 export function NameSearchResults(props) {
+    let {results, booked, handleBook} = props;
+
     return (
         <div className="section container column">
-            <h2 className="row">Your 50 matches:</h2>
+            <h2 className="row">Your {results.length} match{results.length !== 1 ? "es" : ""}:</h2>
             <NameCards
-                results={props.results}
-                booked={props.booked}
-                handleBook={props.handleBook}
+                results={results}
+                booked={booked}
+                handleBook={handleBook}
             />
         </div>
     )
@@ -57,10 +59,15 @@ function NameCard(props) {
 
     // get classes based on card gender
     let genderObj = genderData.find((genderObj) => {
-        return genderObj.genderLabel === props.gender
+        return genderObj.genderStr === props.gender
     })
-    let colorClass = genderObj.colorClass;
-    let symbolClass = genderObj.symbolClass;
+
+    let colorClass = "";
+    let symbolClass = "";
+    if (genderObj !== undefined) {
+        colorClass = genderObj.colorClass;
+        symbolClass = genderObj.symbolClass;
+    }
  
     // console.log(props.gender) // testing
     const handleClick = (event) => {

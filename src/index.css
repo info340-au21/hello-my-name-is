@@ -153,6 +153,7 @@ input[type='number'] {
     margin: 1em;
     border-radius: .9em;
     padding: .6em;
+    background-color: darkgray;
 }
 
 .outer.card {

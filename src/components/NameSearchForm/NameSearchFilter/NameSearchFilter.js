@@ -1,71 +1,206 @@
 import React, { useState } from 'react';
 import { GenderFilter } from './GenderFilter';
-import { DetailedFilter } from './DetailedFilter';
+// import { DetailedFilter } from './DetailedFilter';
 
 export function NameSearchFilter(props) {
-    // SearchBar
-    const [searchedNameObj, setSearchedNameObj] = useState(undefined);
-    const handleSearch = (event) => {
-        let searchedNameStr = event.target.value;
+    let {searchedNameObj, allDataObjArr, genders, callback, filterObj, setFilterObj} = props;
 
-        setSearchedNameObj(props.nameDataObjArr.find(nameDataObj => nameDataObj.name === searchedNameStr));
+    // origin filter
+    const handleCheckOrigin = (event) => {
+        let newFilterObj = filterObj;
+        
+        if (event.target.checked) {
+            newFilterObj.origin = searchedNameObj.origin;
+        } else {
+            newFilterObj.origin = null;
+        }
+
+        setFilterObj(newFilterObj);
+        console.log(filterObj);
     }
-    // console.log(searchedNameObj); // testing
+
+    // length filter
+    const handleCheckLength = (event) => {
+        let newFilterObj = filterObj;
+
+        if (event.target.checked) {
+            newFilterObj.length = searchedNameObj.name.length;
+        } else {
+            newFilterObj.length = null;
+        }
+
+        setFilterObj(newFilterObj);
+        console.log(filterObj);
+    }
+
+    // first # letters filter
+    const [firstNumLetters, setFirstNumLetters] = useState(0);
+    const handleChangeFirstNumLetters = (event) => {
+        setFirstNumLetters(event.target.value);
+    }
+
+    const handleCheckFirst = (event) => {
+        let newFilterObj = filterObj;
+
+        if (event.target.checked) {
+            newFilterObj.firstNumLetters = firstNumLetters;
+        } else {
+            newFilterObj.firstNumLetters = null;
+        }
+
+        setFilterObj(newFilterObj);
+        console.log(filterObj);
+    }
+
+    // pronunciation filter
+
+    // meaning filter
+
+    // gender filter
 
     return (
         <div className="section container column">
-            {/* First get name */}
             <div className="row">
-                <SearchBar callback={handleSearch}/>
+                <FilterMatching
+                    searchedNameObj={searchedNameObj}
+                    allDataObjArr={allDataObjArr}
+                    handleCheckOrigin={handleCheckOrigin}
+                    handleCheckLength={handleCheckLength}
+                    handleCheckFirst={handleCheckFirst}
+                    handleChangeFirstNumLetters={handleChangeFirstNumLetters}
+                    firstNumLetters={firstNumLetters}
+                />
+                <FilterSimilar/>
             </div>
 
-            {/* Then filter names based on given name */}
-            <DetailedFilter
-                results={props.results}
-                // searchedNameStr={searchedNameStr}
-                searchedNameObj={searchedNameObj}
-                nameDataObjArr={props.nameDataObjArr}
-            />
-
-            {/* Then filter by gender */}
             <div className="row">
+                <h3 className="center">That are...</h3>
                 <GenderFilter
-                    genders={props.genders}
-                    callback={props.callback}
+                    genders={genders}
+                    callback={callback}
                 />
             </div>
-
-            {/* Then trigger update results */}
-            {/* <div className="row">
-                <GetNamesButton/>
-            </div> */}
         </div>
     )
 }
 
+// Filter htmlFor matching... (break down further into Origin, Syllables, Length, and FirstLetters)
+function FilterMatching(props) {
+    let {searchedNameObj, handleCheckOrigin, handleCheckLength, handleCheckFirst, handleChangeFirstNumLetters, firstNumLetters} = props;
 
-// Search
-function SearchBar(props) {
+    // const [firstNumLetters, setFirstNumLetters] = useState(0);
+    // const handleChangeFirstNumLetters = (event) => {
+    //     setFirstNumLetters(event.target.value);
+    // }
+
+    // Need to map Origin, Syllables, and Length using Checkbox()
     return (
-        <h2 className="item center">
-            Names like...
-            {/* Hard-coded placeholder (should be user input) */}
-            <input
-                type="text"
-                placeholder="ENTER NAME"
-                className="search"
-                onChange={props.callback}
-            />
-        </h2>
+        <div className="item column">
+            <h3>With matching...</h3>
+            
+            {/* <!-- Origin --> */}
+            <div className="item long">
+                <input
+                    type="checkbox"
+                    id="check-origin"
+                    onClick={handleCheckOrigin}
+                />
+
+                <label htmlFor="check-origin">
+                    Origin 
+                    <span className="small-text">   ({searchedNameObj ? searchedNameObj.origin : ""})</span>
+                </label>
+            </div>
+
+            {/* <!-- Length --> */}
+            <div className="item long">
+                <input
+                    type="checkbox"
+                    id="check-ln"
+                    onChange={handleCheckLength}
+                />
+
+                <label htmlFor="check-ln">
+                    Length 
+                    <span className="small-text">   ({searchedNameObj ? searchedNameObj.name.length : ""} letters)</span>
+                </label>
+            </div>
+
+            {/* <!-- First letters (special checkbox) --> */}
+            <div className="item long">
+                {/* hard-coded checked */}
+                <input
+                    type="checkbox"
+                    id="check-first"
+                    onChange={handleCheckFirst}
+                />
+
+                <label htmlFor="check-first">
+                    First
+                    <input
+                        type="number"
+                        placeholder="#"
+                        onChange={handleChangeFirstNumLetters}
+                    />
+                    letters
+                    <span className="small-text">   ("{searchedNameObj ? searchedNameObj.name.substring(0, firstNumLetters) : ""}")</span>
+                </label>
+            </div>
+        </div>
     )
 }
 
+// Filter htmlFor similar... (break down further into Pronunciation and Meaning)
+function FilterSimilar(props) {
+    function MeaningSlider() {
+        return (
+            <div className="item">
+                <div className="center">
+                    <label htmlFor="slide-meaning" className="small-text">Loose match</label>
+    
+                    <input type="range" name="slide-meaning" min="1" max="3" list="similarity"/>
+    
+                    <datalist>
+                        <option value="1" label="Loose match"></option>
+                        <option value="2"></option>
+                        <option value="3" label="Close match"></option>
+                    </datalist>
+    
+                    <label htmlFor="slide-meaning" className="small-text">Close match</label>
+                </div>
+            </div>
+        )
+    }
 
-// // Match button
-// function GetNamesButton() {
-//     return (
-//         <div className="item">
-//             <button type="button" className="btn btn-light">Get names</button>
-//         </div>
-//     )
-// }
+    return (
+        <div className="item">
+            <h3>And similar...</h3>
+
+            {/* <!-- Pronunciation checkbox (use Checkbox()) --> */}
+            <div className="row">
+                <div className="item">
+                    <input type="checkbox" id="check-pronoun"/>
+
+                    <label htmlFor="check-pronoun">
+                        Pronunciation
+                    </label>
+                </div>
+            </div>
+
+            {/* <!-- Meaning --> */}
+            <div className="row column">
+                {/* Meaning checkbox (use Checkbox()) */}
+                <div className="item">
+                    <input type="checkbox" id="check-meaning"/>
+
+                    <label htmlFor="check-meaning" >
+                        Meaning
+                    </label>
+                </div>
+
+                {/* Meaning slider */}
+                <MeaningSlider/>
+            </div>
+        </div>
+    )
+}
