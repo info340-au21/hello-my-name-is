@@ -3,7 +3,25 @@ import { GenderFilter } from './GenderFilter';
 // import { DetailedFilter } from './DetailedFilter';
 
 export function NameSearchFilter(props) {
-    let {searchedNameObj, allDataObjArr, genders, callback, filterObj, setFilterObj} = props;
+    let {searchedNameObj, allDataObjArr, genders, filterObj, setFilterObj} = props;
+
+    // handleCheckFn (doesn't work)
+    // function makeHandleCheckFn(filterParam, newFilterVal) {
+    //     return (
+    //         (event) => {
+    //             let newFilterObj = filterObj;
+                
+    //             if (event.target.checked) {
+    //                 newFilterObj[filterParam] = newFilterVal;
+    //             } else {
+    //                 newFilterObj[filterParam] = null;
+    //             }
+
+    //             setFilterObj(newFilterObj);
+    //             console.log(filterObj);
+    //         }
+    //     )
+    // }
 
     // origin filter
     const handleCheckOrigin = (event) => {
@@ -34,11 +52,16 @@ export function NameSearchFilter(props) {
     }
 
     // first # letters filter
-    const [firstNumLetters, setFirstNumLetters] = useState(0);
+    const [firstNumLetters, setFirstNumLetters] = useState("");
     const handleChangeFirstNumLetters = (event) => {
-        setFirstNumLetters(event.target.value);
-    }
+        let firstLettersString = event.target.value;
 
+        setFirstNumLetters(firstLettersString);
+
+        let newFilterObj = filterObj;
+        newFilterObj.firstNumLetters = firstLettersString;
+        setFilterObj(newFilterObj)
+    }
     const handleCheckFirst = (event) => {
         let newFilterObj = filterObj;
 
@@ -57,6 +80,25 @@ export function NameSearchFilter(props) {
     // meaning filter
 
     // gender filter
+    const [genderFilterObj, setGenderFilterArr] = useState({
+        'neutral': false,
+        'feminine': false,
+        'masculine': false
+    })
+    const handleCheckGender = (event) => {
+        let genderFilter = event.target.name;
+        let newGenderFilterObj = genderFilterObj;
+
+        newGenderFilterObj[genderFilter] = event.target.checked;
+
+        setGenderFilterArr(newGenderFilterObj);
+
+        let newFilterObj = filterObj;
+        newFilterObj.gender = genderFilterObj;
+        setFilterObj(newFilterObj)
+
+        console.log(genderFilterObj);
+    }
 
     return (
         <div className="section container column">
@@ -77,7 +119,7 @@ export function NameSearchFilter(props) {
                 <h3 className="center">That are...</h3>
                 <GenderFilter
                     genders={genders}
-                    callback={callback}
+                    callback={handleCheckGender}
                 />
             </div>
         </div>
@@ -87,11 +129,6 @@ export function NameSearchFilter(props) {
 // Filter htmlFor matching... (break down further into Origin, Syllables, Length, and FirstLetters)
 function FilterMatching(props) {
     let {searchedNameObj, handleCheckOrigin, handleCheckLength, handleCheckFirst, handleChangeFirstNumLetters, firstNumLetters} = props;
-
-    // const [firstNumLetters, setFirstNumLetters] = useState(0);
-    // const handleChangeFirstNumLetters = (event) => {
-    //     setFirstNumLetters(event.target.value);
-    // }
 
     // Need to map Origin, Syllables, and Length using Checkbox()
     return (

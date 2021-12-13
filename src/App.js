@@ -17,7 +17,7 @@ import genderData from './data/Genders.json';
 
 function App(props) {
     const [bookmarkArray, setbookmarkArray] = useState([]) //store the array of names to be generated for Bookmark page
-    const [nameDataArray, setNameData] = useState([])
+    const [nameDataArray, setNameData] = useState(testNameData)
     // console.log(nameDataArray); // testing
 
     const db = getDatabase();
@@ -105,20 +105,6 @@ function App(props) {
 
     // console.log(bookmarkArray)
     
-    // const handleGenderCheck = (event) => {
-    //     // get gender
-    //     let genderStr = event.target.name;
-
-    //     // create new object
-    //     let newObj = genderFilterObjArr;
-
-    //     // toggle the proper gender
-    //     newObj[genderStr] = !newObj[genderStr];
-
-    //     setGenderFilterObjArr(newObj);
-    //     // console.log(genderFilterObjArr); // testing
-    // }
-    
     /*
     const addtoFav = (name, gender, origin) => {
         const img = "";
@@ -153,8 +139,8 @@ function App(props) {
                     <Route exact path='/'>
                         <NameSearchForm
                             genders={genderData}
-                            allNameObjArr={testNameData}
-                            // allNameObjArr={nameDataArray}
+                            // allNameObjArr={testNameData}
+                            allNameObjArr={nameDataArray}
                             booked={bookmarkArray}
                             handleBook={AddtoFav}
                         />
