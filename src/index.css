@@ -49,6 +49,10 @@ h3 {
     padding-top: 7rem;
 }
 
+.alert button {
+    margin: 4em;
+}
+
 .alert button a {
     text-decoration: none;
     color: white;
@@ -420,7 +424,6 @@ th {
     transform: rotateY(0deg);
     border-radius: .25rem;
 }
-
 .image-flip:hover .frontside,
 .image-flip.hover .frontside {
     -webkit-transform: rotateY(180deg);
@@ -428,7 +431,6 @@ th {
     -o-transform: rotateY(180deg);
     transform: rotateY(180deg);
 }
-
 .mainflip {
     -webkit-transition: 1s;
     -webkit-transform-style: preserve-3d;
@@ -441,7 +443,6 @@ th {
     transform-style: preserve-3d;
     position: relative;
 }
-
 .frontside {
     position: relative;
     -webkit-transform: rotateY(0deg);
@@ -449,7 +450,6 @@ th {
     z-index: 2;
     margin-bottom: 30px;
 }
-
 .backside {
     position: absolute;
     top: 0;
@@ -465,7 +465,6 @@ th {
     -moz-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
     box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
 }
-
 .frontside,
 .backside {
     -webkit-backface-visibility: hidden;
@@ -483,7 +482,6 @@ th {
     transition: 1s;
     transform-style: preserve-3d;
 }
-
 .frontside .card,
 .backside .card {
     min-height: inherit;
@@ -543,7 +541,6 @@ th {
 /* .collapsable > * > * {
     display: block;
 }
-
 .collapsable > * > *:first-child {
     font-size: 1.2rem;
     font-weight: bold;
