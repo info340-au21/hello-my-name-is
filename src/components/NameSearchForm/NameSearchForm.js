@@ -5,12 +5,13 @@ import { NameNotInDB } from './NameNotInDB'
 
 
 export function NameSearchForm(props) {
-    let {allNameObjArr, genders, callback, booked, handleBook} = props;
+    let {allNameObjArr, genders, booked, handleBook} = props;
 
     // Get name from search bar
     const [searchedNameObj, setSearchedNameObj] = useState({
         name: "",
         pronunciation: null,
+        firstNumLetters: null,
         gender: null,
         meaning: null,
         origin: null
@@ -21,13 +22,12 @@ export function NameSearchForm(props) {
 
         setSearchedNameObj(matchingNameObj);
     }
-    // console.log(searchedNameObj); // testing
 
     // Filter based off of name and selected/inputed filters
     const [filterObj, setFilterObj] = useState({
         origin: null,
         length: null,
-        firstNumLetters: null,
+        firstNumLetters: 0,
         pronunciation: null,
         meaning: null,
         gender: null
@@ -35,11 +35,13 @@ export function NameSearchForm(props) {
 
     // Display results
     const [resultNameObjArr, setResultNameObjArr] = useState(allNameObjArr);
+    // console.log(resultNameObjArr);
 
     // When "Get names" is clicked, apply filters to a copy of name dataset
     const handleClickGetNames = () => {
         // Start with all data in database
         let filteredNameObjArr = allNameObjArr;
+
 
         // Filter matching
         function filterMatchingFn(filterParam, filterFn) {
@@ -47,8 +49,9 @@ export function NameSearchForm(props) {
                 filteredNameObjArr = filteredNameObjArr.filter(filterFn)
             }
         }
+
         // By origin
-        filterMatchingFn('origin', (dbNameObj) =>  dbNameObj.origin === searchedNameObj.origin);
+        filterMatchingFn('origin', (dbNameObj) => dbNameObj.origin === searchedNameObj.origin);
 
         // By name length
         filterMatchingFn('length', (dbNameObj) => dbNameObj.name.length === searchedNameObj.name.length);
@@ -56,7 +59,24 @@ export function NameSearchForm(props) {
         // By first # letters
         let firstNumLetters = filterObj.firstNumLetters;
         let searchedNameFirstLetters = searchedNameObj.name.substring(0, firstNumLetters);
-        filterMatchingFn('firstNumLetters', (dbNameObj) => dbNameObj.name.substring(0, firstNumLetters) === searchedNameFirstLetters);
+        filterMatchingFn(
+            'firstNumLetters',
+            (dbNameObj) => dbNameObj.name.substring(0, firstNumLetters) === searchedNameFirstLetters
+        );
+
+
+        // Filter by gender
+        filteredNameObjArr = filteredNameObjArr.filter((dbNameObj) => {
+            let genderFilter = ['neutral', 'feminine', 'masculine'];
+            if (filterObj.gender !== null) {
+                genderFilter = Object.keys(filterObj.gender).filter((genderProp) => filterObj.gender[genderProp]);
+            }
+
+            return (
+                genderFilter.includes(dbNameObj.gender)
+            )
+        })
+
 
         // Update results
         setResultNameObjArr(filteredNameObjArr);
@@ -70,10 +90,16 @@ export function NameSearchForm(props) {
     } else {
         return (
             <div>
+                <div className="row">
+                    <SearchBar callback={handleSearch}/>
+                </div>
+
                 <NameSearchFilter
-                    genders={props.genders}
-                    callback={props.callback}
-                    nameDataObjArr={props.nameDataObjArr}
+                     genders={genders}
+                     allNameObjArr={allNameObjArr}
+                     searchedNameObj={searchedNameObj}
+                     filterObj={filterObj}
+                     setFilterObj={setFilterObj}
                 />
     
                 {/* Then trigger update results */}
@@ -81,12 +107,12 @@ export function NameSearchForm(props) {
                     <GetNamesButton callback={handleClickGetNames}/>
                 </div>
                 
-                <NameSearchResults
+                {/* <NameSearchResults
                     results={resultNameObjArr}
                     // allData={props.allData}
                     booked={props.booked}
                     handleBook={props.handleBook}
-                />
+                /> */}
             </div>
         )
     }

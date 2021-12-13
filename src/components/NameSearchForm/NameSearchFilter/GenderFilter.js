@@ -5,7 +5,14 @@ export function GenderFilter(props) {
         let {genderStr, genderLabel, colorClass, symbolClass} = genderObj;
 
         return (
-            <Gender key={genderLabel} genderStr={genderStr} genderLabel={genderLabel} colorClass={colorClass} symbolClass={symbolClass} callback={props.callback} />
+            <Gender
+                key={genderLabel}
+                genderStr={genderStr}
+                genderLabel={genderLabel}
+                colorClass={colorClass}
+                symbolClass={symbolClass}
+                callback={props.callback}
+            />
         )
     })
 
