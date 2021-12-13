@@ -57,8 +57,8 @@ function EachRow(props) {
  
     const img = props.favData.img;
     const text = props.favData.text;
-    const name = props.favData.name.charAt(0).toUpperCase();
-    const origin = props.favData.origin.charAt(0).toUpperCase()+" name";
+    const name = props.favData.name.charAt(0).toUpperCase()+props.favData.name.slice(1);
+    const origin = props.favData.origin.charAt(0).toUpperCase()+props.favData.origin.slice(1)+" name";
 
 
     
