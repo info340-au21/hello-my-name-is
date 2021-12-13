@@ -1,27 +1,7 @@
 import React, { useState } from 'react';
-import { GenderFilter } from './GenderFilter';
-// import { DetailedFilter } from './DetailedFilter';
 
 export function NameSearchFilter(props) {
     let {searchedNameObj, allDataObjArr, genders, filterObj, setFilterObj} = props;
-
-    // handleCheckFn (doesn't work)
-    // function makeHandleCheckFn(filterParam, newFilterVal) {
-    //     return (
-    //         (event) => {
-    //             let newFilterObj = filterObj;
-                
-    //             if (event.target.checked) {
-    //                 newFilterObj[filterParam] = newFilterVal;
-    //             } else {
-    //                 newFilterObj[filterParam] = null;
-    //             }
-
-    //             setFilterObj(newFilterObj);
-    //             console.log(filterObj);
-    //         }
-    //     )
-    // }
 
     // origin filter
     const handleCheckOrigin = (event) => {
@@ -75,10 +55,6 @@ export function NameSearchFilter(props) {
         console.log(filterObj);
     }
 
-    // pronunciation filter
-
-    // meaning filter
-
     // gender filter
     const [genderFilterObj, setGenderFilterArr] = useState({
         'neutral': false,
@@ -102,7 +78,12 @@ export function NameSearchFilter(props) {
 
     return (
         <div className="section container column">
-            <div className="row center">
+            <div className="row">
+                <GenderFilter
+                    genders={genders}
+                    callback={handleCheckGender}
+                />
+
                 <FilterMatching
                     searchedNameObj={searchedNameObj}
                     allDataObjArr={allDataObjArr}
@@ -111,15 +92,6 @@ export function NameSearchFilter(props) {
                     handleCheckFirst={handleCheckFirst}
                     handleChangeFirstNumLetters={handleChangeFirstNumLetters}
                     firstNumLetters={firstNumLetters}
-                />
-                {/* <FilterSimilar/> */}
-            </div>
-
-            <div className="row">
-                <h3 className="center">That are...</h3>
-                <GenderFilter
-                    genders={genders}
-                    callback={handleCheckGender}
                 />
             </div>
         </div>
@@ -187,57 +159,46 @@ function FilterMatching(props) {
     )
 }
 
-// Filter htmlFor similar... (break down further into Pronunciation and Meaning)
-// function FilterSimilar(props) {
-//     function MeaningSlider() {
-//         return (
-//             <div className="item">
-//                 <div className="center">
-//                     <label htmlFor="slide-meaning" className="small-text">Loose match</label>
+function GenderFilter(props) {
+    let genderObjArr = props.genders;
+
+    function Gender(props) {
+        let { genderStr, genderLabel, colorClass, symbolClass } = props;
+        let checkId = "check-" + genderLabel;
     
-//                     <input type="range" name="slide-meaning" min="1" max="3" list="similarity"/>
+        return (
+            <div className={"item long text-" + colorClass}>
+                <input type="checkbox" id={checkId} name={genderStr} onClick={props.callback} /*checked="true"*//>
     
-//                     <datalist>
-//                         <option value="1" label="Loose match"></option>
-//                         <option value="2"></option>
-//                         <option value="3" label="Close match"></option>
-//                     </datalist>
+                <label htmlFor={checkId} className="gender-text">
+                    {/* Gender text */}
+                    {genderLabel + "  "}
+                    {/* Gender symbol */}
+                    <i className={"fa " + symbolClass} aria-label={genderLabel}></i>
+                </label>
+            </div>
+        )
+    }
     
-//                     <label htmlFor="slide-meaning" className="small-text">Close match</label>
-//                 </div>
-//             </div>
-//         )
-//     }
+    let genderElemArr = genderObjArr.map((genderObj) => {
+        let {genderStr, genderLabel, colorClass, symbolClass} = genderObj;
 
-//     return (
-//         <div className="item">
-//             <h3>And similar...</h3>
+        return (
+            <Gender
+                key={genderLabel}
+                genderStr={genderStr}
+                genderLabel={genderLabel}
+                colorClass={colorClass}
+                symbolClass={symbolClass}
+                callback={props.callback}
+            />
+        )
+    })
 
-//             {/* <!-- Pronunciation checkbox (use Checkbox()) --> */}
-//             <div className="row">
-//                 <div className="item">
-//                     <input type="checkbox" id="check-pronoun"/>
-
-//                     <label htmlFor="check-pronoun">
-//                         Pronunciation
-//                     </label>
-//                 </div>
-//             </div>
-
-//             {/* <!-- Meaning --> */}
-//             <div className="row column">
-//                 {/* Meaning checkbox (use Checkbox()) */}
-//                 <div className="item">
-//                     <input type="checkbox" id="check-meaning"/>
-
-//                     <label htmlFor="check-meaning" >
-//                         Meaning
-//                     </label>
-//                 </div>
-
-//                 {/* Meaning slider */}
-//                 <MeaningSlider/>
-//             </div>
-//         </div>
-//     )
-// }
+    return (
+        <div className="item column">
+            {/* <h3>That are...</h3> */}
+            {genderElemArr}
+        </div>
+    )
+}
