@@ -80,10 +80,10 @@ function App(props) {
         if (origin === undefined) {
             origin = newOrigin;
         }
-        if (gender.toLowerCase() == "feminine") {
+        if (gender.toLowerCase() === "feminine") {
             img = "/img/yellow.jpg";
             text = "img for female"
-        } else if (gender.toLowerCase() == "masculine") {
+        } else if (gender.toLowerCase() === "masculine") {
             img = "/img/pink.jpg";
             text = "img for male"
         } else {
@@ -155,7 +155,6 @@ function App(props) {
                             genders={genderData}
                             allNameObjArr={testNameData}
                             // allNameObjArr={nameDataArray}
-                            nameDataObjArr={nameDataArray}
                             booked={bookmarkArray}
                             handleBook={AddtoFav}
                         />

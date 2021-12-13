@@ -59,10 +59,15 @@ function NameCard(props) {
 
     // get classes based on card gender
     let genderObj = genderData.find((genderObj) => {
-        return genderObj.genderLabel === props.gender
+        return genderObj.genderStr === props.gender
     })
-    let colorClass = genderObj.colorClass;
-    let symbolClass = genderObj.symbolClass;
+
+    let colorClass = "";
+    let symbolClass = "";
+    if (genderObj !== undefined) {
+        colorClass = genderObj.colorClass;
+        symbolClass = genderObj.symbolClass;
+    }
  
     // console.log(props.gender) // testing
     const handleClick = (event) => {

@@ -3,6 +3,8 @@ import { NameSearchFilter } from './NameSearchFilter/NameSearchFilter';
 import { NameSearchResults } from './NameSearchResults';
 
 export function NameSearchForm(props) {
+    let {allNameObjArr, genders, callback, booked, handleBook} = props;
+
     // Get name from search bar
     const [searchedNameObj, setSearchedNameObj] = useState({
         name: "",
@@ -13,7 +15,7 @@ export function NameSearchForm(props) {
     });
     const handleSearch = (event) => {
         let searchedNameStr = event.target.value;
-        let matchingNameObj = props.allNameObjArr.find(dbNameObj => dbNameObj.name === searchedNameStr);
+        let matchingNameObj = allNameObjArr.find(dbNameObj => dbNameObj.name === searchedNameStr);
 
         setSearchedNameObj(matchingNameObj);
     }
@@ -30,12 +32,12 @@ export function NameSearchForm(props) {
     })
 
     // Display results
-    const [resultNameObjArr, setResultNameObjArr] = useState(props.allNameObjArr);
+    const [resultNameObjArr, setResultNameObjArr] = useState(allNameObjArr);
 
     // When "Get names" is clicked, apply filters to a copy of name dataset
     const handleClickGetNames = () => {
         // Start with all data in database
-        let filteredNameObjArr = props.allNameObjArr;
+        let filteredNameObjArr = allNameObjArr;
 
         // Filter matching
         function filterMatchingFn(filterParam, filterFn) {
@@ -56,6 +58,7 @@ export function NameSearchForm(props) {
 
         // Update results
         setResultNameObjArr(filteredNameObjArr);
+        console.log(filteredNameObjArr);
     }
 
     return (
@@ -65,9 +68,9 @@ export function NameSearchForm(props) {
             </div>
 
             <NameSearchFilter
-                genders={props.genders}
-                callback={props.callback}
-                nameDataObjArr={props.nameDataObjArr}
+                genders={genders}
+                callback={callback}
+                allNameObjArr={allNameObjArr}
                 searchedNameObj={searchedNameObj}
                 filterObj={filterObj}
                 setFilterObj={setFilterObj}
@@ -79,10 +82,11 @@ export function NameSearchForm(props) {
             </div>
             
             <NameSearchResults
+                // results={resultNameObjArr}
                 results={resultNameObjArr}
                 // allData={props.allData}
-                booked={props.booked}
-                handleBook={props.handleBook}
+                booked={booked}
+                handleBook={handleBook}
             />
         </div>
     )

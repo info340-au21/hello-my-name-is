@@ -3,7 +3,7 @@ import { GenderFilter } from './GenderFilter';
 // import { DetailedFilter } from './DetailedFilter';
 
 export function NameSearchFilter(props) {
-    let {searchedNameObj, nameDataObjArr, genders, callback, filterObj, setFilterObj} = props;
+    let {searchedNameObj, allDataObjArr, genders, callback, filterObj, setFilterObj} = props;
 
     // origin filter
     const handleCheckOrigin = (event) => {
@@ -63,7 +63,7 @@ export function NameSearchFilter(props) {
             <div className="row">
                 <FilterMatching
                     searchedNameObj={searchedNameObj}
-                    nameDataObjArr={nameDataObjArr}
+                    allDataObjArr={allDataObjArr}
                     handleCheckOrigin={handleCheckOrigin}
                     handleCheckLength={handleCheckLength}
                     handleCheckFirst={handleCheckFirst}
@@ -102,7 +102,7 @@ function FilterMatching(props) {
             <div className="item long">
                 <input
                     type="checkbox"
-                    name="check-origin"
+                    id="check-origin"
                     onClick={handleCheckOrigin}
                 />
 
@@ -116,7 +116,7 @@ function FilterMatching(props) {
             <div className="item long">
                 <input
                     type="checkbox"
-                    name="check-ln"
+                    id="check-ln"
                     onChange={handleCheckLength}
                 />
 
@@ -131,7 +131,7 @@ function FilterMatching(props) {
                 {/* hard-coded checked */}
                 <input
                     type="checkbox"
-                    name="check-first"
+                    id="check-first"
                     onChange={handleCheckFirst}
                 />
 
@@ -179,7 +179,7 @@ function FilterSimilar(props) {
             {/* <!-- Pronunciation checkbox (use Checkbox()) --> */}
             <div className="row">
                 <div className="item">
-                    <input type="checkbox" name="check-pronoun"/>
+                    <input type="checkbox" id="check-pronoun"/>
 
                     <label htmlFor="check-pronoun">
                         Pronunciation
@@ -191,7 +191,7 @@ function FilterSimilar(props) {
             <div className="row column">
                 {/* Meaning checkbox (use Checkbox()) */}
                 <div className="item">
-                    <input type="checkbox" name="check-meaning"/>
+                    <input type="checkbox" id="check-meaning"/>
 
                     <label htmlFor="check-meaning" >
                         Meaning
