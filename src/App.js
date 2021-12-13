@@ -8,18 +8,17 @@ import { Footer } from './components/Footer'
 import { SubmitForm } from './components/SubmitForm.js';
 import { Route, Switch, Redirect, Link } from 'react-router-dom';
 import { GenerateBookmark } from './components/GenerateBookmark';
-import { getDatabase, ref, set, push as firebasePush, onValue, get, child } from 'firebase/database';
+import { getDatabase, ref, set as firebaseSet, push as firebasePush, onValue, get, child } from 'firebase/database';
 
 // Data
-import nameData from './data/Names.json';
-import favData from './data/favbookmark.json';
+import testNameData from './data/Names.json';
 import genderData from './data/Genders.json';
-const updateFavData = favData.map(obj => ({...obj, isDelete:false}))
 // const nameCard = {name:'Nalu', meaning:"Surging surf, wave", pronunciation:'nah-loo', gender:'neutral', genderIcon:'fa fa-genderless', origin:'Hawaiian'}
 
 function App(props) {
     const [bookmarkArray, setbookmarkArray] = useState([]) //store the array of names to be generated for Bookmark page
     const [nameDataArray, setNameData] = useState([])
+    // console.log(nameDataArray); // testing
 
     const db = getDatabase();
     // const currentData = ref(db, nameData);
@@ -57,6 +56,7 @@ function App(props) {
     }, []);
 
     //const updateFavData = bookmarkArray.map(obj => ({...obj, isDelete:false}))
+    /*
     const modifyDelete = (name) => { //handle delete
         let update = updateFavData.map((theCard) => {
             let updateCopy = {...theCard}
@@ -68,6 +68,12 @@ function App(props) {
         let whatLeftAfterDelete = update.filter((name) => !name.isDelete);
         setbookmarkArray(whatLeftAfterDelete) //generate the filtered array, enable user to delete any bookmarked names
     }
+    */
+    const modifyDelete = (name) => { //handle delete
+        let remainsOfDelete = bookmarkArray.filter((userObj) => userObj.name !== name);
+        const bookmarkref = ref(db, "userData");
+        firebaseSet(bookmarkref, remainsOfDelete)
+    }
 
     const AddtoFav = (name, gender, origin) => {
         let img = "";
@@ -76,10 +82,10 @@ function App(props) {
         if (origin === undefined) {
             origin = newOrigin;
         }
-        if (gender == "Female") {
+        if (gender.toLowerCase() == "feminine") {
             img = "/img/yellow.jpg";
             text = "img for female"
-        } else if (gender == "Male") {
+        } else if (gender.toLowerCase() == "masculine") {
             img = "/img/pink.jpg";
             text = "img for male"
         } else {
@@ -100,13 +106,6 @@ function App(props) {
     }
 
     // console.log(bookmarkArray)
-    // FILTER/SEARCH STATES AND EVENT HANDLING
-    // Gender filter
-    const [genderFilterObjArr, setGenderFilterObjArr] = useState({
-        neutral: false,
-        feminine: false,
-        masculine: false
-    });
     
     // const handleGenderCheck = (event) => {
     //     // get gender
@@ -156,8 +155,8 @@ function App(props) {
                     <Route exact path='/'>
                         <NameSearchForm
                             genders={genderData}
-                            // callback={handleGenderCheck}
-                            /*genderFilter={genderFilterObjArr}*/ results={nameData}
+                            allNameObjArr={testNameData}
+                            // allNameObjArr={nameDataArray}
                             nameDataObjArr={nameDataArray}
                             booked={bookmarkArray}
                             handleBook={AddtoFav}

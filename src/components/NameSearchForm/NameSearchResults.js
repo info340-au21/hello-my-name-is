@@ -6,7 +6,11 @@ export function NameSearchResults(props) {
     return (
         <div className="section container column">
             <h2 className="row">Your 50 matches:</h2>
-            <NameCards results={props.results} allData={props.allData} booked={props.booked} handleBook={props.handleBook}/>
+            <NameCards
+                results={props.results}
+                booked={props.booked}
+                handleBook={props.handleBook}
+            />
         </div>
     )
 }
@@ -28,7 +32,7 @@ function NameCards(props) {
                 origin={nameResultObj.origin}
                 isLiked={nameResultObj.liked}
                 key={nameResultObj.name}
-                allData={props.allData}
+                // allData={props.allData}
                 booked={props.booked}
                 handleBook={props.handleBook}
              />
@@ -41,132 +45,6 @@ function NameCards(props) {
             { nameCardElemArr }
         </div>
     )
-
-    // Delete once above return works properly
-    // return (
-    //     <div className="container card-container row">
-    //         {/* {resultElemArr} */}
-
-    //         {/* Remove hard-code once data is added */}
-    //         <div className="card outer neut">
-    //             <h3 className="name">
-    //                 <div className="card-container">
-    //                     <div></div>
-    //                     <div>
-    //                         Nalu
-    //                         <i className="fa fa-genderless" aria-label="neutral"></i>
-    //                     </div>
-    //                     <button type="button" className="btn btn-heart"><span className="material-icons" aria-label="sorting">favorite_border</span></button>
-    //                 </div>
-    //             </h3>
-
-    //             <div className="inner card">
-    //                 <p className="meaning">Surging Surf, Wave</p>
-    //             </div>
-    //         </div>
-
-    //         <div className="outer card masc">
-    //             <h3 className="name">
-    //                 <div className="card-container">
-    //                     <div></div>
-    //                     <div>
-    //                         Jacob
-    //                         <i className="fa fa-mars" aria-label="masculine"></i>
-    //                     </div>
-    //                     <button type="button" className="btn btn-heart"><span className="material-icons" aria-label="sorting">favorite_border</span></button>
-    //                 </div>
-    //             </h3>
-
-    //             <div className="inner card">
-    //                 <p className="meaning">Supplanter, usurper</p>
-    //             </div>
-    //         </div>
-
-    //         <div className="outer card fem">
-    //             <h3 className="name">
-    //                 <div className="card-container">
-    //                     <div></div>
-    //                     <div>
-    //                         Carolina
-    //                         <i className="fa fa-venus" aria-label="feminine"></i>
-    //                     </div>
-    //                     <button type="button" className="btn btn-heart"><span className="material-icons" aria-label="sorting">favorite_border</span></button>
-    //                 </div>
-    //             </h3>
-
-    //             <div className="inner card">
-    //                 <p className="meaning">Song of happiness or joy</p>
-    //             </div>
-    //         </div>
-
-    //         <div className="outer card masc">
-    //             <h3 className="name">
-    //                 <div className="card-container">
-    //                     <div></div>
-    //                     <div>
-    //                         Maynard
-    //                         <i className="fa fa-mars" aria-label="masculine"></i>
-    //                     </div>
-    //                     <button type="button" className="btn btn-heart"><span className="material-icons" aria-label="sorting">favorite_border</span></button>
-    //                 </div>
-    //             </h3>
-            
-    //             <div className="inner card">
-    //                 <p className="meaning">Strength, brave, strong</p>
-    //             </div>
-    //         </div>
-
-    //         <div className="outer card masc">
-    //             <h3 className="name">
-    //                 <div className="card-container">
-    //                     <div></div>
-    //                     <div>
-    //                         Kevin
-    //                         <i className="fa fa-mars" aria-label="masculine"></i>
-    //                     </div>
-    //                     <button type="button" className="btn btn-heart"><span className="material-icons" aria-label="sorting">favorite_border</span></button>
-    //                 </div>
-    //             </h3>
-            
-    //             <div className="inner card">
-    //                 <p className="meaning">Handsome</p>
-    //             </div>
-    //         </div>
-
-    //         <div className="outer card masc">
-    //             <h3 className="name">
-    //                 <div className="card-container">
-    //                     <div></div>
-    //                     <div>
-    //                         Andy
-    //                         <i className="fa fa-mars" aria-label="masculine"></i>
-    //                     </div>
-    //                     <button type="button" className="btn btn-heart"><span className="material-icons" aria-label="sorting">favorite_border</span></button>
-    //                 </div>
-    //             </h3>
-            
-    //             <div className="inner card">
-    //                 <p className="meaning">Brave</p>
-    //             </div>
-    //         </div>
-
-    //         <div className="outer card load">
-    //             <h3 className="name">
-    //                 Loading...
-
-    //             </h3>
-            
-    //         </div>
-
-    //         <div className="outer card load">
-    //             <h3 className="name">
-    //                 Loading...
-
-    //             </h3>
-            
-    //         </div>
-    //     </div>  
-    // )
 }
 
 function NameCard(props) {
@@ -181,10 +59,10 @@ function NameCard(props) {
     let genderObj = genderData.find((genderObj) => {
         return genderObj.genderLabel === props.gender
     })
-    let genderLabel = genderObj.genderLabel;
     let colorClass = genderObj.colorClass;
     let symbolClass = genderObj.symbolClass;
  
+    // console.log(props.gender) // testing
     const handleClick = (event) => {
       setIsLiked(!isLiked);
       props.handleBook(props.name, props.gender, props.origin)

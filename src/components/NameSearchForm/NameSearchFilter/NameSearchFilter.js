@@ -3,14 +3,14 @@ import { GenderFilter } from './GenderFilter';
 import { DetailedFilter } from './DetailedFilter';
 
 export function NameSearchFilter(props) {
-    const [searchedNameStr, setSearchedNameStr] = useState('');
+    // SearchBar
+    const [searchedNameObj, setSearchedNameObj] = useState(undefined);
     const handleSearch = (event) => {
-        setSearchedNameStr(event.target.value);
-    }
+        let searchedNameStr = event.target.value;
 
-    // Get associated name object from nameData based on the name typed in the search bar
-    // console.log("Current searched name: " + searchedNameStr); // testing
-    let searchedNameObj = props.nameDataObjArr.find(nameDataObj => nameDataObj.name === searchedNameStr);
+        setSearchedNameObj(props.nameDataObjArr.find(nameDataObj => nameDataObj.name === searchedNameStr));
+    }
+    // console.log(searchedNameObj); // testing
 
     return (
         <div className="section container column">
@@ -36,9 +36,9 @@ export function NameSearchFilter(props) {
             </div>
 
             {/* Then trigger update results */}
-            <div className="row">
+            {/* <div className="row">
                 <GetNamesButton/>
-            </div>
+            </div> */}
         </div>
     )
 }
@@ -61,11 +61,11 @@ function SearchBar(props) {
 }
 
 
-// Match button
-function GetNamesButton() {
-    return (
-        <div className="item">
-            <button type="button" className="btn btn-light">Get names</button>
-        </div>
-    )
-}
+// // Match button
+// function GetNamesButton() {
+//     return (
+//         <div className="item">
+//             <button type="button" className="btn btn-light">Get names</button>
+//         </div>
+//     )
+// }

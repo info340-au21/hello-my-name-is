@@ -1,44 +1,79 @@
 [
     {
-        "name": "Nalu",
-        "gender": "Neutral",
-        "meaning": "Surging Surf, Wave",
-        "origin": "Hawaiian",
-        "liked": false
+      "name": "Nalu",
+      "pronunciation": "NAH-loo",
+      "gender": "Neutral",
+      "meaning": "Surging, surf, wave",
+      "origin": "Hawaiian"
     },
     {
-        "name": "Jacob", 
-        "gender": "Masculine", 
-        "meaning": "Supplanter, usurper",
-        "origin": "Hebrew",
-        "liked": false
+      "name": "Jacob",
+      "pronunciation": "JAY-cuhb",
+      "gender": "Masculine",
+      "meaning": "Supplanter, usurper",
+      "origin": "Hebrew"
     },
-    { 
-        "name": "Carolina", 
-        "gender": "Feminine", 
-        "meaning": "Song of happiness or joy",
-        "origin": "Italian",
-        "liked": false
+    {
+      "name": "Carolina",
+      "pronunciation": "CAYR-oh-LEE-nuh",
+      "gender": "Feminine",
+      "meaning": "Song of happiness or joy",
+      "origin": "Italian"
     },
-    { 
-        "name": "Maynard", 
-        "gender": "Masculine", 
-        "meaning": "Strength, brave, strong",
-        "origin": "English",
-        "liked": false
+    {
+      "name": "Maynard",
+      "pronunciation": "MAY-nahrd",
+      "gender": "Masculine",
+      "meaning": "Strength, brave, strong",
+      "origin": "English"
     },
-    { 
-        "name": "Kevin", 
-        "gender": "Masculine", 
-        "meaning": "Handsome",
-        "origin": "English",
-        "liked": false
+    {
+      "name": "Kevin",
+      "pronunciation": "KEH-vin",
+      "gender": "Masculine",
+      "meaning": "Handsome",
+      "origin": "English"
     },
-    { 
-        "name": "Andy", 
-        "gender": "Masculine", 
-        "meaning": "Brave",
-        "origin": "English",
-        "liked": false
+    {
+      "name": "Andy",
+      "pronunciation": "AN-dee",
+      "gender": "Masculine",
+      "meaning": "Brave",
+      "origin": "English"
+    },
+    {
+      "name": "Emma",
+      "pronunciation": "EH-muh",
+      "gender": "Feminine",
+      "meaning": "Universal",
+      "origin": "Germanic"
+    },
+    {
+      "name": "Jessie",
+      "pronunciation": "JEH-see",
+      "gender": "Neutral",
+      "meaning": "Gracious",
+      "origin": "English"
+    },
+    {
+      "name": "Gracie",
+      "pronunciation": "GRAY-see",
+      "gender": "Feminine",
+      "meaning": "Favor, blessing",
+      "origin": "English"
+    },
+    {
+      "name": "Devin",
+      "pronunciation": "DEH-vin",
+      "gender": "Neutral",
+      "meaning": "Fawn, poet, divine",
+      "origin": "French"
+    },
+    {
+      "name": "Devon",
+      "pronunciation": "DEH-vin",
+      "gender": "Neutral",
+      "meaning": "English county Devon",
+      "origin": "North American"
     }
   ]

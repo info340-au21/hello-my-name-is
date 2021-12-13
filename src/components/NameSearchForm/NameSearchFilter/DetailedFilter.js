@@ -1,9 +1,5 @@
-// import firebase from 'firebase/compat/app';
-// import 'firebase/auth';
-// import database from '@react-native-firebase/database';
-
-// import firebase from 'firebase/compat/app';
-// import 'firebase/database';
+import { set } from "@firebase/database";
+import { useState } from "react";
 
 export function DetailedFilter(props) {
     // let searchedNameStr = props.searchedNameStr;
@@ -23,6 +19,13 @@ export function DetailedFilter(props) {
 // Filter htmlFor matching... (break down further into Origin, Syllables, Length, and FirstLetters)
 function FilterMatching(props) {
     // console.log(props.searchedNameObj); // testing
+    let searchedNameObj = props.searchedNameObj;
+
+    const [firstNumLetters, setFirstNumLetters] = useState(0);
+    const handleChangeFirstNumLetters = (event) => {
+        console.log(event.target.value);
+        setFirstNumLetters(event.target.value);
+    }
 
     // Need to map Origin, Syllables, and Length using Checkbox()
     return (
@@ -35,19 +38,19 @@ function FilterMatching(props) {
 
                 <label htmlFor="check-origin">
                     Origin 
-                    <span className="small-text">(Hawaiian)</span>
+                    <span className="small-text">   ({searchedNameObj ? searchedNameObj.origin : ""})</span>
                 </label>
             </div>
 
-            {/* <!-- Syllables --> */}
-            <div className="item long">
+            {/* <!-- Syllables (hidden for now b/c don't have property for this in db currently) --> */}
+            {/* <div className="item long">
                 <input type="checkbox" name="check-syl"/>
 
                 <label htmlFor="check-syl">
                     Number of syllables 
-                    <span className="small-text">(2)</span>
+                    <span className="small-text">   (2)</span>
                 </label>
-            </div>
+            </div> */}
 
             {/* <!-- Length --> */}
             <div className="item long">
@@ -55,50 +58,31 @@ function FilterMatching(props) {
 
                 <label htmlFor="check-ln">
                     Length 
-                    <span className="small-text">(4 letters)</span>
+                    <span className="small-text">   ({searchedNameObj ? searchedNameObj.name.length : ""} letters)</span>
                 </label>
             </div>
 
             {/* <!-- First letters (special checkbox) --> */}
-            <FirstLettersCheckBox/>
+            {/* <FirstLettersCheckBox/> */}
+            <div className="item long">
+                {/* hard-coded checked */}
+                <input type="checkbox" name="check-first"/>
+
+                <label htmlFor="check-first">
+                    First
+                    <input
+                        type="number"
+                        placeholder="#"
+                        onChange={handleChangeFirstNumLetters}
+                    />
+                    letters
+                    <span className="small-text">
+                           ("{searchedNameObj ? searchedNameObj.name.substring(0, firstNumLetters) : ""}")
+                    </span>
+                </label>
+            </div>
         </div>
     )
-}
-
-
-function Checkbox(props) {
-    var {filterStr, isChecked, smallTextStr} = props;
-
-    return (
-        <div className="item">
-            {/* is checked hard-coded */}
-            <input type="checkbox" name="check-pronoun"/>
-
-            <label htmlFor="check-pronoun">
-                {filterStr}
-                <span className="small-text">{smallTextStr}</span>
-            </label>
-        </div>
-    )
-}
-
-
-function FirstLettersCheckBox(props) {
-    var {isChecked, smallTextStr} = props;
-
-    return (
-        <div className="item long">
-            {/* hard-coded checked */}
-            <input type="checkbox" name="check-first"/>
-
-            <label htmlFor="check-first">
-                First
-                <input type="number" placeholder="3"/>
-                letters
-                <span className="small-text">{smallTextStr}</span>
-            </label>
-        </div>
-    )   
 }
 
 // Filter htmlFor similar... (break down further into Pronunciation and Meaning)
