@@ -3,7 +3,7 @@ import { NameSearchFilter } from './NameSearchFilter/NameSearchFilter';
 import { NameSearchResults } from './NameSearchResults';
 
 export function NameSearchForm(props) {
-    // Search
+    // Get name from search bar
     const [searchedNameObj, setSearchedNameObj] = useState({
         name: "",
         pronunciation: null,
@@ -19,7 +19,7 @@ export function NameSearchForm(props) {
     }
     // console.log(searchedNameObj); // testing
 
-    // Filter
+    // Filter based off of name and selected/inputed filters
     const [filterObj, setFilterObj] = useState({
         origin: null,
         length: null,
@@ -29,7 +29,7 @@ export function NameSearchForm(props) {
         gender: null
     })
 
-    // Results
+    // Display results
     const [resultNameObjArr, setResultNameObjArr] = useState(props.allNameObjArr);
 
     // When "Get names" is clicked, apply filters to a copy of name dataset
@@ -48,15 +48,6 @@ export function NameSearchForm(props) {
 
         // By name length
         filterMatchingFn('length', (dbNameObj) => dbNameObj.name.length === searchedNameObj.name.length);
-
-        // By first # letters
-        // let firstNumLetters = searchedNameObj.firstNumLetters;
-        // let searchedNameFirstLetters = searchedNameObj.name.substring(0, firstNumLetters);
-        // filterMatchingFn('firstNumLetters', (dbNameObj) => dbNameObj.name.substring(0, firstNumLetters) === searchedNameFirstLetters);
-
-        // Filter similar
-
-        // Filter gender
 
         // Update results
         setResultNameObjArr(filteredNameObjArr);

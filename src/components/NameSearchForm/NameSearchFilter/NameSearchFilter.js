@@ -1,72 +1,165 @@
 import React, { useState } from 'react';
 import { GenderFilter } from './GenderFilter';
-import { DetailedFilter } from './DetailedFilter';
+// import { DetailedFilter } from './DetailedFilter';
 
 export function NameSearchFilter(props) {
     let {searchedNameObj, nameDataObjArr, genders, callback, filterObj, setFilterObj} = props;
-    // SearchBar
-    // const [searchedNameObj, setSearchedNameObj] = useState(undefined);
-    // const handleSearch = (event) => {
-    //     let searchedNameStr = event.target.value;
 
-    //     setSearchedNameObj(props.nameDataObjArr.find(nameDataObj => nameDataObj.name === searchedNameStr));
-    // }
-    // console.log(searchedNameObj); // testing
+    // origin filter
+    const handleClickOrigin = (event) => {
+        let newFilterObj = filterObj;
+        
+        if (event.target.checked) {
+            newFilterObj.origin = searchedNameObj.origin;
+        } else {
+            newFilterObj.origin = null;
+        }
+
+        setFilterObj(newFilterObj);
+        console.log(filterObj);
+    }
+
+    // length filter
+
+    // first # letters filter
+
+    // pronunciation filter
+
+    // meaning filter
+
+    // gender filter
 
     return (
         <div className="section container column">
-            {/* First get name */}
-            {/* <div className="row">
-                <SearchBar callback={handleSearch}/>
-            </div> */}
-
-            {/* Then filter names based on given name */}
-            <DetailedFilter
-                // results={props.results}
-                // searchedNameStr={searchedNameStr}
-                searchedNameObj={searchedNameObj}
-                nameDataObjArr={nameDataObjArr}
-            />
-
-            {/* Then filter by gender */}
             <div className="row">
+                <FilterMatching
+                    searchedNameObj={searchedNameObj}
+                    nameDataObjArr={nameDataObjArr}
+                    handleClickOrigin={handleClickOrigin}
+                />
+                <FilterSimilar/>
+            </div>
+
+            <div className="row">
+                <h3 className="center">That are...</h3>
                 <GenderFilter
                     genders={genders}
                     callback={callback}
                 />
             </div>
-
-            {/* Then trigger update results */}
-            {/* <div className="row">
-                <GetNamesButton/>
-            </div> */}
         </div>
     )
 }
 
+// Filter htmlFor matching... (break down further into Origin, Syllables, Length, and FirstLetters)
+function FilterMatching(props) {
+    let {searchedNameObj, handleClickOrigin} = props;
 
-// Search
-function SearchBar(props) {
+    const [firstNumLetters, setFirstNumLetters] = useState(0);
+    const handleChangeFirstNumLetters = (event) => {
+        setFirstNumLetters(event.target.value);
+    }
+
+    // Need to map Origin, Syllables, and Length using Checkbox()
     return (
-        <h2 className="item center">
-            Names like...
-            {/* Hard-coded placeholder (should be user input) */}
-            <input
-                type="text"
-                placeholder="ENTER NAME"
-                className="search"
-                onChange={props.callback}
-            />
-        </h2>
+        <div className="item column">
+            <h3>With matching...</h3>
+            
+            {/* <!-- Origin --> */}
+            <div className="item long">
+                <input
+                    type="checkbox"
+                    name="check-origin"
+                    onClick={handleClickOrigin}
+                />
+
+                <label htmlFor="check-origin">
+                    Origin 
+                    <span className="small-text">   ({searchedNameObj ? searchedNameObj.origin : ""})</span>
+                </label>
+            </div>
+
+            {/* <!-- Length --> */}
+            <div className="item long">
+                <input type="checkbox" name="check-ln"/>
+
+                <label htmlFor="check-ln">
+                    Length 
+                    <span className="small-text">   ({searchedNameObj ? searchedNameObj.name.length : ""} letters)</span>
+                </label>
+            </div>
+
+            {/* <!-- First letters (special checkbox) --> */}
+            <div className="item long">
+                {/* hard-coded checked */}
+                <input type="checkbox" name="check-first"/>
+
+                <label htmlFor="check-first">
+                    First
+                    <input
+                        type="number"
+                        placeholder="#"
+                        onChange={handleChangeFirstNumLetters}
+                    />
+                    letters
+                    <span className="small-text">   ("{searchedNameObj ? searchedNameObj.name.substring(0, firstNumLetters) : ""}")</span>
+                </label>
+            </div>
+        </div>
     )
 }
 
+// Filter htmlFor similar... (break down further into Pronunciation and Meaning)
+function FilterSimilar(props) {
+    function MeaningSlider() {
+        return (
+            <div className="item">
+                <div className="center">
+                    <label htmlFor="slide-meaning" className="small-text">Loose match</label>
+    
+                    <input type="range" name="slide-meaning" min="1" max="3" list="similarity"/>
+    
+                    <datalist>
+                        <option value="1" label="Loose match"></option>
+                        <option value="2"></option>
+                        <option value="3" label="Close match"></option>
+                    </datalist>
+    
+                    <label htmlFor="slide-meaning" className="small-text">Close match</label>
+                </div>
+            </div>
+        )
+    }
 
-// // Match button
-// function GetNamesButton() {
-//     return (
-//         <div className="item">
-//             <button type="button" className="btn btn-light">Get names</button>
-//         </div>
-//     )
-// }
+    return (
+        <div className="item">
+            <h3>And similar...</h3>
+
+            {/* <!-- Pronunciation checkbox (use Checkbox()) --> */}
+            <div className="row">
+                <div className="item">
+                    <input type="checkbox" name="check-pronoun"/>
+
+                    <label htmlFor="check-pronoun">
+                        Pronunciation
+                    </label>
+                </div>
+            </div>
+
+            {/* <!-- Meaning --> */}
+            <div className="row column">
+                {/* Meaning checkbox (use Checkbox()) */}
+                <div className="item">
+                    <input type="checkbox" name="check-meaning"/>
+
+                    <label htmlFor="check-meaning" >
+                        Meaning
+                    </label>
+                </div>
+
+                {/* Meaning slider */}
+                <MeaningSlider/>
+            </div>
+        </div>
+    )
+}
