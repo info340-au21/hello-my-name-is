@@ -118,27 +118,27 @@ function NameCard(props) {
             </div>
             <div className="collapsable">
                 <div className="row justify-content-center">
-                    <div className="card attribute col-sm-6 col-lg-6">
+                    <div className="card attribute col-sm-12 col-lg-6">
                         <h4>Meaning</h4>
                         <p className="meaning">{props.meaning}</p>
                     </div>
-                    <div className="card attribute col-sm-6 col-lg-6">
+                    <div className="card attribute col-sm-12 col-lg-6">
                         <h4>Origin</h4>
                         <p className="meaning">{props.origin}</p>
                     </div>
-                    <div className="card attribute col-sm-6 col-lg-6">
+                    <div className="card attribute col-sm-12 col-lg-6">
                         <h4>Pronunciation</h4>
                         <p className="meaning">{props.pronunciation}</p>
                     </div>
-                    <div className="card attribute col-sm-6 col-lg-6">
+                    <div className="card attribute col-sm-12 col-lg-6">
                         <h4>Gender</h4>
                         <p className="meaning">{props.gender}</p>
                     </div>
-                    <div className="card attribute col-sm-6 col-lg-6">
+                    <div className="card attribute col-sm-12 col-lg-6">
                         <h4>Length</h4>
                         <p className="meaning">{props.name.length}</p>
                     </div>
-                    <div className="card attribute col-sm-6 col-lg-6">
+                    <div className="card attribute col-sm-12 col-lg-6">
                         <h4>First Letter</h4>
                         <p className="meaning">{props.name.substring(0, 1)}</p>
                     </div>

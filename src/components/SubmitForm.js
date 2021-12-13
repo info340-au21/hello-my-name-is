@@ -1,18 +1,20 @@
 import userEvent from '@testing-library/user-event';
 import React, { useState, useEffect } from 'react';
 import { getDatabase, ref, set as firebaseSet, onValue, push as firebasePush} from 'firebase/database'
-import names from'../data/Names.json'
+import { NameInDB } from './NameInDB';
+
 
 export function SubmitForm(props) {
     const [nameInfo, setNameInfo] = useState({})
-    const [nameData, setNameData] = useState(names)
+    const [nameData, setNameData] = useState([])
+    const [inDB, setInDB] = useState(undefined)
 
     const db = getDatabase();
     // console.log(db);
 
     useEffect(()=> {
-        const exampleRef = ref(db, nameInfo.name);
-        const offFunction = onValue(exampleRef, (snapshot) => {
+        const nameRef = ref(db, "nameData");
+        const offFunction = onValue(nameRef, (snapshot) => {
             //console.log(snapshot);
             const newName = snapshot.val();
             // console.log(newName);
@@ -21,7 +23,7 @@ export function SubmitForm(props) {
             setNameData(currentNames);
         })
 
-        console.log(exampleRef);
+        console.log(nameRef);
 
         //turn off listener
         function cleanup() {
@@ -44,74 +46,97 @@ export function SubmitForm(props) {
 
     function handlePronunciation(event) {
         event.preventDefault();
-        const val = {pronunciation: event.target.value};
+        const pronunciation = event.target.value
+        const val = {pronunciation: pronunciation.toLowerCase()};
         const currentInfo = Object.assign(nameInfo, val);
         setNameInfo(currentInfo)
     }
 
     function handleOrigin(event) {
         event.preventDefault();
-        const val = {origin: event.target.value};
+        const origin = event.target.value
+        const val = {origin: origin.toLowerCase()};
         const currentInfo = Object.assign(nameInfo, val);
         setNameInfo(currentInfo)
     }
 
     function handleGender(event) {
         event.preventDefault();
-        const val = {gender: event.target.value};
+        const gender = event.target.value
+        const val = {gender: gender.toLowerCase()};
         const currentInfo = Object.assign(nameInfo, val);
         setNameInfo(currentInfo)
     }
 
     function handleMeaning(event) {
         event.preventDefault();
-        const val = {meaning: event.target.value};
+        const meaning = event.target.value
+        const val = {meaning: meaning.toLowerCase()};
         const currentInfo = Object.assign(nameInfo, val);
         setNameInfo(currentInfo)
     }
 
+    //loop through, if name in database, redirect to other page
     function submitCallback(event) {
-        event.preventDefault();
-        const nameRef = ref(db, "nameData");
-        firebasePush(nameRef, nameInfo);
-        props.applyUpdate(nameInfo);
+        //event.preventDefault();
+        let inDB = false;
+        Object.values(nameData[0]).map(name => {
+            if(name.name === nameInfo.name) {
+                inDB = true;
+            }
+        })
+        if(inDB === false) {
+            const nameRef = ref(db, "nameData");
+            firebasePush(nameRef, nameInfo);
+            //props.applyUpdate(nameInfo);
+        } else {
+            setInDB(true);
+        }
+        //console.log(Object.values(nameData[0]))
+       
     }
     
 
-    return (
-        <main>
-            <form role='form' method='GET'>
-                <div className="form-attribute">
-                    <label htmlFor="name">What name would you like to submit to the data base? </label>
-                    <input id="name" onBlur={handleName} type = "text" placeholder="Enter a name" className="search" />
-                </div>
-
-                <div className="form-attribute">
-                    <label htmlFor="pronunciation">How do you pronounce this name?</label>
-                    <input id="pronunciation" onBlur={handlePronunciation} type="text" placeholder="eg. nah-loo" className="search"></input>
-                </div>
-
-                <div className="form-attribute">
-                    <label htmlFor="origin">What is the origin of this name? </label>
-                    <input id="origin" onBlur={handleOrigin} type = "text" placeholder="eg. Greek, Somolian" className="search" />
-                </div>
-
-                <div className="form-attribute">
-                    <label htmlFor="gender">Is it a gendered name? </label>
-                    <label htmlFor="feminine"><input id="gender" value="feminine" onInput={handleGender} type = "radio" /> Feminine </label>
-                    <label htmlFor="masculine"><input id="gender" value="masculine" onInput={handleGender} type = "radio" /> Masculine </label>
-                    <label htmlFor="nuetral"><input id="gender" value="nuetral" onInput={handleGender} type = "radio" /> Neutral </label>
-                </div>
-
-                <div className="form-attribute">
-                    <label htmlFor="meaning">What is the meaning of this name? </label>
-                    <input id="meaning" onBlur={handleMeaning} type = "text" placeholder="max 180 characters" />
-                </div>
-
-                <div className="item">
-                    <button onClick={submitCallback} type="submit" className="btn btn-light">Submit Name!</button>
-                </div>
-            </form>
-        </main>
-    )
+    if(inDB === true) {
+        return(
+            <NameInDB />
+        )
+    } else {
+        return (
+            <main>
+                <form role='form' method='GET'>
+                    <div className="form-attribute">
+                        <label htmlFor="name">What name would you like to submit to the data base? </label>
+                        <input id="name" onBlur={handleName} type = "text" placeholder="Enter a name" className="search" />
+                    </div>
+    
+                    <div className="form-attribute">
+                        <label htmlFor="pronunciation">How do you pronounce this name?</label>
+                        <input id="pronunciation" onBlur={handlePronunciation} type="text" placeholder="eg. nah-loo" className="search"></input>
+                    </div>
+    
+                    <div className="form-attribute">
+                        <label htmlFor="origin">What is the origin of this name? </label>
+                        <input id="origin" onBlur={handleOrigin} type = "text" placeholder="eg. Greek, Somolian" className="search" />
+                    </div>
+    
+                    <div className="form-attribute">
+                        <label htmlFor="gender">Is it a gendered name? </label>
+                        <label htmlFor="feminine"><input id="gender" value="feminine" onInput={handleGender} type = "radio" /> Feminine </label>
+                        <label htmlFor="masculine"><input id="gender" value="masculine" onInput={handleGender} type = "radio" /> Masculine </label>
+                        <label htmlFor="nuetral"><input id="gender" value="nuetral" onInput={handleGender} type = "radio" /> Neutral </label>
+                    </div>
+    
+                    <div className="form-attribute">
+                        <label htmlFor="meaning">What is the meaning of this name? </label>
+                        <input id="meaning" onBlur={handleMeaning} type = "text" placeholder="max 180 characters" />
+                    </div>
+    
+                    <div className="item">
+                        <button onClick={submitCallback} type="submit" className="btn btn-light">Submit Name!</button>
+                    </div>
+                </form>
+            </main>
+        )
+    }
 }

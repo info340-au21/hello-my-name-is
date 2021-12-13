@@ -9,6 +9,7 @@ import { SubmitForm } from './components/SubmitForm.js';
 import { Route, Switch, Redirect, Link } from 'react-router-dom';
 import { GenerateBookmark } from './components/GenerateBookmark';
 import { getDatabase, ref, set as firebaseSet, push as firebasePush, onValue, get, child } from 'firebase/database';
+import { NameNotInDB } from './components/NameSearchForm/NameNotInDB'
 
 // Data
 import testNameData from './data/Names.json';
@@ -170,7 +171,7 @@ function App(props) {
                         <GenerateBookmark fav={bookmarkArray} handleUpdate={modifyDelete} />
                     </Route>
                     <Route path='/submit'>
-                        <SubmitForm applyUpdate={updateDatabase}/>
+                        <SubmitForm />
                     </Route>
                     <Route>
                         <Redirect to='/' />
@@ -185,18 +186,6 @@ function App(props) {
     );
 
     //change this to display page when name is already in the database
-    function updateDatabase(nameInfo) {
-        //console.log(nameInfo.name);
-        const form = document.querySelector("form");
-        form.reset();
-        //console.log('form reset')
-        nameData.map(name => {
-            console.log(name.name)
-            if(name.name === nameInfo.name) {
-                console.log("already here")
-            }
-        })
-    }
 }
 
 export default App;

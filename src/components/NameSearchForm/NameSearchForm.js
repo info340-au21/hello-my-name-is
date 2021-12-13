@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { NameSearchFilter } from './NameSearchFilter/NameSearchFilter';
 import { NameSearchResults } from './NameSearchResults';
+import { NameNotInDB } from './NameNotInDB'
+
 
 export function NameSearchForm(props) {
     // Filters
@@ -63,27 +65,33 @@ export function NameSearchForm(props) {
         setResultNameObjArr(filteredNameObjArr);
     }
 
-    return (
-        <div>
-            <NameSearchFilter
-                genders={props.genders}
-                callback={props.callback}
-                nameDataObjArr={props.nameDataObjArr}
-            />
-
-            {/* Then trigger update results */}
-            <div className="row">
-                <GetNamesButton callback={handleClickGetNames}/>
+    if(resultNameObjArr.length < 0) {
+        return (
+            <NameNotInDB />
+        )
+    } else {
+        return (
+            <div>
+                <NameSearchFilter
+                    genders={props.genders}
+                    callback={props.callback}
+                    nameDataObjArr={props.nameDataObjArr}
+                />
+    
+                {/* Then trigger update results */}
+                <div className="row">
+                    <GetNamesButton callback={handleClickGetNames}/>
+                </div>
+                
+                <NameSearchResults
+                    results={resultNameObjArr}
+                    // allData={props.allData}
+                    booked={props.booked}
+                    handleBook={props.handleBook}
+                />
             </div>
-            
-            <NameSearchResults
-                results={resultNameObjArr}
-                // allData={props.allData}
-                booked={props.booked}
-                handleBook={props.handleBook}
-            />
-        </div>
-    )
+        )
+    }
 }
 
 // Match button

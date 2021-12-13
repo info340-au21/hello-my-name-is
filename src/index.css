@@ -39,6 +39,19 @@ h3 {
     font-size: 1.5em;
 }
 
+.alert {
+    margin: 1rem;
+    background: lavender;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
+}
+
+.alert button a {
+    text-decoration: none;
+    color: white;
+    
+}
+
 /* Sticking footer to bottom of page (credit to https://www.freecodecamp.org/news/how-to-keep-your-footer-where-it-belongs-59c6aa05c59c/) */
 .page-container {
     position: relative;
