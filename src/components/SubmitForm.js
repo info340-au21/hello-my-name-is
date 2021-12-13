@@ -77,7 +77,6 @@ export function SubmitForm(props) {
     function handleGender(event) {
         event.preventDefault();
         const gender = event.target.value
-        console.log(gender)
         const val = {gender: gender.toLowerCase()};
         const currentInfo = Object.assign(nameInfo, val);
         setNameInfo(currentInfo)

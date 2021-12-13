@@ -493,6 +493,9 @@ th {
     width: 100%;
 } */
 
+.card.outer {
+    height: 80px;
+}
 
 .card.outer:hover {
     cursor: pointer;
@@ -526,6 +529,8 @@ th {
 .name-unexpanded > .collapsable {
     opacity: 0;
     display: none;
+    background-color: white;
+    height: 180px;
     animation: unreveal 0.5s ease;
 }
 
@@ -637,5 +642,9 @@ th {
 @media (min-width: 1000px) {
     .inner.card {
         display: block;
+    }
+
+    .card.outer {
+        height: 180px;
     }
 }
