@@ -102,7 +102,7 @@ export function NameSearchFilter(props) {
 
     return (
         <div className="section container column">
-            <div className="row">
+            <div className="row center">
                 <FilterMatching
                     searchedNameObj={searchedNameObj}
                     allDataObjArr={allDataObjArr}
@@ -112,7 +112,7 @@ export function NameSearchFilter(props) {
                     handleChangeFirstNumLetters={handleChangeFirstNumLetters}
                     firstNumLetters={firstNumLetters}
                 />
-                <FilterSimilar/>
+                {/* <FilterSimilar/> */}
             </div>
 
             <div className="row">
@@ -188,56 +188,56 @@ function FilterMatching(props) {
 }
 
 // Filter htmlFor similar... (break down further into Pronunciation and Meaning)
-function FilterSimilar(props) {
-    function MeaningSlider() {
-        return (
-            <div className="item">
-                <div className="center">
-                    <label htmlFor="slide-meaning" className="small-text">Loose match</label>
+// function FilterSimilar(props) {
+//     function MeaningSlider() {
+//         return (
+//             <div className="item">
+//                 <div className="center">
+//                     <label htmlFor="slide-meaning" className="small-text">Loose match</label>
     
-                    <input type="range" name="slide-meaning" min="1" max="3" list="similarity"/>
+//                     <input type="range" name="slide-meaning" min="1" max="3" list="similarity"/>
     
-                    <datalist>
-                        <option value="1" label="Loose match"></option>
-                        <option value="2"></option>
-                        <option value="3" label="Close match"></option>
-                    </datalist>
+//                     <datalist>
+//                         <option value="1" label="Loose match"></option>
+//                         <option value="2"></option>
+//                         <option value="3" label="Close match"></option>
+//                     </datalist>
     
-                    <label htmlFor="slide-meaning" className="small-text">Close match</label>
-                </div>
-            </div>
-        )
-    }
+//                     <label htmlFor="slide-meaning" className="small-text">Close match</label>
+//                 </div>
+//             </div>
+//         )
+//     }
 
-    return (
-        <div className="item">
-            <h3>And similar...</h3>
+//     return (
+//         <div className="item">
+//             <h3>And similar...</h3>
 
-            {/* <!-- Pronunciation checkbox (use Checkbox()) --> */}
-            <div className="row">
-                <div className="item">
-                    <input type="checkbox" id="check-pronoun"/>
+//             {/* <!-- Pronunciation checkbox (use Checkbox()) --> */}
+//             <div className="row">
+//                 <div className="item">
+//                     <input type="checkbox" id="check-pronoun"/>
 
-                    <label htmlFor="check-pronoun">
-                        Pronunciation
-                    </label>
-                </div>
-            </div>
+//                     <label htmlFor="check-pronoun">
+//                         Pronunciation
+//                     </label>
+//                 </div>
+//             </div>
 
-            {/* <!-- Meaning --> */}
-            <div className="row column">
-                {/* Meaning checkbox (use Checkbox()) */}
-                <div className="item">
-                    <input type="checkbox" id="check-meaning"/>
+//             {/* <!-- Meaning --> */}
+//             <div className="row column">
+//                 {/* Meaning checkbox (use Checkbox()) */}
+//                 <div className="item">
+//                     <input type="checkbox" id="check-meaning"/>
 
-                    <label htmlFor="check-meaning" >
-                        Meaning
-                    </label>
-                </div>
+//                     <label htmlFor="check-meaning" >
+//                         Meaning
+//                     </label>
+//                 </div>
 
-                {/* Meaning slider */}
-                <MeaningSlider/>
-            </div>
-        </div>
-    )
-}
+//                 {/* Meaning slider */}
+//                 <MeaningSlider/>
+//             </div>
+//         </div>
+//     )
+// }
