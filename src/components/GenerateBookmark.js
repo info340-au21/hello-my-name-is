@@ -4,14 +4,14 @@ export function GenerateBookmark(props) {
     let contentth = ['', 'Name', 'Relavent information'];
 
     return (
-        <body className="bookmarkpage-container">
+        <div className="bookmarkpage-container">
             <div>
             <table>
                 <Generatethead content={contentth} fav={props.fav}/>
                 <GenerateRow fav={props.fav} howToHandleUpdate={props.handleUpdate}/>
             </table>
             </div>
-        </body>
+        </div>
     )
 }
 
