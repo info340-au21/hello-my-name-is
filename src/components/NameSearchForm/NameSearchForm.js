@@ -37,9 +37,9 @@ export function NameSearchForm(props) {
         pronunciation: null,
         meaning: null,
         gender: {
-            'neutral': false,
-            'feminine': false,
-            'masculine': false
+            'neutral': null,
+            'feminine': null,
+            'masculine': null
         }
     })
 
@@ -78,17 +78,22 @@ export function NameSearchForm(props) {
             );
 
 
-            // Filter by gender
-            filteredNameObjArr = filteredNameObjArr.filter((dbNameObj) => {
-                let genderFilter = ['neutral', 'feminine', 'masculine'];
-                if (filterObj.gender !== null) {
-                    genderFilter = Object.keys(filterObj.gender).filter((genderProp) => filterObj.gender[genderProp]);
-                }
+            // Filter by gender (only if some of the boxes are checked, not if all or none are checked)
+            let genderProp = filterObj.gender;
+            if (!(genderProp.masculine === null && genderProp.feminine === null && genderProp.neutral === null)) {
+                filteredNameObjArr = filteredNameObjArr.filter((dbNameObj) => {
+                    let genderFilterArr = ['neutral', 'feminine', 'masculine'];
 
-                return (
-                    genderFilter.includes(dbNameObj.gender)
-                )
-            })
+                    // get an array of the acceptable genders by checking each of the filter object's genders to see if any are true
+                    genderFilterArr = genderFilterArr.filter((gender) => filterObj.gender[gender] === true);
+                    console.log(genderFilterArr);
+
+                    return (
+                        // filter for names whose genders are part of the array of acceptable genders
+                        genderFilterArr.includes(dbNameObj.gender)
+                    )
+                })
+            }
 
 
             // Update results
