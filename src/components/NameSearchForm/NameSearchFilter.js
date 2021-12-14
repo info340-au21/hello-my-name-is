@@ -18,16 +18,20 @@ export function NameSearchFilter(props) {
     }
 
     // origin filter
-    const handleCheckOrigin = (event) => {
+    const [originIsChecked, setOriginIsChecked] = useState(false);
+    const handleCheckOrigin = () => {
         let newFilterObj = filterObj;
         
-        if (event.target.checked) {
+        if (newFilterObj.origin === null) {
             newFilterObj.origin = searchedNameObj.origin;
+            // setOriginIsChecked(true);
         } else {
             newFilterObj.origin = null;
+            // setOriginIsChecked(false);
         }
 
         setFilterObj(newFilterObj);
+        setOriginIsChecked(!originIsChecked)
         // console.log(filterObj); // testing
     }
 
@@ -88,6 +92,8 @@ export function NameSearchFilter(props) {
                     handleCheckFirst={handleCheckFirst}
                     handleChangeFirstNumLetters={handleChangeFirstNumLetters}
                     firstNumLetters={firstNumLetters}
+                    // filterObj={filterObj}
+                    originIsChecked={originIsChecked}
                 />
             </div>
         </div>
@@ -152,7 +158,18 @@ function GenderFilter(props) {
 
 // Filter htmlFor matching... (break down further into Origin, Syllables, Length, and FirstLetters)
 function FilterMatching(props) {
-    let {searchedNameObj, handleCheckOrigin, handleCheckLength, handleCheckFirst, handleChangeFirstNumLetters, firstNumLetters} = props;
+    let {
+        searchedNameObj,
+        handleCheckOrigin,
+        handleCheckLength,
+        handleCheckFirst,
+        handleChangeFirstNumLetters,
+        firstNumLetters,
+        // filterObj
+        originIsChecked
+    } = props;
+
+    // let originIsChecked = filterObj.origin !== null;
 
     // Need to map Origin, Syllables, and Length using Checkbox()
     return (
@@ -165,7 +182,8 @@ function FilterMatching(props) {
                     <input
                         type="checkbox"
                         id="check-origin"
-                        onClick={handleCheckOrigin}
+                        onChange={handleCheckOrigin}
+                        checked={originIsChecked}
                     />
 
                     <label htmlFor="check-origin">
