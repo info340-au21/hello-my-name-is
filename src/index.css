@@ -6,6 +6,9 @@
 
 main {
     padding: 1em;
+    display: flex;
+    flex-direction: column;
+
 }
 
 .center {
@@ -82,7 +85,7 @@ h3 {
 }
 
 .item {
-    padding: .5em .75em;
+    padding-top: .75em;
 }
 
 .item button {
@@ -99,6 +102,7 @@ h3 {
 
 .column {
     flex-direction: column;
+    padding-top: 1em;
 }
 
 /* FILTER */
@@ -142,6 +146,24 @@ input[type='number'] {
     display: none;
 }
 
+.filter {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    vertical-align: middle;
+    justify-content: center;
+}
+
+.filter-item {
+    flex-grow: 1;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.container.filter {
+    flex-direction: column;
+}
+
 /* Name cards (mini) */
 .card-container {
     display: flex;
@@ -179,7 +201,7 @@ input[type='number'] {
     color: black;
     text-align: center;
     display: none;
-    margin: .7em;
+    padding: .7em;
 }
 
 .card h3 {
@@ -292,9 +314,12 @@ nav a {
 
 .material-icons {
     color: black;
-    padding-top: 0.5rem;
     position: relative;
+}
+
+.material-icons.top-padded {
     top: 5px;
+    padding-top: 0.5rem;
 }
 
 footer {
@@ -638,6 +663,8 @@ th {
         flex: 2;
     }
 
+
+
 }
 
 @media (min-width: 1000px) {
@@ -646,6 +673,30 @@ th {
     }
 
     .card.outer {
-        height: 180px;
+        height: 150px;
+        padding: .6em;
     }
+
+    .item.column {
+        justify-content: center;
+    }
+
+    .filter-row {
+        display: flex;
+        flex-direction: row;
+        flex-grow: 1;
+    }
+
+    .filter {
+        flex-grow: 1;
+        vertical-align: middle;
+        text-align: center;
+        flex-direction: column;
+    }
+
+    .container.filter {
+        display: flex;
+        flex-direction: row;
+    }
+
 }

@@ -71,14 +71,16 @@ export function NameSearchFilter(props) {
     }
 
     return (
-        <div className="section container column">
-            <div className="row">
+        <div className="section container filter column">
+            <div className="filter-row">
                 <GenderFilter
                     genders={genders}
                     callback={handleCheckGender}
                     filterObj={filterObj}
                 />
+            </div>
 
+            <div className="filter-row">
                 <FilterMatching
                     searchedNameObj={searchedNameObj}
                     allDataObjArr={allDataObjArr}
@@ -108,7 +110,7 @@ function GenderFilter(props) {
         console.log(checkId); // testing
     
         return (
-            <div className={"item long text-" + colorClass}>
+            <div className={"filter-item text-" + colorClass}>
                 <input
                     type="checkbox"
                     id={checkId}
@@ -117,9 +119,9 @@ function GenderFilter(props) {
                     // checked={filterObj.gender[genderStr]}
                 />
     
-                <label htmlFor={checkId} className="gender-text">
+                <label htmlFor={checkId}>
                     {/* Gender text */}
-                    {genderLabel + "  "}
+                    <span className="gender-text">{genderLabel + "  "}</span>
                     {/* Gender symbol */}
                     <i className={"fa " + symbolClass} aria-label={genderLabel}></i>
                 </label>
@@ -143,7 +145,7 @@ function GenderFilter(props) {
     })
 
     return (
-        <div className="item column">
+        <div className="filter">
             {genderElemArr}
         </div>
     )
@@ -158,53 +160,55 @@ function FilterMatching(props) {
         <div className="item column">
             <h3>With matching...</h3>
             
-            {/* <!-- Origin --> */}
-            <div className="item long">
-                <input
-                    type="checkbox"
-                    id="check-origin"
-                    onClick={handleCheckOrigin}
-                />
-
-                <label htmlFor="check-origin">
-                    Origin 
-                    <span className="small-text">   ({searchedNameObj ? searchedNameObj.origin : ""})</span>
-                </label>
-            </div>
-
-            {/* <!-- Length --> */}
-            <div className="item long">
-                <input
-                    type="checkbox"
-                    id="check-ln"
-                    onChange={handleCheckLength}
-                />
-
-                <label htmlFor="check-ln">
-                    Length 
-                    <span className="small-text">   ({searchedNameObj ? searchedNameObj.name.length : ""} letters)</span>
-                </label>
-            </div>
-
-            {/* <!-- First letters (special checkbox) --> */}
-            <div className="item long">
-                {/* hard-coded checked */}
-                <input
-                    type="checkbox"
-                    id="check-first"
-                    onChange={handleCheckFirst}
-                />
-
-                <label htmlFor="check-first">
-                    First
+            <div className="filter">
+                {/* <!-- Origin --> */}
+                <div className="filter-item">
                     <input
-                        type="number"
-                        placeholder="#"
-                        onChange={handleChangeFirstNumLetters}
+                        type="checkbox"
+                        id="check-origin"
+                        onClick={handleCheckOrigin}
                     />
-                    letters
-                    <span className="small-text">   ("{searchedNameObj ? searchedNameObj.name.substring(0, firstNumLetters) : ""}")</span>
-                </label>
+
+                    <label htmlFor="check-origin">
+                        Origin 
+                        <span className="small-text">   ({searchedNameObj ? searchedNameObj.origin : ""})</span>
+                    </label>
+                </div>
+
+                {/* <!-- Length --> */}
+                <div className="filter-item">
+                    <input
+                        type="checkbox"
+                        id="check-ln"
+                        onChange={handleCheckLength}
+                    />
+
+                    <label htmlFor="check-ln">
+                        Length 
+                        <span className="small-text">   ({searchedNameObj ? searchedNameObj.name.length : ""} letters)</span>
+                    </label>
+                </div>
+
+                {/* <!-- First letters (special checkbox) --> */}
+                <div className="filter-item">
+                    {/* hard-coded checked */}
+                    <input
+                        type="checkbox"
+                        id="check-first"
+                        onChange={handleCheckFirst}
+                    />
+
+                    <label htmlFor="check-first">
+                        First
+                        <input
+                            type="number"
+                            placeholder="#"
+                            onChange={handleChangeFirstNumLetters}
+                        />
+                        letters
+                        <span className="small-text">   ("{searchedNameObj ? searchedNameObj.name.substring(0, firstNumLetters) : ""}")</span>
+                    </label>
+                </div>
             </div>
         </div>
     )
