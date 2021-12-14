@@ -7,4 +7,4 @@ That is why we are building **Hello My Name Is**, a name search and organization
 ## Deliverables
 1. [Project Proposal](https://info340-au21.github.io/hello-my-name-is/proposal.html)
 2. [Static Mock-Up](https://info340-au21.github.io/hello-my-name-is/index.html)
-3. [React App](https://hello-my-name-is-a1346.web.app/) *(In-Progress)*
+3. **[React App](https://hello-my-name-is-a1346.web.app/)**
