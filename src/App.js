@@ -18,8 +18,8 @@ import genderData from './data/Genders.json';
 
 function App(props) {
     const [bookmarkArray, setbookmarkArray] = useState([]) //store the array of names to be generated for Bookmark page
-    const [nameDataArray, setNameData] = useState(testNameData)
-    // console.log(nameDataArray); // testing
+    const [nameDataArray, setNameData] = useState([])
+    console.log(nameDataArray); // testing
 
     const db = getDatabase();
     // const currentData = ref(db, nameData);

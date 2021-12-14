@@ -49,14 +49,11 @@ export function NameSearchForm(props) {
     // When "Get names" is clicked, apply filters to a copy of name dataset
     const handleClickGetNames = () => {
         // Start with all data in database
-        let inDB = false;
-        allNameObjArr.map((name) => {
-            if(name.name === searchedName) {
-                inDB = true;
-            }
-        })
+        let namesInDbArr = allNameObjArr.map((nameObj) => nameObj.name);
+        let inDb = namesInDbArr.includes(searchedName);
 
-        if(inDB === true) {
+
+        if(inDb === true) {
             let filteredNameObjArr = allNameObjArr;
 
             // Filter matching
@@ -96,6 +93,7 @@ export function NameSearchForm(props) {
 
             // Update results
             setResultNameObjArr(filteredNameObjArr);
+            // console.log(filteredNameObjArr); // testing
         } else {
             setNameInDB(false);
         }
