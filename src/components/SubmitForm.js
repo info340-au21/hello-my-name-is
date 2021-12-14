@@ -138,7 +138,7 @@ export function SubmitForm(props) {
                         <label htmlFor="gender">Is it a <strong>gendered</strong> name? </label>
                         <label htmlFor="feminine"><input id="feminine" value="feminine" onInput={handleGender} type = "checkbox" /> Feminine </label>
                         <label htmlFor="masculine"><input id="masculine" value="masculine" onInput={handleGender} type = "checkbox" /> Masculine </label>
-                        <label htmlFor="neutral"><input id="neutral" value="nuetral" onInput={handleGender} type = "checkbox" /> Neutral </label>
+                        <label htmlFor="neutral"><input id="neutral" value="neutral" onInput={handleGender} type = "checkbox" /> Neutral </label>
                     </div>
     
                     <div className="form-attribute">
