@@ -54,7 +54,7 @@ function App(props) {
             offFucntion2();
         }
         return cleanup
-    }, []);
+    }, [db]);
 
     //const updateFavData = bookmarkArray.map(obj => ({...obj, isDelete:false}))
     /*
