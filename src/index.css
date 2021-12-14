@@ -48,6 +48,8 @@ h3 {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
     justify-content: center;
     padding-top: 7rem;
+    margin-top: 8rem;
+    margin-bottom: 8rem;
 }
 
 .alert button {
@@ -68,7 +70,7 @@ h3 {
 
 .bookmarkpage-container {
     position: relative;
-    min-height: 100vh;
+    min-height: 80vh;
 }
 
 
