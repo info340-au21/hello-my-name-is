@@ -51,10 +51,11 @@ export function NameSearchForm(props) {
         // Start with all data in database
         let namesInDbArr = allNameObjArr.map((nameObj) => nameObj.name);
         let inDb = namesInDbArr.includes(searchedName);
+        console.log(inDb)
 
+        let filteredNameObjArr = allNameObjArr;
 
         if(inDb) {
-            let filteredNameObjArr = allNameObjArr;
 
             // Filter matching
             function filterMatchingFn(filterParam, filterFn) {
@@ -97,11 +98,12 @@ export function NameSearchForm(props) {
 
 
             // Update results
-            setResultNameObjArr(filteredNameObjArr);
             // console.log(filteredNameObjArr); // testing
         } else {
             setNameInDB(false);
         }
+
+        setResultNameObjArr(filteredNameObjArr);
 
         
     }
