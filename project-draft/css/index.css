@@ -1,0 +1,425 @@
+/* GENERAL */
+* {
+    box-sizing: border-box;
+}
+
+main {
+    padding: 1em;
+}
+
+
+
+.center {
+    text-align: center;
+}
+
+.in-line {
+    display: inline-block;
+}
+
+h2 {
+    margin: 0;
+}
+
+h3 {
+    font-size: 1.3em;
+}
+
+.small-text {
+    font-size: .75em;
+    color: darkgray
+}
+
+.medium-text {
+    font-size: 1.25em;
+}
+
+.large-text {
+    font-size: 1.5em;
+}
+
+/* Sticking footer to bottom of page (credit to https://www.freecodecamp.org/news/how-to-keep-your-footer-where-it-belongs-59c6aa05c59c/) */
+.page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+.content-wrap {
+    padding-bottom: 12em;
+}
+
+/* Flexbox */
+.container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    padding-bottom: 1em;
+}
+
+.item {
+    padding: .5em .75em;
+}
+
+.item button {
+    display: flex;
+    margin: auto;
+    font-size: 1.25em;
+}
+
+.item .search {
+    width: 7em;
+    margin: 0;
+}
+
+.column {
+    flex-direction: column;
+}
+
+/* FILTER */
+input {
+    margin: .5em;
+}
+
+input[type='number'] {
+    width: 2em;
+}
+
+.btn-light {
+    color: white;
+    background-color: #9370db;
+}
+
+.btn-heart {
+    padding: 0;
+}
+
+/* Gender */
+.fa {
+    font-weight: 400;
+    font-size: 2em;
+}
+
+.text-neut {
+    color: lightgreen;
+}
+
+.text-fem {
+    color: gold;
+}
+
+.text-masc {
+    color:plum;
+}
+
+.gender-text {
+    display: none;
+}
+
+/* Name cards (mini) */
+.card-container {
+    display: flex;
+    flex-flow: row wrap;
+    flex-grow: 1;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 100%;
+}
+
+.card {
+    margin: 1em;
+    border-radius: .9em;
+    padding: .6em;
+}
+
+.outer.card {
+    width: 40%;
+    color: white;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
+}
+
+.inner.card {
+    background-color: white;
+    color: black;
+    text-align: left;
+    display: none;
+    margin: .7em;
+}
+
+.card h3 {
+    margin: 0;
+}
+
+.meaning {
+    font-style: italic;
+}
+
+.large-card {
+    background-color: white;
+    color: white;
+    margin: 1em;
+    padding-bottom: 1em;
+    text-align: center;
+    border-radius: 1em;
+    border-color: white;
+}
+
+.card .fa {
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.fem {
+    background-color: gold;
+}
+
+.neut {
+    background-color: lightgreen;
+}
+
+.masc {
+    background-color: plum;
+}
+
+.load {
+    background-color: lightgrey;
+}
+
+img {
+    height: 100px;
+    width: 100px;
+}
+
+tbody tr:hover {
+    background-color: #e6e6fa;
+}
+
+/*Nav and Footer*/
+h1 {
+    font-weight: 300;
+    font-family: "Roboto", sans-serif;
+}
+
+.name span {
+    color: white;
+}
+
+header {
+    color: white;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    background-color: #9370db;
+    text-align: center;
+    width: 100%;
+}
+
+header p {
+    display: inline;
+}
+
+#links {
+    display: none;
+}
+
+
+nav {
+    background-color: #e6e6fa;
+    text-align: left;
+    padding-top: 1rem;
+    padding-bottom: .5rem;
+}
+
+.search {
+    align-items: right;
+    display: none;
+}
+
+nav a {
+    color: black;
+    margin-right: .5em;
+    margin-left: .5em;
+}
+
+#hamburger-menu {
+    display: inline;
+
+}
+
+.material-icons {
+    color: black;
+    padding-top: 0.5rem;
+    position: relative;
+    top: 5px;
+}
+
+footer {
+    color: black;
+    background-color: #e6e6fa;
+    bottom:0;
+    padding: 1em;
+    position: absolute;
+    width: 100%;
+}
+
+.footer-flexbox {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1em 0em;
+}
+
+.footer-flexbox p {
+    flex-basis: 100%;
+    padding-left: 2em;
+}
+
+footer a {
+    color: black;
+}
+
+footer p:last-of-type {
+    line-height: 1.25;
+    padding-top: 8px;
+}
+
+/*Data View 2 - Bigger Card*/
+.attribute {
+   background-color: white;
+   color: black;
+   text-align: center;
+   font-size: .8rem;
+   margin: 1em;
+   padding: 1em;
+   position: relative;
+   border-color: white;
+}
+
+.section2 {
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: auto;
+
+}
+
+.section2 .container {
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    height: 100%;
+    width: 80%;
+}
+
+.section2 h2 {
+    font-size: larger;
+}
+
+.section2 .card .fa {
+    color: black;
+    font-size: .9rem;
+    font-weight: bold;
+}
+
+/*Form - Enter Name*/
+.update {
+    text-align: center;
+}
+
+.form-attribute {
+    text-align: center;
+    margin: 1rem;
+    padding: 1rem;
+    background-color: lavender;
+    border-radius: 1rem;
+    justify-content: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
+}
+
+.button {
+    margin: 1rem;
+    background-color: #9370db;
+    color: white;
+}
+
+/* bookmark page table */
+table {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 1rem;
+}
+
+
+.book-container {
+    margin-left: 2rem;
+}
+
+tbody img {
+    height: 40px;
+    width: 40px;
+}
+
+th {
+    font-size: 15px;
+    color: black;
+}
+
+/* RESPONSIVE */
+@media (min-width: 585px) {
+    th {
+        font-size: 25px;
+        color: #9370db;
+        text-align: center;
+    }
+
+    tbody img {
+        display: block;
+        height: 60px;
+        width: 60px;
+    }
+
+    footer {
+        display: block;
+    }
+
+    .search {
+        display: inline;
+    }
+
+    /* Filter */
+    .gender-text {
+        display: inline;
+    }
+
+    #links {
+        display: inline;
+    }
+
+    #hamburger-menu {
+        display: none;
+    }
+    
+}
+
+@media (min-width: 785px) {
+    .item {
+        flex: 1;
+    }
+
+    .item.long {
+        flex: 2;
+    }
+
+}
+
+@media (min-width: 1000px) {
+    .inner.card {
+        display: block;
+    }
+}

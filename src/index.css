@@ -1,10 +1,14 @@
 /* GENERAL */
+
 * {
     box-sizing: border-box;
 }
 
 main {
     padding: 1em;
+    display: flex;
+    flex-direction: column;
+
 }
 
 .center {
@@ -36,6 +40,42 @@ h3 {
     font-size: 1.5em;
 }
 
+.alert {
+    margin: 1rem;
+    height: 24rem;
+    background: lavender;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
+    justify-content: center;
+    padding-top: 7rem;
+}
+
+.alert button {
+    margin: 4em;
+}
+
+.alert button a {
+    text-decoration: none;
+    color: white;
+    
+}
+
+/* Sticking footer to bottom of page (credit to https://www.freecodecamp.org/news/how-to-keep-your-footer-where-it-belongs-59c6aa05c59c/) */
+.page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+.bookmarkpage-container {
+    position: relative;
+    min-height: 30vh;
+}
+
+
+.content-wrap {
+    padding-bottom: 12em;
+}
+
 /* Flexbox */
 .container {
     display: flex;
@@ -45,7 +85,7 @@ h3 {
 }
 
 .item {
-    padding: .5em .75em;
+    padding-top: .75em;
 }
 
 .item button {
@@ -55,12 +95,14 @@ h3 {
 }
 
 .item .search {
-    width: 7em;
-    margin: 0;
+    width: 11em;
+    padding: .15em;
+    /* margin: 0; */
 }
 
 .column {
     flex-direction: column;
+    padding-top: 1em;
 }
 
 /* FILTER */
@@ -85,6 +127,7 @@ input[type='number'] {
 .fa {
     font-weight: 400;
     font-size: 2em;
+    padding: .2em;
 }
 
 .text-neut {
@@ -103,6 +146,24 @@ input[type='number'] {
     display: none;
 }
 
+.filter {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    vertical-align: middle;
+    justify-content: center;
+}
+
+.filter-item {
+    flex-grow: 1;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.container.filter {
+    flex-direction: column;
+}
+
 /* Name cards (mini) */
 .card-container {
     display: flex;
@@ -113,24 +174,34 @@ input[type='number'] {
     width: 100%;
 }
 
+.result-card-container {
+    display: flexbox;
+    flex-flow: row;
+    justify-content: space-evenly;
+
+}
+
+
 .card {
     margin: 1em;
     border-radius: .9em;
     padding: .6em;
+    background-color: darkgray;
 }
 
 .outer.card {
     width: 40%;
     color: white;
     text-align: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
 }
 
 .inner.card {
     background-color: white;
     color: black;
-    text-align: left;
+    text-align: center;
     display: none;
-    margin: .7em;
+    padding: .7em;
 }
 
 .card h3 {
@@ -139,6 +210,8 @@ input[type='number'] {
 
 .meaning {
     font-style: italic;
+    font-size: 1rem;
+    font-weight: 700;
 }
 
 .large-card {
@@ -147,8 +220,10 @@ input[type='number'] {
     margin: 1em;
     padding-bottom: 1em;
     text-align: center;
+    justify-content: center;    
     border-radius: 1em;
     border-color: white;
+    width: 80%;
 }
 
 .card .fa {
@@ -205,56 +280,79 @@ header p {
     display: inline;
 }
 
+#links {
+    display: none;
+}
+
+
 nav {
     background-color: #e6e6fa;
-    text-align: right;
+    text-align: left;
     padding-top: 1rem;
     padding-bottom: .5rem;
 }
 
+.search {
+    align-items: right;
+}
+
+nav a {
+    color: black;
+    margin-right: .5em;
+    margin-left: .5em;
+}
+
+.topnav-right {
+    float: right;
+}
+
+#hamburger-menu {
+    display: inline;
+
+}
+
 .material-icons {
     color: black;
+    position: relative;
+}
+
+.material-icons.top-padded {
+    top: 5px;
     padding-top: 0.5rem;
-}
-
-nav li {
-    display: inline;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem
-}
-
-.nav-b{
-    display: flex;
-}
-
-.nav-b div {
-    color: #9370db;
-    background-color: #e6e6fa;
 }
 
 footer {
     color: black;
     background-color: #e6e6fa;
     bottom:0;
-    margin-top: auto;
+    padding: 1em;
+    position: static;
+    width: 100%;
+}
+
+.footer-flexbox {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1em 0em;
+}
+
+.footer-flexbox p {
+    flex-basis: 100%;
+    padding-left: 2em;
 }
 
 footer a {
     color: black;
 }
 
-.footer-flexbox {
-    display: flex;
-    flex-wrap: wrap;
+footer p:last-of-type {
+    line-height: 1.25;
+    padding-top: 8px;
 }
-
-.footer-flexbox div {
-    flex-basis: 100%;
-}
-
 
 /*Data View 2 - Bigger Card*/
 .attribute {
+    width: 80%;
    background-color: white;
    color: black;
    text-align: center;
@@ -304,6 +402,7 @@ footer a {
     background-color: lavender;
     border-radius: 1rem;
     justify-content: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
 }
 
 .button {
@@ -318,11 +417,15 @@ table {
     margin-left: auto;
     margin-right: auto;
     margin-top: 50px;
-    border-collapse: collapse;
+    border-collapsable: collapsable;
 }
 
 td {
     padding: 1rem;
+}
+
+h4 {
+    font-size: 1rem;
 }
 
 
@@ -331,7 +434,8 @@ td {
 }
 
 tbody img {
-    display: none;
+    height: 40px;
+    width: 40px;
 }
 
 th {
@@ -339,9 +443,93 @@ th {
     color: black;
 }
 
-footer {
+
+/* Card Expansion credit to: (https://dev.to/riyanagueco/expand-a-card-element-on-click-5268)*/
+.card.outer {
+    height: 80px;
+}
+
+.card.outer:hover {
+    cursor: pointer;
+}
+
+.card.outer.name-expanded {
+    height: 780px;
+    animation: expand 0.5s ease;
+}
+
+.collapsable {
+    opacity: 0;
     display: none;
 }
+
+.name-unexpanded > .collapsable, .name-expanded > .collapsable {
+    width: 100%;
+    text-align: center;
+    height: 66px;
+    position: relative;
+
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+.card.outer.name-expanded .inner.card {
+    display: none;
+}
+
+.name-unexpanded > .collapsable {
+    opacity: 0;
+    display: none;
+    background-color: white;
+    height: 180px;
+    animation: unreveal 0.5s ease;
+}
+
+.name-expanded > .collapsable {
+    opacity: 1;
+    display: block;
+    animation: reveal 0.7s ease;
+}
+
+@keyframes reveal {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes unreveal {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+@keyframes expand {
+    0% {
+        height: 180px;
+    }
+    100% {
+        height: 780px;
+    }
+}
+@keyframes unexpand {
+    0% {
+        height: 780px;
+    }
+    100% {
+        height: 180px;
+    }
+}
+
+
 
 /* RESPONSIVE */
 @media (min-width: 585px) {
@@ -353,6 +541,8 @@ footer {
 
     tbody img {
         display: block;
+        height: 60px;
+        width: 60px;
     }
 
     footer {
@@ -367,6 +557,15 @@ footer {
     .gender-text {
         display: inline;
     }
+
+    #links {
+        display: inline;
+    }
+
+    #hamburger-menu {
+        display: none;
+    }
+    
 }
 
 @media (min-width: 785px) {
@@ -378,10 +577,40 @@ footer {
         flex: 2;
     }
 
+
+
 }
 
 @media (min-width: 1000px) {
     .inner.card {
         display: block;
     }
+
+    .card.outer {
+        height: 150px;
+        padding: .6em;
+    }
+
+    .item.column {
+        justify-content: center;
+    }
+
+    .filter-row {
+        display: flex;
+        flex-direction: row;
+        flex-grow: 1;
+    }
+
+    .filter {
+        flex-grow: 1;
+        vertical-align: middle;
+        text-align: center;
+        flex-direction: column;
+    }
+
+    .container.filter {
+        display: flex;
+        flex-direction: row;
+    }
+
 }
