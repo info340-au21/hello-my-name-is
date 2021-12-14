@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { NameSearchFilter } from './NameSearchFilter';
 import { NameSearchResults } from './NameSearchResults';
 import { NameNotInDB } from './NameNotInDB'
+import { NameInDB } from '../NameInDB';
 
 
 export function NameSearchForm(props) {
@@ -10,11 +11,11 @@ export function NameSearchForm(props) {
     // Get name from search bar
     const [searchedNameObj, setSearchedNameObj] = useState({
         name: "",
-        pronunciation: null,
-        firstNumLetters: null,
-        gender: null,
-        meaning: null,
-        origin: null
+        pronunciation: "",
+        firstNumLetters: "",
+        gender: "",
+        meaning: "",
+        origin: ""
     });
 
     const [nameInDB, setNameInDB] = useState(true);
@@ -22,7 +23,7 @@ export function NameSearchForm(props) {
 
 
     const handleSearch = (event) => {
-        let searchedNameStr = event.target.value;
+        let searchedNameStr = (event.target.value).toLowerCase();
         setSearchedName(searchedNameStr);
         let matchingNameObj = allNameObjArr.find(dbNameObj => dbNameObj.name === searchedNameStr);
         setSearchedNameObj(matchingNameObj);
@@ -51,11 +52,11 @@ export function NameSearchForm(props) {
         // Start with all data in database
         let namesInDbArr = allNameObjArr.map((nameObj) => nameObj.name);
         let inDb = namesInDbArr.includes(searchedName);
-        console.log(inDb)
 
         let filteredNameObjArr = allNameObjArr;
+        //console.log(filteredNameObjArr)
 
-        if(inDb) {
+        if(inDb === true) {
 
             // Filter matching
             function filterMatchingFn(filterParam, filterFn) {
@@ -66,18 +67,20 @@ export function NameSearchForm(props) {
 
             // By origin
             filterMatchingFn('origin', (dbNameObj) => dbNameObj.origin === searchedNameObj.origin);
+            //console.log(filteredNameObjArr); 
 
             // By name length
-            filterMatchingFn('length', (dbNameObj) => dbNameObj.name.length === searchedNameObj.name.length);
+            filterMatchingFn('length', (dbNameObj) => dbNameObj.name.length === searchedNameObj.length);
+            //console.log(filteredNameObjArr); 
 
             // By first # letters
             let firstNumLetters = filterObj.firstNumLetters;
-            let searchedNameFirstLetters = searchedNameObj.name.substring(0, firstNumLetters);
+            let searchedNameFirstLetters = searchedName.substring(0, firstNumLetters);
             filterMatchingFn(
                 'firstNumLetters',
                 (dbNameObj) => dbNameObj.name.substring(0, firstNumLetters) === searchedNameFirstLetters
             );
-
+            console.log(filteredNameObjArr); 
 
             // Filter by gender
             filteredNameObjArr = filteredNameObjArr.filter((dbNameObj) => {
@@ -90,18 +93,18 @@ export function NameSearchForm(props) {
                     genderFilter.includes(dbNameObj.gender)
                 )
             })
-
+            setResultNameObjArr(filteredNameObjArr);
 
             // Update results
-            // console.log(filteredNameObjArr); // testing
         } else {
             setNameInDB(false);
         }
-
-        setResultNameObjArr(filteredNameObjArr);
+        //console.log(filteredNameObjArr);
 
         
     }
+
+
 
     if(nameInDB !== true) {
         return (
@@ -148,7 +151,7 @@ function SearchBar(props) {
                 type="text"
                 placeholder="ENTER NAME"
                 className="search"
-                onChange={props.callback}
+                onBlur={props.callback}
             />
         </h2>
     )
