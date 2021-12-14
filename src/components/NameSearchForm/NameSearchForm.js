@@ -45,14 +45,11 @@ export function NameSearchForm(props) {
 
     // Display results
     const [resultNameObjArr, setResultNameObjArr] = useState(allNameObjArr);
-    // console.log(resultNameObjArr);
 
     // When "Get names" is clicked, apply filters to a copy of name dataset
     const handleClickGetNames = () => {
         // Start with all data in database
         let inDB = false;
-        console.log(allNameObjArr);
-        console.log(searchedNameObj);
         allNameObjArr.map((name) => {
             if(name.name === searchedName) {
                 inDB = true;
@@ -99,7 +96,6 @@ export function NameSearchForm(props) {
 
             // Update results
             setResultNameObjArr(filteredNameObjArr);
-            console.log(filteredNameObjArr);
         } else {
             setNameInDB(false);
         }

@@ -8,14 +8,13 @@ export function NameSearchFilter(props) {
         let genderFilter = event.target.name;
         let newGenderFilterObj = filterObj.gender;
         newGenderFilterObj[genderFilter] = event.target.checked;
-        console.log(newGenderFilterObj);
 
         // add gender filter object to filter object's gender prop
         let newFilterObj = filterObj;
         newFilterObj.gender = newGenderFilterObj;
         setFilterObj(newFilterObj)
 
-        console.log(newFilterObj); // testing
+        // console.log(newFilterObj); // testing
     }
 
     // origin filter
@@ -29,7 +28,7 @@ export function NameSearchFilter(props) {
         }
 
         setFilterObj(newFilterObj);
-        console.log(filterObj); // testing
+        // console.log(filterObj); // testing
     }
 
     // length filter
@@ -107,7 +106,7 @@ function GenderFilter(props) {
             // filterObj
         } = props;
         let checkId = "check-" + genderLabel;
-        console.log(checkId); // testing
+        // console.log(checkId); // testing
     
         return (
             <div className={"filter-item text-" + colorClass}>
