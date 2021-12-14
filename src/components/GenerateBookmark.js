@@ -2,6 +2,16 @@ import React from 'react';
 
 export function GenerateBookmark(props) {
     let contentth = ['', 'Name', 'Relavent information'];
+    let favNames = props.fav;
+
+    if (favNames.length === 0) {
+        return (
+            <div className="alert center">
+                <h2>Your bookmark page is empty!</h2>
+                <button type="submit" className="btn btn-light"><a href='/'>Add a name to your bookmark page!</a></button>
+            </div>
+        )
+    }
 
     return (
         <div className="bookmarkpage-container">
@@ -16,16 +26,6 @@ export function GenerateBookmark(props) {
 }
 
 function Generatethead(props) {
-    let favNames = props.fav;
-
-    if (favNames.length === 0) {
-        return (
-            <div className="alert center">
-                <h2>Your bookmark page is empty!</h2>
-                <button type="submit" className="btn btn-light"><a href='/'>Add a name to your bookmark page!</a></button>
-            </div>
-        )
-    }
 
     let contentitem = props.content.map((item) => {
         let cont = <Eachth content={item} key={item}/>;
