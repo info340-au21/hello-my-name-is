@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App.js'
 import { BrowserRouter } from 'react-router-dom';
 import {initializeApp} from 'firebase/app';
-import { getDatabase } from "firebase/database";
+// import { getDatabase } from "firebase/database";
 // import 'firebase/database';
 
 const firebaseConfig = {

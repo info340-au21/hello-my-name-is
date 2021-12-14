@@ -1,7 +1,5 @@
-import userEvent from '@testing-library/user-event';
 import React, { useState, useEffect } from 'react';
-import { getDatabase, ref, set as firebaseSet, onValue, push as firebasePush} from 'firebase/database'
-import { NameInDB } from './NameInDB';
+import { getDatabase, ref, onValue, push as firebasePush} from 'firebase/database'
 import { Redirect } from 'react-router-dom';
 
 
@@ -23,15 +21,12 @@ export function SubmitForm(props) {
             // console.log(currentNames);
             setNameData(currentNames);
         })
-
-        console.log(nameRef);
-
         //turn off listener
         function cleanup() {
             offFunction();
         }
         return cleanup;
-    }, [])
+    }, [db])
 
     //add event listener to database updates
 
@@ -105,6 +100,9 @@ export function SubmitForm(props) {
         Object.values(nameData[0]).map(name => {
             if(name.name === nameInfo.name) {
                 inDB = true;
+                return (
+                    inDB
+                )
             }
         })
         if(inDB === false) {

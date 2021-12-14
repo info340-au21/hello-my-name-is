@@ -1,4 +1,3 @@
-import { set } from '@firebase/database';
 import React, { useState } from 'react';
 import genderData from './../../data/Genders.json';
 
@@ -94,7 +93,7 @@ function NameCard(props) {
        heartColor = "red";
        heartIcon = "favorite";
    }
-   console.log(props.pronunciation)
+//    console.log(props.pronunciation)
 
    function expand(event) {
         //console.log(event.target)
