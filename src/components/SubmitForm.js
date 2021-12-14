@@ -87,11 +87,9 @@ export function SubmitForm(props) {
         setNameInfo(currentInfo)
     }
 
-    //const [isInDB, setInDB] = useState(false);
 
     //loop through, if name in database, redirect to other page
     function submitCallback(event) {
-        //event.preventDefault();
         let inDB = false;
         Object.values(nameData[0]).map(name => {
             if(name.name === nameInfo.name) {
@@ -104,11 +102,9 @@ export function SubmitForm(props) {
         if(inDB === false) {
             const nameRef = ref(db, "nameData");
             firebasePush(nameRef, nameInfo);
-            //props.applyUpdate(nameInfo);
         } else {
             setInDB(true);
         }
-        //console.log(Object.values(nameData[0]))
        
     }
     

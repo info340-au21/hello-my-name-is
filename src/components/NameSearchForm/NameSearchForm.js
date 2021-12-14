@@ -64,7 +64,6 @@ export function NameSearchForm(props) {
             // Start with all data in database
             let namesInDbArr = allNameObjArr.map((nameObj) => nameObj.name);
             let inDb = namesInDbArr.includes(searchedName);
-            console.log(inDb)
 
             let filteredNameObjArr = allNameObjArr;
 
@@ -100,7 +99,6 @@ export function NameSearchForm(props) {
 
                         // get an array of the acceptable genders by checking each of the filter object's genders to see if any are true
                         genderFilterArr = genderFilterArr.filter((gender) => filterObj.gender[gender] === true);
-                        console.log(genderFilterArr);
 
                         return (
                             // filter for names whose genders are part of the array of acceptable genders
@@ -110,8 +108,7 @@ export function NameSearchForm(props) {
                 }
 
 
-                // Update results
-                // console.log(filteredNameObjArr); // testing
+            // Update results
             } else {
                 setNameInDB(false);
             }
@@ -119,7 +116,6 @@ export function NameSearchForm(props) {
             setResultNameObjArr(filteredNameObjArr);
 
         } else {
-            console.log("allnames");
             setResultNameObjArr(allNameObjArr);
         }
         
