@@ -53,7 +53,7 @@ export function NameSearchForm(props) {
         let inDb = namesInDbArr.includes(searchedName);
 
 
-        if(inDb === true) {
+        if(inDb) {
             let filteredNameObjArr = allNameObjArr;
 
             // Filter matching
