@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { NameSearchFilter } from './NameSearchFilter';
 import { NameSearchResults } from './NameSearchResults';
 import { NameNotInDB } from './NameNotInDB'
+import { NameInDB } from '../NameInDB';
 
 
 export function NameSearchForm(props) {
@@ -10,11 +11,11 @@ export function NameSearchForm(props) {
     // Get name from search bar
     const [searchedNameObj, setSearchedNameObj] = useState({
         name: "",
-        pronunciation: null,
-        firstNumLetters: null,
-        gender: null,
-        meaning: null,
-        origin: null
+        pronunciation: "",
+        firstNumLetters: "",
+        gender: "",
+        meaning: "",
+        origin: ""
     });
 
     const [nameInDB, setNameInDB] = useState(true);
@@ -22,7 +23,7 @@ export function NameSearchForm(props) {
 
 
     const handleSearch = (event) => {
-        let searchedNameStr = event.target.value;
+        let searchedNameStr = (event.target.value).toLowerCase();
         setSearchedName(searchedNameStr);
         let matchingNameObj = allNameObjArr.find(dbNameObj => dbNameObj.name === searchedNameStr);
         setSearchedNameObj(matchingNameObj);
@@ -124,6 +125,8 @@ export function NameSearchForm(props) {
         }
         
     }
+
+
 
     if(nameInDB !== true) {
         return (

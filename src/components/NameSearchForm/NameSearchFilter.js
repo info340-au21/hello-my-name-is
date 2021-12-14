@@ -13,13 +13,13 @@ export function NameSearchFilter(props) {
         let newFilterObj = filterObj;
         newFilterObj.gender = newGenderFilterObj;
         setFilterObj(newFilterObj)
-
         // console.log(newFilterObj); // testing
     }
 
     // origin filter
     const [originIsChecked, setOriginIsChecked] = useState(false);
     const handleCheckOrigin = () => {
+
         let newFilterObj = filterObj;
         
         if (newFilterObj.origin === null) {
