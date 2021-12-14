@@ -36,7 +36,11 @@ export function NameSearchForm(props) {
         firstNumLetters: 0,
         pronunciation: null,
         meaning: null,
-        gender: null
+        gender: {
+            'neutral': false,
+            'feminine': false,
+            'masculine': false
+        }
     })
 
     // Display results
