@@ -21,7 +21,7 @@ export function NameSearchFilter(props) {
 
         let newFilterObj = filterObj;
         
-        if (newFilterObj.origin === null) {
+        if (searchedNameObj !== undefined) {
             newFilterObj.origin = searchedNameObj.origin;
         } else {
             newFilterObj.origin = null;
@@ -32,10 +32,10 @@ export function NameSearchFilter(props) {
     }
 
     // length filter
-    const handleCheckLength = (event) => {
+    const handleCheckLength = () => {
         let newFilterObj = filterObj;
 
-        if (event.target.checked) {
+        if (searchedNameObj !== undefined) {
             newFilterObj.length = searchedNameObj.name.length;
         } else {
             newFilterObj.length = null;
