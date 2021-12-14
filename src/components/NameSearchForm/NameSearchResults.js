@@ -8,6 +8,7 @@ export function NameSearchResults(props) {
     return (
         <div className="section container column">
             <h2 className="row">Your {results.length} match{results.length !== 1 ? "es" : ""}:</h2>
+            <p className="row">Click on a card to see more information!</p>
             <NameCards
                 results={results}
                 booked={booked}
@@ -108,7 +109,7 @@ function NameCard(props) {
 
     return (
         <div className={"card outer " + colorClass} onClick={expand}>
-            <div onClick={expand}>
+            <div>
                 <h3 className="name">
                     <div className="card-container">
                         <div></div>
