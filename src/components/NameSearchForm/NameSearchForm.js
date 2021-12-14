@@ -30,6 +30,18 @@ export function NameSearchForm(props) {
     }
 
     // Filter based off of name and selected/inputed filters
+    const defaultFilter = {
+        origin: null,
+        length: null,
+        firstNumLetters: 0,
+        pronunciation: null,
+        meaning: null,
+        gender: {
+            'neutral': null,
+            'feminine': null,
+            'masculine': null
+        }
+    }
     const [filterObj, setFilterObj] = useState({
         origin: null,
         length: null,
@@ -48,63 +60,68 @@ export function NameSearchForm(props) {
 
     // When "Get names" is clicked, apply filters to a copy of name dataset
     const handleClickGetNames = () => {
-        // Start with all data in database
-        let namesInDbArr = allNameObjArr.map((nameObj) => nameObj.name);
-        let inDb = namesInDbArr.includes(searchedName);
-        console.log(inDb)
+        if (filterObj !== defaultFilter) {
+            // Start with all data in database
+            let namesInDbArr = allNameObjArr.map((nameObj) => nameObj.name);
+            let inDb = namesInDbArr.includes(searchedName);
+            console.log(inDb)
 
-        let filteredNameObjArr = allNameObjArr;
+            let filteredNameObjArr = allNameObjArr;
 
-        if(inDb) {
+            if(inDb) {
 
-            // Filter matching
-            function filterMatchingFn(filterParam, filterFn) {
-                if (filterObj[filterParam] !== null) {
-                    filteredNameObjArr = filteredNameObjArr.filter(filterFn)
+                // Filter matching
+                function filterMatchingFn(filterParam, filterFn) {
+                    if (filterObj[filterParam] !== null) {
+                        filteredNameObjArr = filteredNameObjArr.filter(filterFn)
+                    }
                 }
+
+                // By origin
+                filterMatchingFn('origin', (dbNameObj) => dbNameObj.origin === searchedNameObj.origin);
+
+                // By name length
+                filterMatchingFn('length', (dbNameObj) => dbNameObj.name.length === searchedNameObj.name.length);
+
+                // By first # letters
+                let firstNumLetters = filterObj.firstNumLetters;
+                let searchedNameFirstLetters = searchedNameObj.name.substring(0, firstNumLetters);
+                filterMatchingFn(
+                    'firstNumLetters',
+                    (dbNameObj) => dbNameObj.name.substring(0, firstNumLetters) === searchedNameFirstLetters
+                );
+
+
+                // Filter by gender (only if some of the boxes are checked, not if all or none are checked)
+                let genderProp = filterObj.gender;
+                if (!(genderProp.masculine === null && genderProp.feminine === null && genderProp.neutral === null)) {
+                    filteredNameObjArr = filteredNameObjArr.filter((dbNameObj) => {
+                        let genderFilterArr = ['neutral', 'feminine', 'masculine'];
+
+                        // get an array of the acceptable genders by checking each of the filter object's genders to see if any are true
+                        genderFilterArr = genderFilterArr.filter((gender) => filterObj.gender[gender] === true);
+                        console.log(genderFilterArr);
+
+                        return (
+                            // filter for names whose genders are part of the array of acceptable genders
+                            genderFilterArr.includes(dbNameObj.gender)
+                        )
+                    })
+                }
+
+
+                // Update results
+                // console.log(filteredNameObjArr); // testing
+            } else {
+                setNameInDB(false);
             }
 
-            // By origin
-            filterMatchingFn('origin', (dbNameObj) => dbNameObj.origin === searchedNameObj.origin);
+            setResultNameObjArr(filteredNameObjArr);
 
-            // By name length
-            filterMatchingFn('length', (dbNameObj) => dbNameObj.name.length === searchedNameObj.name.length);
-
-            // By first # letters
-            let firstNumLetters = filterObj.firstNumLetters;
-            let searchedNameFirstLetters = searchedNameObj.name.substring(0, firstNumLetters);
-            filterMatchingFn(
-                'firstNumLetters',
-                (dbNameObj) => dbNameObj.name.substring(0, firstNumLetters) === searchedNameFirstLetters
-            );
-
-
-            // Filter by gender (only if some of the boxes are checked, not if all or none are checked)
-            let genderProp = filterObj.gender;
-            if (!(genderProp.masculine === null && genderProp.feminine === null && genderProp.neutral === null)) {
-                filteredNameObjArr = filteredNameObjArr.filter((dbNameObj) => {
-                    let genderFilterArr = ['neutral', 'feminine', 'masculine'];
-
-                    // get an array of the acceptable genders by checking each of the filter object's genders to see if any are true
-                    genderFilterArr = genderFilterArr.filter((gender) => filterObj.gender[gender] === true);
-                    console.log(genderFilterArr);
-
-                    return (
-                        // filter for names whose genders are part of the array of acceptable genders
-                        genderFilterArr.includes(dbNameObj.gender)
-                    )
-                })
-            }
-
-
-            // Update results
-            // console.log(filteredNameObjArr); // testing
         } else {
-            setNameInDB(false);
+            console.log("allnames");
+            setResultNameObjArr(allNameObjArr);
         }
-
-        setResultNameObjArr(filteredNameObjArr);
-
         
     }
 

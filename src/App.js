@@ -14,12 +14,13 @@ import { NameInDB } from './components/NameInDB';
 // Data
 //import testNameData from './data/Names.json';
 import genderData from './data/Genders.json';
+import nameData from './data/Names.json';
 // const nameCard = {name:'Nalu', meaning:"Surging surf, wave", pronunciation:'nah-loo', gender:'neutral', genderIcon:'fa fa-genderless', origin:'Hawaiian'}
 
 function App(props) {
     const [bookmarkArray, setbookmarkArray] = useState([]) //store the array of names to be generated for Bookmark page
-    const [nameDataArray, setNameData] = useState([])
-    console.log(nameDataArray); // testing
+    const [nameDataArray, setNameData] = useState(nameData);
+    // console.log(nameDataArray); // testing
 
     const db = getDatabase();
     // const currentData = ref(db, nameData);

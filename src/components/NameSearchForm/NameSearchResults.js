@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import genderData from './../../data/Genders.json';
+import originalNameData from './../../data/Names.json';
 
 export function NameSearchResults(props) {
     let {results, booked, handleBook} = props;
 
-    return (
-        <div className="section container column">
-            <h2 className="row">Your {results.length} match{results.length !== 1 ? "es" : ""}:</h2>
+    if (results === originalNameData) {
+        return (
+            <div className="section container column">
+            <h2 className="row">Browse some of the names in the database.</h2>
             <p className="row">Click on a card to see more information!</p>
             <NameCards
                 results={results}
@@ -14,7 +16,20 @@ export function NameSearchResults(props) {
                 handleBook={handleBook}
             />
         </div>
-    )
+        )
+    } else {
+        return (
+            <div className="section container column">
+                <h2 className="row">Your {results.length} match{results.length !== 1 ? "es" : ""}:</h2>
+                <p className="row">Click on a card to see more information!</p>
+                <NameCards
+                    results={results}
+                    booked={booked}
+                    handleBook={handleBook}
+                />
+            </div>
+        )
+    }
 }
 
 function NameCards(props) {
