@@ -9,16 +9,12 @@ export function SubmitForm(props) {
     const [inDB, setInDB] = useState(undefined)
 
     const db = getDatabase();
-    // console.log(db);
 
     useEffect(()=> {
         const nameRef = ref(db, "nameData");
         const offFunction = onValue(nameRef, (snapshot) => {
-            //console.log(snapshot);
             const newName = snapshot.val();
-            // console.log(newName);
             let currentNames = [...nameData, newName];
-            // console.log(currentNames);
             setNameData(currentNames);
         })
         //turn off listener

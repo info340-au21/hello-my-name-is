@@ -13,7 +13,6 @@ export function NameSearchFilter(props) {
         let newFilterObj = filterObj;
         newFilterObj.gender = newGenderFilterObj;
         setFilterObj(newFilterObj)
-        // console.log(newFilterObj); // testing
     }
 
     // origin filter
@@ -24,15 +23,12 @@ export function NameSearchFilter(props) {
         
         if (newFilterObj.origin === null) {
             newFilterObj.origin = searchedNameObj.origin;
-            // setOriginIsChecked(true);
         } else {
             newFilterObj.origin = null;
-            // setOriginIsChecked(false);
         }
 
         setFilterObj(newFilterObj);
         setOriginIsChecked(!originIsChecked)
-        // console.log(filterObj); // testing
     }
 
     // length filter
@@ -46,7 +42,6 @@ export function NameSearchFilter(props) {
         }
 
         setFilterObj(newFilterObj);
-        // console.log(filterObj); // testing
     }
 
     // first # letters filter
@@ -70,7 +65,6 @@ export function NameSearchFilter(props) {
         }
 
         setFilterObj(newFilterObj);
-        // console.log(filterObj); // testing
     }
 
     return (
@@ -112,7 +106,6 @@ function GenderFilter(props) {
             // filterObj
         } = props;
         let checkId = "check-" + genderLabel;
-        // console.log(checkId); // testing
     
         return (
             <div className={"filter-item text-" + colorClass}>
@@ -156,7 +149,7 @@ function GenderFilter(props) {
     )
 }
 
-// Filter htmlFor matching... (break down further into Origin, Syllables, Length, and FirstLetters)
+// Filter matching
 function FilterMatching(props) {
     let {
         searchedNameObj,
@@ -169,9 +162,6 @@ function FilterMatching(props) {
         originIsChecked
     } = props;
 
-    // let originIsChecked = filterObj.origin !== null;
-
-    // Need to map Origin, Syllables, and Length using Checkbox()
     return (
         <div className="item column">
             <h3>With matching...</h3>

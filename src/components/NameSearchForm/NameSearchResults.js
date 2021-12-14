@@ -67,8 +67,6 @@ function NameCards(props) {
 
 function NameCard(props) {
     const [isLiked, setIsLiked] = useState(false);
-    //const [cardInfo, setcardInfo] = useState([{name:"", gender:"", origin:""}]);
-    // const allData = props.allData;
 
     let nameStr = props.name;
     let meaningStr = props.meaning;
@@ -85,21 +83,9 @@ function NameCard(props) {
         symbolClass = genderObj.symbolClass;
     }
  
-    // console.log(props.gender) // testing
-    const handleClick = (event) => {
+    const handleClick = () => {
       setIsLiked(!isLiked);
       props.handleBook(props.name, props.gender, props.origin)
-        /*console.log(event.target.name)
-        const cardCopy = cardInfo.map((cardArr) => {
-            cardArr.name = event.target.name;
-            cardArr.gender = event.target.gender;
-            cardArr.origin = event.target.origin;
-            return cardArr;
-        })
-        setcardInfo(cardCopy)
-        console.log(cardCopy)
-        props.addtoFav(cardInfo)
-        */
    }
 
    let heartColor = "grey";
@@ -108,17 +94,13 @@ function NameCard(props) {
        heartColor = "red";
        heartIcon = "favorite";
    }
-//    console.log(props.pronunciation)
 
    function expand(event) {
-        //console.log(event.target)
         const card = event.target
         card.classList.toggle('name-expanded');
 
         // If card is not expanded after toggle, add 'unexpanded' class
-        if (!card.classList.contains('name-expanded')) card.classList.toggle('name-unexpanded');
-        // Else if card is expanded after toggle and still contains 'unexpanded' class, remove 'unexpanded'
-        else if (card.classList.contains('name-expanded') && card.classList.contains('name-unexpanded')) card.classList.toggle('name-unexpanded');
+        if (!card.classList.contains('name-expanded') || ((card.classList.contains('name-expanded') && card.classList.contains('name-unexpanded')))) { card.classList.toggle('name-unexpanded') }
     }
 
     return (

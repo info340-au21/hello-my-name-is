@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { NameSearchFilter } from './NameSearchFilter';
 import { NameSearchResults } from './NameSearchResults';
 import { NameNotInDB } from './NameNotInDB'
-import { NameInDB } from '../NameInDB';
 
 
 export function NameSearchForm(props) {
-    let {allNameObjArr, genders, booked, handleBook} = props;
+    let { allNameObjArr, genders } = props;
 
     // Get name from search bar
     const [searchedNameObj, setSearchedNameObj] = useState({

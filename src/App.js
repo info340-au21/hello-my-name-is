@@ -12,19 +12,14 @@ import { NameNotInDB } from './components/NameSearchForm/NameNotInDB'
 import { NameInDB } from './components/NameInDB';
 
 // Data
-//import testNameData from './data/Names.json';
 import genderData from './data/Genders.json';
 import nameData from './data/Names.json';
-// const nameCard = {name:'Nalu', meaning:"Surging surf, wave", pronunciation:'nah-loo', gender:'neutral', genderIcon:'fa fa-genderless', origin:'Hawaiian'}
 
 function App(props) {
     const [bookmarkArray, setbookmarkArray] = useState([]) //store the array of names to be generated for Bookmark page
     const [nameDataArray, setNameData] = useState(nameData);
-    // console.log(nameDataArray); // testing
 
     const db = getDatabase();
-    // const currentData = ref(db, nameData);
-    // console.log(currentData);
 
     useEffect(() => {
         const dataref = ref(db, "nameData");
@@ -57,20 +52,6 @@ function App(props) {
         return cleanup
     }, [db]);
 
-    //const updateFavData = bookmarkArray.map(obj => ({...obj, isDelete:false}))
-    /*
-    const modifyDelete = (name) => { //handle delete
-        let update = updateFavData.map((theCard) => {
-            let updateCopy = {...theCard}
-            if(theCard.name === name) {
-                theCard.isDelete = true
-            }
-            return updateCopy
-        })
-        let whatLeftAfterDelete = update.filter((name) => !name.isDelete);
-        setbookmarkArray(whatLeftAfterDelete) //generate the filtered array, enable user to delete any bookmarked names
-    }
-    */
     const modifyDelete = (name) => { //handle delete
         let remainsOfDelete = bookmarkArray.filter((userObj) => userObj.name !== name);
         const bookmarkref = ref(db, "userData");
@@ -107,32 +88,6 @@ function App(props) {
         }
     }
 
-    // console.log(bookmarkArray)
-    
-    /*
-    const addtoFav = (name, gender, origin) => {
-        const img = "";
-        const text = "";
-        if (gender == "Female") {
-            img = "/img/yellow.jpg";
-            text = "img for female"
-        } else if (gender == "Male") {
-            img = "/img/pink.jpg";
-            text = "img for male"
-        } else {
-            img = "/img/green.jpg"
-            text = "img for neutral"
-        }
-        const newFavObj = {
-            name:name,
-            img:img,
-            text:text,
-            origin:origin
-        }
-        const newbookmarkArray = [...bookmarkArray, newFavObj];
-        setbookmarkArray(newbookmarkArray);
-    }
-    */
     return (
         <div>
             <NavIcon />
@@ -173,7 +128,6 @@ function App(props) {
         </div>
     );
 
-    //change this to display page when name is already in the database
 }
 
 export default App;
