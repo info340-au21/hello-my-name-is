@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import './index.css';
 import { NameSearchForm } from './components/NameSearchForm/NameSearchForm';
-import { LargeNameCard } from './components/LargeNameCard';
 import { HeaderBar } from './components/HeaderBar';
 import { NavIcon } from './components/NavBar';
 import { Footer } from './components/Footer'
 import { SubmitForm } from './components/SubmitForm.js';
-import { Route, Switch, Redirect, Link } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { GenerateBookmark } from './components/GenerateBookmark';
-import { getDatabase, ref, set as firebaseSet, push as firebasePush, onValue, get, child } from 'firebase/database';
+import { getDatabase, ref, set as firebaseSet, push as firebasePush, onValue } from 'firebase/database';
 import { NameNotInDB } from './components/NameSearchForm/NameNotInDB'
 import { NameInDB } from './components/NameInDB';
 
 // Data
-import testNameData from './data/Names.json';
+//import testNameData from './data/Names.json';
 import genderData from './data/Genders.json';
 // const nameCard = {name:'Nalu', meaning:"Surging surf, wave", pronunciation:'nah-loo', gender:'neutral', genderIcon:'fa fa-genderless', origin:'Hawaiian'}
 
